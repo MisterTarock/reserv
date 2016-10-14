@@ -1,0 +1,28 @@
+/*
+  _________ __           __           _________   _________ _________
+ /   _____//  |_ ___ __ |  |   ____   \_   ___ \ /   _____//   _____/
+ \_____  \\   __<   |  ||  | _/ __ \  /    \  \/ \_____  \ \_____  \
+ /        \|  |  \___  ||  |_\  ___/  \     \____/        \/        \
+/_______  /|__|  / ____||____/\___  >  \______  /_______  /_______  /
+        \/       \/               \/          \/        \/        \/
+*/
+
+
+
+td, th /* Toutes les cellules des tableaux... */
+    {
+        border: 1px solid black; /* auront une bordure de 1px */
+    }
+table
+    {
+        border-collapse: separate; /* Les bordures du tableau seront collées (plus joli) */
+        border: 1px solid black; /* auront une bordure de 1px */
+    }
+html
+    {
+        font-family: "Cambria", Times, serif;
+    }
+h1
+{
+    font-family: "Magneto", Times, serif;
+}
