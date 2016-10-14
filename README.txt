@@ -1,3 +1,4 @@
-Bonjour Paolo!!! Viens travailler avec moi ! :P
+This is the repo for our work on Techno web course.
 
-efjhziuf
+Puissant Baeyens victor, 12098
+De Keyzer Paolo, 13201
