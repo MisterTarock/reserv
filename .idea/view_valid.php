@@ -1,4 +1,5 @@
 
+
 <!--This will be the view file-->
 
 
@@ -7,17 +8,17 @@
 <head>
     <link rel="stylesheet" type="text/css" href="CSS\bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="CSS\style.css">
-    <title>Détails</title> <!-- to name the page//-->
+    <title>Validation</title> <!-- to name the page//-->
 
 </head>
 
 <body>
 
 <h1>Bogota Airlines</h1> <!--to make a big headline//-->
-<h2><b>Détail des Réservations</b></h2>
+<h2><b>Validation des Réservations</b></h2>
 
-Afin de pouvoir vous fournir un vol le plus agréable possible, nous désirons connaître
-quelques informations sur vous afin que fassions plus ample connaissance.
+Nous vous prions de bien reconsulter vos données afin d'être sûr
+que nous puissions bien vendre celles-ci
 <br>
 <br>
 
@@ -55,11 +56,6 @@ quelques informations sur vous afin que fassions plus ample connaissance.
     </form>
 
 </div>
-
-
-
-
-
 
 
 
