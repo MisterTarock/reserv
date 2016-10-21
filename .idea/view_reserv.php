@@ -14,7 +14,7 @@ _____         .__         ____   ____.__
 <head>
     <link rel="stylesheet" type="text/css" href="CSS\bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="CSS\style.css">
-    <title>Bogota</title> <!-- to name the page//-->
+    <title>Réservation</title> <!-- to name the page//-->
 </head>
 
 <body>
@@ -74,8 +74,9 @@ Bienvenue sur <b>AIR Columbia</b>!! Votre billet vous coutera une fortune et vou
     </table>
 
     <input class="btn btn-primary" type="submit" value="Etape suivante">
-    <input class="btn btn-primary" type="submit" value="Annuler la réservation">
-    <button class="btn btn-primary" onClick="">Solution</button>
+    <br>
+    <input class="btn btn-danger" type="submit" value="Annuler la réservation">
+
 </form>
 
 
