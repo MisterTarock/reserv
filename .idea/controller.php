@@ -7,3 +7,6 @@
  */
 
 //This will be the logic file were the data will be calculated
+include('view_reserv.php');
+
+?>
