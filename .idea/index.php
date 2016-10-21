@@ -1,4 +1,10 @@
-
+<!--
+_____         .__         ____   ____.__
+/     \ _____  |__| ____   \   \ /   /|__| ______  _  __
+/  \ /  \\__  \ |  |/    \   \   Y   / |  |/ __ \ \/ \/ /
+/    Y    \/ __ \|  |   |  \   \     /  |  \  ___/\     /
+\____|__  (____  /__|___|  /    \___/   |__|\___  >\/\_/
+\/     \/        \/                     \/
 
 
 <!--This will be the view file-->
@@ -6,7 +12,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="CSS\style.css">
 <title>Bogota Airlines</title> <!-- to name the page//-->
 <h1>Bogota Airlines</h1> <!--to make a big headline//-->
 </head>
@@ -66,10 +72,6 @@ Bienvenue sur <b>AIR Columbia</b>!! Votre billet vous coutera une fortune et vou
     <input type="submit" value="Annuler la réservation">
     <button onClick="">Solution</button>
 </form>
-
-
-
-
 
 
 
