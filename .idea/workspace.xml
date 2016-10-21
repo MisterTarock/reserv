@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="64f271db-66a0-467f-a152-4a2467ccfe95" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/style.css" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/index.php" afterPath="$PROJECT_DIR$/.idea/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/model.php" afterPath="$PROJECT_DIR$/.idea/model.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/view_detail.php" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/index.php" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/CSS/style.css" afterPath="$PROJECT_DIR$/.idea/CSS/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="reserv.iws" />
@@ -46,21 +46,41 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.idea/index.php">
+      <file leaf-file-name="view_reserv.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.idea/view_reserv.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="14" column="64" selection-start-line="14" selection-start-column="64" selection-end-line="14" selection-end-column="64" />
+            <state relative-caret-position="554">
+              <caret line="77" column="64" selection-start-line="75" selection-start-column="4" selection-end-line="77" selection-end-column="64" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="exo2.php" pinned="false" current-in-tab="false">
-        <entry file="file://D:/Documents &amp; Co/Documents/Ecam/3BE/Technologie web/Labos/Labo1/exo2.php">
+      <file leaf-file-name="view_detail.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.idea/view_detail.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="68" />
+            <state relative-caret-position="588">
+              <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bootstrap.min.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.idea/CSS/bootstrap.min.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-3898">
+              <caret line="4" column="30881" selection-start-line="4" selection-start-column="30876" selection-end-line="4" selection-end-column="30881" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.idea/CSS/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="595">
+              <caret line="35" column="13" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -86,6 +106,9 @@
         <option value="$PROJECT_DIR$/.idea/style.css" />
         <option value="$PROJECT_DIR$/.idea/model.php" />
         <option value="$PROJECT_DIR$/.idea/index.php" />
+        <option value="$PROJECT_DIR$/.idea/view_reserv.php" />
+        <option value="$PROJECT_DIR$/.idea/CSS/style.css" />
+        <option value="$PROJECT_DIR$/.idea/view_detail.php" />
       </list>
     </option>
   </component>
@@ -97,10 +120,9 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="476" />
-    <option name="y" value="66" />
-    <option name="width" value="1400" />
-    <option name="height" value="994" />
+    <option name="x" value="1060" />
+    <option name="width" value="867" />
+    <option name="height" value="1041" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -191,15 +213,15 @@
       <option name="presentableId" value="Default" />
       <updated>1476431705484</updated>
       <workItem from="1476431711583" duration="6844000" />
-      <workItem from="1477034445772" duration="480000" />
+      <workItem from="1477034445772" duration="5901000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7324000" />
+    <option name="totallyTimeSpent" value="12745000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="476" y="66" width="1400" height="994" extended-state="0" />
+    <frame x="1060" y="0" width="867" height="1041" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -294,14 +316,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.idea/controller.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -312,8 +326,48 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="14" column="64" selection-start-line="14" selection-start-column="64" selection-end-line="14" selection-end-column="64" />
+        <state relative-caret-position="153">
+          <caret line="9" column="33" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/CSS/bootstrap.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3898">
+          <caret line="4" column="30881" selection-start-line="4" selection-start-column="30876" selection-end-line="4" selection-end-column="30881" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/CSS/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="35" column="13" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/view_reserv.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="554">
+          <caret line="77" column="64" selection-start-line="75" selection-start-column="4" selection-end-line="77" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/view_detail.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="588">
+          <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
           <folding />
         </state>
       </provider>

@@ -10,19 +10,30 @@
 
 
 td, th /* Toutes les cellules des tableaux... */
-    {
-        border: 1px solid black; /* auront une bordure de 1px */
-    }
+{
+    border: 1px solid black; /* auront une bordure de 1px */
+}
 table
-    {
-        border-collapse: separate; /* Les bordures du tableau seront collées (plus joli) */
-        border: 1px solid black; /* auront une bordure de 1px */
-    }
+{
+    border-collapse: separate; /* Les bordures du tableau seront collées (plus joli) */
+    border: 1px solid black; /* auront une bordure de 1px */
+}
 html
-    {
-        font-family: "Cambria", Times, serif;
-    }
+{
+    font-family: "Cambria", Times, serif;
+}
 h1
 {
     font-family: "Magneto", Times, serif;
+}
+h2
+{
+    font-family: "Cambria", Times, serif;
+}
+div#reserv
+{
+    width: 60%;
+    border: 15px solid green;
+    padding: 25px;
+    margin: 25px;
 }
