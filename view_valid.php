@@ -28,27 +28,27 @@ que nous puissions bien vendre celles-ci!
 
 <div id="reserv">
     <form action="index.php" method="POST">
-        <div id="personne">
-            <div class="form-group">
-                <label for="exampleInputName1">Récapitulatif</label>
-                <p> Destination:<?php echo $_session['destination'],':'; ?> </p>
-                <p> Nombre de places <?php echo $_session['nbplace'],':'; ?> </p>
 
-                <p> Nom <?php echo $_session['Nom1'],':'; ?> </p>
-                <p> Age <?php echo $_session['Age1'],':'; ?> </p>
-                <p> Nom <?php echo $_session['Nom2'],':'; ?> </p>
-                <p> Age <?php echo $_session['Age2'],':'; ?> </p>
+        <div class="form-group">
+            <label for="exampleInputName1">Récapitulatif</label>
+            <p> Destination:<?php echo $_session['destination'],':'; ?> </p>
+            <p> Nombre de places <?php echo $_session['nbplace'],':'; ?> </p>
 
-                <?php
-                if (isset($_session['insurance'])) {
-                    echo 'Avec assurance annulation.<br><br>';
-                } else {
-                    echo 'Sans assurance annulation.<br><br>';
-                }
-                ?>
-            </div>
+            <p> Nom <?php echo $_session['Nom1'],':'; ?> </p>
+            <p> Age <?php echo $_session['Age1'],':'; ?> </p>
+            <p> Nom <?php echo $_session['Nom2'],':'; ?> </p>
+            <p> Age <?php echo $_session['Age2'],':'; ?> </p>
 
+            <?php
+            if (isset($_session['insurance'])) {
+                echo 'Avec assurance annulation.<br><br>';
+            } else {
+                echo 'Sans assurance annulation.<br><br>';
+            }
+            ?>
         </div>
+
+
 
 
 
