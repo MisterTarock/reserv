@@ -29,28 +29,26 @@ quelques informations sur vous afin que fassions plus ample connaissance.
 
 <div id="reserv">
     <form action="index.php" method="POST">
-        <div id="personne">
-            <div class="form-group">
-                <label for="exampleInputName1">Nom</label>
-                <input type="name" class="form-control" id="exampleInputName1" placeholder="Nom+Prénom">
-            </div>
-            <div class="form-group">
-                <label for="exampleInputAge1">Age</label>
-                <input type="age" class="form-control" id="exampleInputAge1" placeholder="Age">
-            </div>
+
+        <div class="form-group">
+            <label for="exampleInputName1">Nom</label>
+            <input type="name" class="form-control" id="exampleInputName1" placeholder="Nom+Prénom">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputAge1">Age</label>
+            <input type="age" class="form-control" id="exampleInputAge1" placeholder="Age">
         </div>
 
-        <div id="personne">
-            <div class="form-group">
-                <label for="exampleInputName1">Nom</label>
-                <input type="name" class="form-control" id="exampleInputName1" placeholder="Nom+Prénom">
-            </div>
-            <div class="form-group">
-                <label for="exampleInputAge1">Age</label>
-                <input type="age" class="form-control" id="exampleInputAge1" placeholder="Age">
-            </div>
 
+        <div class="form-group">
+            <label for="exampleInputName1">Nom</label>
+            <input type="name" class="form-control" id="exampleInputName1" placeholder="Nom+Prénom">
         </div>
+        <div class="form-group">
+            <label for="exampleInputAge1">Age</label>
+            <input type="age" class="form-control" id="exampleInputAge1" placeholder="Age">
+        </div>
+
 
         <input class="btn btn-primary" name="return" type="submit" value="Retour à la page précedente">
         <input class="btn btn-primary" name="submit"type="submit" value="Etape suivante">
