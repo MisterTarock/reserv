@@ -6,7 +6,7 @@
  */
 
 //This will be the logic file were the data will be calculated
-
+ /**
 session_start();  //We have to make a session to stock the value between the different view
 if (!isset($_SESSION["res"]))   //If the session didn't exist we will create one
 {
@@ -37,7 +37,7 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST") {
     switch ($step) {
         /** Validation of the form, error handling and
          *  redirection to the correct view according to that
-         **/
+         **
         case 1:
             if (isset($_POST['cancel']) && $_POST['cancel'] == "Annuler la réservation") {
                 $reservation     = new Reservation;
@@ -153,9 +153,10 @@ function input_validation($data)
 }
 
 
+**/
 
-
-if (isset($_POST['sumbit'])) {
+if (isset($_POST['sumbit']))
+{
 
 
     $_session['destination']=$_POST['destination'];

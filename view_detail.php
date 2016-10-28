@@ -28,7 +28,7 @@ quelques informations sur vous afin que fassions plus ample connaissance.
 <br>
 
 <div id="reserv">
-    <form>
+    <form action="index.php" method="POST">
         <div id="personne">
             <div class="form-group">
                 <label for="exampleInputName1">Nom</label>
@@ -52,10 +52,10 @@ quelques informations sur vous afin que fassions plus ample connaissance.
 
         </div>
 
-        <input class="btn btn-primary" type="submit" value="Retour à la page précedente">
-        <input class="btn btn-primary" type="submit" value="Etape suivante">
+        <input class="btn btn-primary" name="return" type="submit" value="Retour à la page précedente">
+        <input class="btn btn-primary" name="submit"type="submit" value="Etape suivante">
         <br>
-        <input class="btn btn-danger" type="submit" value="Annuler la réservation">
+        <input class="btn btn-danger" name="cancel" type="submit" value="Annuler la réservation">
 
     </form>
 

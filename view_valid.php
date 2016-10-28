@@ -27,7 +27,7 @@ que nous puissions bien vendre celles-ci!
 <br>
 
 <div id="reserv">
-    <form>
+    <form action="index.php" method="POST">
         <div id="personne">
             <div class="form-group">
                 <label for="exampleInputName1">Récapitulatif</label>
@@ -52,10 +52,10 @@ que nous puissions bien vendre celles-ci!
 
 
 
-        <input class="btn btn-primary" type="submit" value="Retour à la page précedente">
-        <input class="btn btn-primary" type="submit" value="Etape suivante">
+        <input class="btn btn-primary" name="return" type="submit" value="Retour à la page précedente">
+        <input class="btn btn-primary" name="submit" type="submit" value="Confirmer">
         <br>
-        <input class="btn btn-danger" type="submit" value="Annuler la réservation">
+        <input class="btn btn-danger" name="cancel" type="submit" value="Annuler la réservation">
 
     </form>
 
