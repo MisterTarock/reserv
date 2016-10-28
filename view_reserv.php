@@ -30,7 +30,7 @@ Bienvenue sur <b>AIR Columbia</b>!! Votre billet vous coutera une fortune et vou
 
 <!--To set the prices-->
 <table>
-    <caption><b>Tarifs</b></caption>
+    <caption><b>Tarifs</b></caption>  <!--To make the title for the table-->
     <thead>
         <tr>
             <th>Âge</th>
