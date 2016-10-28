@@ -40,7 +40,14 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST") {
         /** Validation of the form, error handling and
          *  redirection to the correct view according to that
          **/
+
         case 1:
+            if (isset($_POST['cancel']) && $_POST['cancel']=='Annuler la réservation'){
+                include('view_reserv.php');
+                $step=NULL;
+                break;
+
+            }
             include('view_detail.php');
             break;
 
@@ -52,8 +59,11 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST") {
             include("view_detail.php");
             break;
         default:
-            include("view_reserv.php");
-            break;
+
+            include('view_reserv.php');
+
+
+
     }
 }
 // Function to validate input to prevent XSS injections.
