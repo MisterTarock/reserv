@@ -60,7 +60,7 @@ Bienvenue sur <b>AIR Columbia</b>!! Votre billet vous coutera une fortune et vou
 <br>
 <br>
 
-<form action="demo_form.asp">
+<form action="index.php">
 
 
     <table>
@@ -75,13 +75,13 @@ Bienvenue sur <b>AIR Columbia</b>!! Votre billet vous coutera une fortune et vou
         </tr>
         <tr>
             <td>Assurance annulation</td>
-            <td><input type="checkbox" ></td>
+            <td><input type="checkbox" name="insurance"></td>
         </tr>
     </table>
 
-    <input class="btn btn-primary" type="submit" value="Etape suivante">
+    <input class="btn btn-primary" name="submit" type="submit" value="Etape suivante">
     <br>
-    <input class="btn btn-danger" type="submit" value="Annuler la réservation">
+    <input class="btn btn-danger" name="destroy" type="submit" value="Annuler la réservation">
 
 </form>
 
