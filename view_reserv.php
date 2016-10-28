@@ -60,7 +60,7 @@ Bienvenue sur <b>AIR Columbia</b>!! Votre billet vous coutera une fortune et vou
 <br>
 <br>
 
-<form action="index.php">
+<form action="index.php" method="POST">
 
 
     <table>
@@ -81,10 +81,12 @@ Bienvenue sur <b>AIR Columbia</b>!! Votre billet vous coutera une fortune et vou
 
 
 
+    <input type="hidden" name="step" value="1">
     <input class="btn btn-primary" name="submit" type="submit" value="Etape suivante">
 
     <br>
-    <input class="btn btn-danger" name="destroy" type="submit" value="Annuler la réservation">
+    <input class="btn btn-danger" name="cancel" type="submit" value="Annuler la réservation">
+
 
 </form>
 

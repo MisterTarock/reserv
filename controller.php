@@ -136,7 +136,7 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST") {
             include(PATH . "/views/form4.php");
             break;
         default:
-            include(PATH . "/views/index.php");
+            include(PATH . "view_reserv.php");
             break;
     }
 }
