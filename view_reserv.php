@@ -1,16 +1,16 @@
-/**
-* Created by PhpStorm.
-* Autor: Victor Puissant Baeyens, 12098
-* Autor: Paolo De Keyzer, 13201
-*/
+<!--
+Created by PhpStorm.
+Autor: Victor Puissant Baeyens, 12098
+Autor: Paolo De Keyzer, 13201
+-->
 
 <!--
-_____         .__         ____   ____.__
-/     \ _____  |__| ____   \   \ /   /|__| ______  _  __
-/  \ /  \\__  \ |  |/    \   \   Y   / |  |/ __ \ \/ \/ /
+   _____         .__         ____   ____.__
+  /     \ _____  |__| ____   \   \ /   /|__| ______  _  __
+ /  \ /  \\__  \ |  |/    \   \   Y   / |  |/ __ \ \/ \/ /
 /    Y    \/ __ \|  |   |  \   \     /  |  \  ___/\     /
 \____|__  (____  /__|___|  /    \___/   |__|\___  >\/\_/
-\/     \/        \/                     \/
+ \/     \/        \/                     \/
 
 
 <!--This will be the view file-->
@@ -79,7 +79,7 @@ Bienvenue sur <b>AIR Columbia</b>!! Votre billet vous coutera une fortune et vou
         </tr>
     </table>
 
-    <input class="btn btn-primary" type="submit" value="Etape suivante">
+    <input name="submit" class="btn btn-primary" type="submit" value="Etape suivante">
     <br>
     <input class="btn btn-danger" type="submit" value="Annuler la réservation">
 

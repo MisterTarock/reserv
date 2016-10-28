@@ -1,8 +1,8 @@
-/**
-* Created by PhpStorm.
-* Autor: Victor Puissant Baeyens, 12098
-* Autor: Paolo De Keyzer, 13201
-*/
+<!--
+Created by PhpStorm.
+Autor: Victor Puissant Baeyens, 12098
+Autor: Paolo De Keyzer, 13201
+-->
 
 
 <!--This will be the view file-->
@@ -38,7 +38,6 @@ quelques informations sur vous afin que fassions plus ample connaissance.
                 <label for="exampleInputAge1">Age</label>
                 <input type="age" class="form-control" id="exampleInputAge1" placeholder="Age">
             </div>
-
         </div>
 
         <div id="personne">

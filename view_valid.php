@@ -1,8 +1,8 @@
-/**
-* Created by PhpStorm.
-* Autor: Victor Puissant Baeyens, 12098
-* Autor: Paolo De Keyzer, 13201
-*/
+<!--
+Created by PhpStorm.
+Autor: Victor Puissant Baeyens, 12098
+Autor: Paolo De Keyzer, 13201
+-->
 
 <!--This will be the view file-->
 
@@ -21,8 +21,8 @@
 <h1>Bogota Airlines</h1> <!--to make a big headline//-->
 <h2><b>Validation des Réservations</b></h2>
 
-Nous vous prions de bien reconsulter vos données afin d'être sûr
-que nous puissions bien vendre celles-ci
+Nous vous prions de bien reconsulter vos données afin d'être sûr qu'elle soient exacte et
+que nous puissions bien vendre celles-ci!
 <br>
 <br>
 
@@ -30,27 +30,27 @@ que nous puissions bien vendre celles-ci
     <form>
         <div id="personne">
             <div class="form-group">
-                <label for="exampleInputName1">Nom</label>
-                <input type="name" class="form-control" id="exampleInputName1" placeholder="Nom+Prénom">
-            </div>
-            <div class="form-group">
-                <label for="exampleInputAge1">Age</label>
-                <input type="age" class="form-control" id="exampleInputAge1" placeholder="Age">
+                <label for="exampleInputName1">Récapitulatif</label>
+                <p> Destination:<?php echo $_session['destination'],':'; ?> </p>
+                <p> Nombre de places <?php echo $_session['nbplace'],':'; ?> </p>
+
+                <p> Nom <?php echo $_session['Nom1'],':'; ?> </p>
+                <p> Age <?php echo $_session['Age1'],':'; ?> </p>
+                <p> Nom <?php echo $_session['Nom2'],':'; ?> </p>
+                <p> Age <?php echo $_session['Age2'],':'; ?> </p>
+
+                <?php
+                if (isset($_session['insurance'])) {
+                    echo 'Avec assurance annulation.<br><br>';
+                } else {
+                    echo 'Sans assurance annulation.<br><br>';
+                }
+                ?>
             </div>
 
         </div>
 
-        <div id="personne">
-            <div class="form-group">
-                <label for="exampleInputName1">Nom</label>
-                <input type="name" class="form-control" id="exampleInputName1" placeholder="Nom+Prénom">
-            </div>
-            <div class="form-group">
-                <label for="exampleInputAge1">Age</label>
-                <input type="age" class="form-control" id="exampleInputAge1" placeholder="Age">
-            </div>
 
-        </div>
 
         <input class="btn btn-primary" type="submit" value="Retour à la page précedente">
         <input class="btn btn-primary" type="submit" value="Etape suivante">
