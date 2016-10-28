@@ -84,7 +84,7 @@ Bienvenue sur <b>AIR Columbia</b>!! Votre billet vous coutera une fortune et vou
     <input class="btn btn-primary" name="submit" type="submit" value="Etape suivante">
 
     <br>
-    <input class="btn btn-danger" name="destroy" type="submit" value="Annuler la réservation">
+    <input class="btn btn-danger" name="cancel" type="submit" value="Annuler la réservation">
 
 </form>
 
