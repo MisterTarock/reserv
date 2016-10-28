@@ -5,6 +5,15 @@
  * Autor: Paolo De Keyzer, 13201
  */
 
+/**
+_________                __                 __   __
+\_   ___ \  ____   _____/  |________  ____ |  | |  |   ___________
+/    \  \/ /  _ \ /    \   __\_  __ \/  _ \|  | |  | _/ __ \_  __ \
+\     \___(  <_> )   |  \  |  |  | \(  <_> )  |_|  |_\  ___/|  | \/
+ \______  /\____/|___|  /__|  |__|   \____/|____/____/\___  >__|
+        \/            \/                                  \/
+
+**/
 //This will be the logic file were the data will be calculated
 
 session_start();  //We have to make a session to stock the value between the different view
