@@ -1,3 +1,9 @@
+/**
+* Created by PhpStorm.
+* Autor: Victor Puissant Baeyens, 12098
+* Autor: Paolo De Keyzer, 13201
+*/
+
 <!--
 _____         .__         ____   ____.__
 /     \ _____  |__| ____   \   \ /   /|__| ______  _  __
