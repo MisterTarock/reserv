@@ -26,8 +26,11 @@ Votre demande à bien été traité, merci de payer celle-ci au plus vite sur no
 La somme attendue est d'un........ sur le compte 123-123456-12
 <br>
 <br>
+<form action="index.php" method="POST">
 
-<input class="btn btn-warning" name="cancel" type="submit" value="Retour à la page d'acceuil">
+    <input class="btn btn-warning" name="cancel" type="submit" value="Retour à la page d'acceuil">
+
+</form>
 
 
 <?php
