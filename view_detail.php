@@ -50,6 +50,7 @@ quelques informations sur vous afin que fassions plus ample connaissance.
         </div>
 
 
+        <input type="hidden" name="step" value="2">
         <input class="btn btn-primary" name="return" type="submit" value="Retour à la page précedente">
         <input class="btn btn-primary" name="submit"type="submit" value="Etape suivante">
         <br>
