@@ -4,11 +4,16 @@
  * Autor: Victor Puissant Baeyens, 12098
  * Autor: Paolo De Keyzer, 13201
  */
-
+include_once("model.php");
 
 /*This will be the logic file were the data will be calculated*/
 
 session_start();  //We have to make a session to stock the value between the different view
+if (!isset($SESSION['reserv'])){
+    $reservation=new Reservation();
+    $SESSION['reserv']=$reservation;
+
+}
 /**
 if (!isset($_SESSION["res"]))   //If the session didn't exist we will create one
 {
@@ -23,13 +28,6 @@ else   //If the session already exist, we retake it
 **/
 
 // To init the value and set the error below
-$destinationErr = "";
-$placeErr       = "";
-$nameErr        = array();
-$ageErr         = array();
-$person         = array();
-$error          = false;
-$refresh        = "";
 
 
 /** gets the step from current form
@@ -45,8 +43,12 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
          **/
 
         case 1:
+            if (isset($_SESSION['assurance'])){
+                $_assurance=true;
+            }
             if (isset($_POST['cancel']) && $_POST['cancel']=='Annuler la réservation')
             {
+                session_destroy();
                 include('view_reserv.php');
                 $step=NULL;
 
@@ -57,6 +59,7 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
         case 2:
             if (isset($_POST['cancel']) && $_POST['cancel']=='Annuler la réservation')
             {
+                session_destroy();
                 include('view_reserv.php');
                 $step=NULL;
 
@@ -74,6 +77,8 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
         case 3:
             if (isset($_POST['cancel']) && $_POST['cancel']=="Annuler la réservation")
             {
+                session_destroy();
+                $_assurance=NULL;
                 include('view_reserv.php');
                 $step=NULL;
 
@@ -105,31 +110,3 @@ else
 
         }
     }
-// Function to validate input to prevent XSS injections.
-//This way we protect our program from any SQL and javascript script to preserve our database from any hacking
-/**
-function input_validation($data)
-{
-    //to protect against javascript and block the interpreter to read the text as text only and not as command
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    $data = mysqli_real_escape_string($data);  //to protect against SQL
-    return $data;
-}
-
-
-
-
-if (isset($_POST['sumbit'])) {
-
-
-    $_session['destination']=$_POST['destination'];
-    $_session['places']=$_POST['places'];
-    $_session['insurance']=$_POST['insurance'];
-    include 'view_detail.php';
-}
-else{
-    include"view_reserv.php";
-}**/
-?>

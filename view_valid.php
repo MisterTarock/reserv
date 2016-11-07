@@ -39,7 +39,7 @@ Nous vous prions de bien reconsulter vos données afin d'être sûr qu'elle soie
             <p> Age <?php echo $_session['Age2'],':'; ?> </p>
 
             <?php
-            if (isset($_session['insurance'])) {
+            if ($this._assurance==true) {
                 echo 'Avec assurance annulation.<br><br>';
             } else {
                 echo 'Sans assurance annulation.<br><br>';

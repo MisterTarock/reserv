@@ -75,7 +75,8 @@ Bienvenue sur <b>AIR Columbia</b>!!
         </tr>
         <tr>
             <td>Assurance annulation</td>
-            <td><input type="checkbox" name="insurance"></td>
+
+            <td><input type="checkbox" name="assurance" value="true" /></td>
         </tr>
     </table>
 
