@@ -71,7 +71,7 @@ Bienvenue sur <b>AIR Columbia</b>!!
         </tr>
         <tr>
             <td>Nombre de places:</td>
-            <td><input class="form-control" type="text" name="places" placeholder="Nombre de places"></td>
+            <td><input class="form-control" type="number" name="places" placeholder="Nombre de places"></td>
         </tr>
         <tr>
             <td>Assurance annulation</td>

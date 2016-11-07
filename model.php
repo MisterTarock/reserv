@@ -15,27 +15,21 @@ class Reservation
 {
     private $_destination; //to init the different variable
     private $_place;
-    private $_personne;
     private $_assurance;
 
 
-    public function destination()
+    //To make the construct
+    //We have to set all the variable from this class at once
+    public function __construct($destination, $place, $assurance)
     {
-        return $this->_destination;  //To resend the value, it the same thing as a get
+        $this->_destination = $destination;  //To resend the value, it the same thing as a get
+        $this->_place = $place;
+        $this->_assurance = $assurance;
     }
-    public function place()
-    {
-        return $this->_place;
-    }
-    public function assurance()
-    {
-        return $this->_assurance;
-    }
-    public function personne()
-    {
-        return $this->_personne;
-    }
-    public function setDestination($destination)  //To set the value
+
+    //To set the value and define them
+    //We have to set each value at the time
+    public function setDestination($destination)
     {
         $this->_destination = $destination;
     }
@@ -47,11 +41,18 @@ class Reservation
     {
         $this->_assurance = $assurance;
     }
-
-    //public function setPersonne($tab)
-    //{
-        /*array_push($this->_personne, array($name, $age));*/
-     //   $this->_personne = $tab;
-    // }
 }
+
+class Personne
+{
+    private $name;
+    private $age;
+
+    public function __construct($name, $age)
+    {
+        $this->name = $name;
+        $this->age = $age;
+    }
+}
+
 ?>
