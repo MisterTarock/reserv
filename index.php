@@ -68,12 +68,27 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST") {
                 break;
 
             }
+            else if (isset($_POST['return']) && $_POST['return']=="Retour à la page précedente"){
+                include('view_reserv.php');
+                $step=1;
+
+                break;
+
+            }
             include('view_valid.php');
             break;
         case 3:
             if (isset($_POST['cancel']) && $_POST['cancel']=="Retour à la page d'acceuil"){
                 include('view_reserv.php');
                 $step=NULL;
+
+                break;
+
+
+            }
+            else if (isset($_POST['return']) && $_POST['return']=="Retour à la page précedente"){
+                include('view_detail.php');
+                $step=2;
 
                 break;
 
