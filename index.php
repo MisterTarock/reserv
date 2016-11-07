@@ -72,7 +72,7 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
             include('view_valid.php');
             break;
         case 3:
-            if (isset($_POST['cancel']) && $_POST['cancel']=="Retour à la page d'acceuil")
+            if (isset($_POST['cancel']) && $_POST['cancel']=="Annuler la réservation")
             {
                 include('view_reserv.php');
                 $step=NULL;
