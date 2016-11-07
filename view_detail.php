@@ -23,7 +23,7 @@ Autor: Paolo De Keyzer, 13201
 <h2><b>Détail des Réservations</b></h2>
 
 Afin de pouvoir vous fournir un vol le plus agréable possible, nous désirons connaître
-quelques informations sur vous afin que fassions plus ample connaissance.
+quelques informations sur vous.
 <br>
 <br>
 

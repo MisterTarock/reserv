@@ -18,4 +18,4 @@ the view, set the session, protect the code, etc.
 #References
 
 - Our class "Technologie web"
-- To make this Readme https://guides.github.com/features/mastering-markdown/
+- To make this Readme with the *Markdown* language https://guides.github.com/features/mastering-markdown/

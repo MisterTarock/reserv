@@ -21,9 +21,9 @@ Autor: Paolo De Keyzer, 13201
 <h1>Bogota Airlines</h1> <!--to make a big headline//-->
 <h2><b>Confirmation des billets</b></h2>
 
-Votre demande à bien été traité, merci de payer celle-ci au plus vite sur notre compte offshore au île Cayman.
+Votre demande à bien été traité, merci de payer celle-ci au plus vite sur notre compte.
 <br>
-La somme attendue est d'un........ sur le compte 123-123456-12
+La somme attendue est de........ sur le compte 123-123456-12
 <br>
 <br>
 <form action="index.php" method="POST">

@@ -4,14 +4,6 @@ Autor: Victor Puissant Baeyens, 12098
 Autor: Paolo De Keyzer, 13201
 -->
 
-<!--
-   _____          __         ____   ____ __
-  /     \ _____  |__| ____   \   \ /   /|__| ______  _  __
- /  \ /  \\__  \ |  |/    \   \   Y   / |  |/ __ \ \/ \/ /
-/    Y    \/ __ \|  |   |  \   \     /  |  \  ___/\     /
-\____|__  (____  /__|___|  /    \___/   |__|\___  >\/\_/
- \/     \/        \/                     \/
-
 
 <!--This will be the view file-->
 
@@ -25,12 +17,20 @@ Autor: Paolo De Keyzer, 13201
 
 <body>
 
-<h1>Bogota Airlines</h1> <!--to make a big headline//-->
+
+<h1>Bogota Airlines<!--to make a big headline//--></h1>
+    <!--<img src="bogota_flag.png" alt="bogota_flag" usemap="#flagmap" style="float:top; width:70%;height:70%;">-->
+    <map name="flagmap">
+        <area shape="bird" coords="135,90,165,130" alt="bird" href="https://fr.wikipedia.org/wiki/Bogota">
+        <!--the coordinates are set like this x1,y1,x2,y2. The x1,y1 are the position of the left-top corner af the image
+        and the x2,y2 are for the right-bottom corner-->
+    </map>
+
 <br>
 <h2><b>Reservation</b></h2>
 
-Bienvenue sur <b>AIR Columbia</b>!! Votre billet vous coutera une fortune et vous serez mal assis!
-<br>Mais nous ferons tout pour que vous passiez un agréable trajet!
+Bienvenue sur <b>AIR Columbia</b>!!
+<br>Nous ferons tout pour que vous passiez un agréable trajet!
 <br>
 <br>
 
@@ -47,12 +47,12 @@ Bienvenue sur <b>AIR Columbia</b>!! Votre billet vous coutera une fortune et vou
     <tbody>
         <tr>
             <td>< 25 ans:</td>
-            <td>vous payerez seulement 1/2 marcassin-mout!</td>
+            <td>10euros</td>
         </tr>
 
         <tr>
             <td>> 25 ans:</td>
-            <td>vous payerez 2 chameaux</td>
+            <td>20euros</td>
         </tr>
     </tbody>
 </table>

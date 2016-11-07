@@ -5,16 +5,8 @@
  * Autor: Paolo De Keyzer, 13201
  */
 
-/**
-_________                __                 __   __
-\_   ___ \  ____   _____/  |________  ____ |  | |  |   ___________
-/    \  \/ /  _ \ /    \   __\_  __ \/  _ \|  | |  | _/ __ \_  __ \
-\     \___(  <_> )   |  \  |  |  | \(  <_> )  |_|  |_\  ___/|  | \/
- \______  /\____/|___|  /__|  |__|   \____/|____/____/\___  >__|
-        \/            \/                                  \/
 
-**/
-//This will be the logic file were the data will be calculated
+/*This will be the logic file were the data will be calculated*/
 
 session_start();  //We have to make a session to stock the value between the different view
 /**
@@ -44,58 +36,61 @@ $refresh        = "";
  *  the step help us to know where we are in the recording process of a reservation
  **/
 $step = isset($_POST['step']) ? $_POST['step'] : NULL;
-if ($step && $_SERVER["REQUEST_METHOD"] == "POST") {
-    switch ($step) {
+if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
+{
+    switch ($step)
+    {
         /** Validation of the form, error handling and
          *  redirection to the correct view according to that
          **/
 
         case 1:
-            if (isset($_POST['cancel']) && $_POST['cancel']=='Annuler la réservation'){
+            if (isset($_POST['cancel']) && $_POST['cancel']=='Annuler la réservation')
+            {
                 include('view_reserv.php');
                 $step=NULL;
 
                 break;
-
             }
             include('view_detail.php');
             break;
         case 2:
-            if (isset($_POST['cancel']) && $_POST['cancel']=='Annuler la réservation'){
+            if (isset($_POST['cancel']) && $_POST['cancel']=='Annuler la réservation')
+            {
                 include('view_reserv.php');
                 $step=NULL;
 
                 break;
-
             }
             include('view_valid.php');
             break;
         case 3:
-            if (isset($_POST['cancel']) && $_POST['cancel']=="Retour à la page d'acceuil"){
+            if (isset($_POST['cancel']) && $_POST['cancel']=="Retour à la page d'acceuil")
+            {
                 include('view_reserv.php');
                 $step=NULL;
 
                 break;
-
             }
             include('view_confirm.php');
             break;
 
 
     }
-} else {
-    switch ($step) {
-        case 1:
-            include("view_detail.php");
-            break;
-        default:
-
-            include('view_reserv.php');
-
-
-
-    }
 }
+
+else
+    {
+        switch ($step)
+        {
+            case 1:
+                include("view_detail.php");
+                break;
+            default:
+                include('view_reserv.php');
+
+        }
+    }
 // Function to validate input to prevent XSS injections.
 //This way we protect our program from any SQL and javascript script to preserve our database from any hacking
 /**

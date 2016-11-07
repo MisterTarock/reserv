@@ -31,6 +31,9 @@ html
 h1
 {
     font-family: "Magneto", Times, serif;
+    width:200px;
+    height:200px;
+    background-image: url(bogota.png);
 }
 h2
 {
@@ -43,4 +46,6 @@ div#reserv
     padding: 15px;
     margin: 15px;
 }
+
+
 

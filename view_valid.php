@@ -21,8 +21,7 @@ Autor: Paolo De Keyzer, 13201
 <h1>Bogota Airlines</h1> <!--to make a big headline//-->
 <h2><b>Validation des Réservations</b></h2>
 
-Nous vous prions de bien reconsulter vos données afin d'être sûr qu'elle soient exacte et
-que nous puissions bien vendre celles-ci!
+Nous vous prions de bien reconsulter vos données afin d'être sûr qu'elle soient exacte.
 <br>
 <br>
 
