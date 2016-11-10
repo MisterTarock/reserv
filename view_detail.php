@@ -29,26 +29,22 @@ quelques informations sur vous.
 
 <div id="reserv">
     <form action="index.php" method="POST">
+        <?php
+        for ($i=0;$i<$reservation->getPlace();$i++){
 
-        <div class="form-group">
-            <label for="exampleInputName1">Nom</label>
-            <input type="name" class="form-control" id="exampleInputName1" placeholder="Nom+Prénom">
-        </div>
-        <div class="form-group">
-            <label for="exampleInputAge1">Age</label>
-            <input type="age" class="form-control" id="exampleInputAge1" placeholder="Age">
-        </div>
+            echo'<div class="form-group">';
+                echo'<label for="exampleInputName'.$i.'">Nom</label>';
+                echo'<input type="name" class="form-control" id="exampleInputName'.$i.'" name="exampleInputName[]" placeholder="Nom+Prénom">';
+                echo'</div>';
+            echo'<div class="form-group">';
+                echo'<label for="exampleInputAge'.$i.'">Age</label>';
+            echo'<input type="age" class="form-control" id="exampleInputAge'.$i.'" name="exampleInputAge[]" placeholder="Age">';
+            echo'</div>';}
 
 
-        <div class="form-group">
-            <label for="exampleInputName1">Nom</label>
-            <input type="name" class="form-control" id="exampleInputName1" placeholder="Nom+Prénom">
-        </div>
-        <div class="form-group">
-            <label for="exampleInputAge1">Age</label>
-            <input type="age" class="form-control" id="exampleInputAge1" placeholder="Age">
-        </div>
 
+
+        ?>
 
         <input type="hidden" name="step" value="2">
         <input class="btn btn-primary" name="return" type="submit" value="Retour à la page précedente">
@@ -67,10 +63,7 @@ quelques informations sur vous.
 
 
 
-<?php
 
-
-?>
 
 
 </body>

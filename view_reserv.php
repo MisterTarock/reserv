@@ -65,6 +65,7 @@ Bienvenue sur <b>AIR Columbia</b>!!
 
     <table>
         <caption><b>Réservation</b></caption>
+
         <tr>
             <td>Destination:</td>
             <td><input class="form-control" type="text" name="destination" placeholder="Destination"></td>

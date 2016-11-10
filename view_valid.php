@@ -30,16 +30,17 @@ Nous vous prions de bien reconsulter vos données afin d'être sûr qu'elle soie
 
         <div class="form-group">
             <label for="exampleInputName1">Récapitulatif</label>
-            <p> Destination:<?php echo $_session['destination'],':'; ?> </p>
-            <p> Nombre de places <?php echo $_session['nbplace'],':'; ?> </p>
+            <p> Destination:<?php echo $reservation->getDestination(); ?> </p>
+            <p> Nombre de places <?php echo $reservation->getPlace(); ?> </p>
 
-            <p> Nom <?php echo $_session['Nom1'],':'; ?> </p>
-            <p> Age <?php echo $_session['Age1'],':'; ?> </p>
-            <p> Nom <?php echo $_session['Nom2'],':'; ?> </p>
-            <p> Age <?php echo $_session['Age2'],':'; ?> </p>
 
             <?php
-            if ($this._assurance==true) {
+            $people=$reservation->getPassengers();
+            foreach($people as $person){
+                echo $person->getName();
+            }
+
+            if ($reservation->assuranceCheck()) {
                 echo 'Avec assurance annulation.<br><br>';
             } else {
                 echo 'Sans assurance annulation.<br><br>';
