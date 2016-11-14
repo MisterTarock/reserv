@@ -86,11 +86,10 @@ Bienvenue sur <b>AIR Columbia</b>!!
              the max value assure us to stay in the right span-->
 
             <td><input class="form-control" type="number" min="1" max="10" name="places" placeholder="Nombre de places"></td>
-
             <?php
+
             if ($placesErr != "")
             {
-
                 echo "<span class='error'> ".$placesErr."</span>";
             }
             ?>

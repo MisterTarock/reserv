@@ -33,11 +33,11 @@ div#reserv
     padding: 15px;
     margin: 15px;
 }
-body
+
+span#error
 {
-    background-image:url("bogota_flag.png");
-    background-size:contain;
-    position: relative;
+    color: red;
 }
+
 
 
