@@ -63,11 +63,11 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                     $placesErr = "Entrer un nombre de places";
                     $error=true;}
 
-                if ($_POST["places"]<0 || $_POST["places"]>10) {
+                else if ($_POST["places"]<0 || $_POST["places"]>10) {
                     $placesErr = "Entrer un nombre de places valide (entre 1 et 10)";
                     $error=true;
                 } else {
-                    $reservation->setDestination($_POST['places']);
+                    $reservation->setPlace($_POST['places']);
                     $placesErr="";
                 }
 

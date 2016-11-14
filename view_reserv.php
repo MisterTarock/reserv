@@ -75,7 +75,7 @@ Bienvenue sur <b>AIR Columbia</b>!!
             if ($destErr != "")
             {
 
-                echo "<span class='error'> ".$destErr."</span>";
+                echo "<span class='error'> ".$destErr."</span><br>";
             }
             ?>
         </tr>
@@ -89,7 +89,7 @@ Bienvenue sur <b>AIR Columbia</b>!!
             if ($placesErr != "")
             {
 
-                echo "<span class='error'> ".$placesErr."</span>";
+                echo "<span class='error'> ".$placesErr."</span><br>";
             }
             ?>
         </tr>
