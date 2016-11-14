@@ -34,11 +34,11 @@ quelques informations sur vous.
 
             echo'<div class="form-group">';
                 echo'<label for="exampleInputName'.$i.'">Nom</label>';
-                echo'<input type="name" class="form-control" id="exampleInputName'.$i.'" name="exampleInputName[]" placeholder="Nom+Prénom">';
+                echo'<input type="name" class="form-control" id="exampleInputName'.$i.'" name="exampleInputName[]" placeholder="Nom">';
                 echo'</div>';
             echo'<div class="form-group">';
                 echo'<label for="exampleInputAge'.$i.'">Age</label>';
-            echo'<input type="age" class="form-control" id="exampleInputAge'.$i.'" name="exampleInputAge[]" placeholder="Age">';
+            echo'<input type="age" class="form-control" type="number" min="1" id="exampleInputAge'.$i.'" name="exampleInputAge[]" placeholder="Age">';
             echo'</div>';}
 
 

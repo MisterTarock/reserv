@@ -77,7 +77,7 @@ Bienvenue sur <b>AIR Columbia</b>!!
             <!--the type number makes the case with the arrow to move the number,
              the min value assure us to not recieve any begative number
              the max value assure us to stay in the right span-->
-            <td><input class="form-control" type="number" min="0" max="10" name="places" placeholder="Nombre de places"></td>
+            <td><input class="form-control" type="number" min="1" max="10" name="places" placeholder="Nombre de places"></td>
         </tr>
         <tr>
             <td>Assurance annulation</td>
