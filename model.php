@@ -13,9 +13,9 @@
 
 class Reservation
 {
-    private $_destination; //to init the different variable
-    private $_place;
-    private $_assurance;
+    private $_destination=NULL; //to init the different variable
+    private $_place=NULL;
+    private $_assurance=NULL;
 
 
     //To make the construct

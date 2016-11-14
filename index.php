@@ -14,18 +14,12 @@ if (!isset($SESSION['reserv'])){
     $SESSION['reserv']=$reservation;
 
 }
-/**
-if (!isset($_SESSION["res"]))   //If the session didn't exist we will create one
-{
-    $reservation     = new Reservation;
-    $_SESSION["res"] = $reservation;
-}
 
 else   //If the session already exist, we retake it
 {
-    $reservation = $_SESSION["res"];
+    $reservation = $_SESSION["reserv"];
 }
-**/
+
 
 // To init the value and set the error below
 
@@ -44,7 +38,7 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
 
         case 1:
             if (isset($_SESSION['assurance'])){
-                $_assurance=true;
+                $reservation->setAsssurance(true);
             }
             if (isset($_POST['cancel']) && $_POST['cancel']=='Annuler la réservation')
             {
