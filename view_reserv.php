@@ -30,9 +30,11 @@ Autor: Paolo De Keyzer, 13201
 
 <br>
 <h2><b>Reservation</b></h2>
+<text>
+    Bienvenue sur <b>AIR Columbia</b>!!
+    <br>Nous ferons tout pour que vous passiez un agréable trajet!
+</text>
 
-Bienvenue sur <b>AIR Columbia</b>!!
-<br>Nous ferons tout pour que vous passiez un agréable trajet!
 <br>
 <br>
 
@@ -74,7 +76,6 @@ Bienvenue sur <b>AIR Columbia</b>!!
             <?php
             if ($destErr != "")
             {
-
                 echo "<span class='error'> ".$destErr."</span><br>";
             }
             ?>
@@ -86,11 +87,10 @@ Bienvenue sur <b>AIR Columbia</b>!!
              the max value assure us to stay in the right span-->
 
             <td><input class="form-control" type="number" min="1" max="10" name="places" placeholder="Nombre de places"></td>
-
             <?php
+
             if ($placesErr != "")
             {
-
                 echo "<span class='error'> ".$placesErr."</span><br>";
             }
             ?>
