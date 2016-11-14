@@ -18,7 +18,7 @@ h2
     font-family: "Cambria", Times, serif;
     color: yellowgreen;
 }
-div#reserv
+div#reserv  /*We use the # as an ID selector that can be used only in one place and for this one var*/
 {
     width: 60%;
     border: 15px solid green;
