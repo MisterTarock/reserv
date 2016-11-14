@@ -19,7 +19,10 @@ else   //If the session already exist, we retake it
     $reservation = $_SESSION["reserv"];
 }
 
-
+$destErr="";
+$error=false;
+$placesErr="";
+$placesOOB="";
 // To init the value and set the error below
 
 
@@ -49,17 +52,44 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
             }
             else{
 
-                $reservation->setDestination($_POST['destination']);
+                if (empty($_POST["destination"])) {
+                    $destErr = "Destination requise";
+                    $error=true;
+                } else {
+                    $reservation->setDestination($_POST['destination']);
+                    $destErr="";
+                }
+                if (empty($_POST["places"])) {
+                    $placesErr = "Entrer un nombre de places";
+                    $error=true;}
+
+                if ($_POST["places"]<0 || $_POST["places"]>10) {
+                    $placesErr = "Entrer un nombre de places valide (entre 1 et 10)";
+                    $error=true;
+                } else {
+                    $reservation->setDestination($_POST['places']);
+                    $placesErr="";
+                }
+
+
+
                 $reservation->setPlace($_POST['places']);
                 if (isset($_POST["assurance"])){
-                    echo "BITE";
+
                     $reservation->setAssurance(true);
                 }
 
                 $_SESSION['reserv']=serialize($reservation);
+                if($error==true){
+                    include('view_reserv.php');
+                    break;
+                }
+                else{
+                    include('view_detail.php');
+                    break;
+                }
 
-                include('view_detail.php');
-                break;
+
 
             }
             break;
@@ -100,6 +130,7 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
 
             break;
         case 3:
+            $reservation=unserialize($_SESSION['reserv']);
             if (isset($_POST['cancel']) && $_POST['cancel']=="Annuler la réservation")
             {
                 session_destroy();
@@ -116,6 +147,7 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                 break;
 
             }
+            $_SESSION['reserv']=serialize($reservation);
             include('view_confirm.php');
             break;
 
