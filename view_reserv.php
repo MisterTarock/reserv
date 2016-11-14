@@ -87,7 +87,6 @@ Bienvenue sur <b>AIR Columbia</b>!!
 
             <td><input class="form-control" type="number" min="1" max="10" name="places" placeholder="Nombre de places"></td>
 
-            <td><input class="form-control" type="number" min="0" max="10" name="places" placeholder="Nombre de places"></td>
             <?php
             if ($placesErr != "")
             {
