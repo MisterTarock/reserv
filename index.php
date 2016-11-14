@@ -14,7 +14,6 @@ if (!isset($SESSION['reserv'])){
     $SESSION['reserv']=$reservation;
 
 }
-
 else   //If the session already exist, we retake it
 {
     $reservation = $_SESSION["reserv"];
@@ -37,9 +36,12 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
          **/
 
         case 1:
+<<<<<<< HEAD
             if (isset($_SESSION['assurance'])){
                 $reservation->setAsssurance(true);
             }
+=======
+>>>>>>> 202d9816efa34428add34a25e977bc9233172c92
             if (isset($_POST['cancel']) && $_POST['cancel']=='Annuler la réservation')
             {
                 session_destroy();
@@ -48,14 +50,32 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
 
                 break;
             }
-            include('view_detail.php');
+            else{
+
+                $reservation->setDestination($_POST['destination']);
+                $reservation->setPlace($_POST['places']);
+                if (isset($_POST["assurance"])){
+                    echo "BITE";
+                    $reservation->setAssurance(true);
+                }
+
+                $_SESSION['reserv']=serialize($reservation);
+
+                include('view_detail.php');
+                break;
+
+            }
             break;
+
+
         case 2:
+            $reservation=unserialize($_SESSION['reserv']);
             if (isset($_POST['cancel']) && $_POST['cancel']=='Annuler la réservation')
             {
                 session_destroy();
-                include('view_reserv.php');
                 $step=NULL;
+                include('view_reserv.php');
+
 
                 break;
             }
@@ -66,7 +86,21 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                 break;
 
             }
-            include('view_valid.php');
+            else{
+                $nom=$_POST["exampleInputName"];
+                $age=$_POST["exampleInputAge"];
+                foreach($nom as $i=> $nom){
+
+                    $reservation->addPerson(new Personne($nom,$age[$i]));
+
+                }
+                echo count($reservation->getPassengers());
+
+                $_SESSION['reserv']=serialize($reservation);
+                include('view_valid.php');
+
+            }
+
             break;
         case 3:
             if (isset($_POST['cancel']) && $_POST['cancel']=="Annuler la réservation")
@@ -96,9 +130,7 @@ else
     {
         switch ($step)
         {
-            case 1:
-                include("view_detail.php");
-                break;
+
             default:
                 include('view_reserv.php');
 
