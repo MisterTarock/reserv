@@ -1,2 +1,3 @@
 savoir editer une reservation
 savoir encoder en base de données orienté objet
+ne pas bouffer du boeuf
