@@ -25,7 +25,7 @@ Autor: Paolo De Keyzer, 13201
         <area shape="bird" coords="135,90,165,130" alt="bird" href="https://fr.wikipedia.org/wiki/Bogota">
         <!--the coordinates are set like this x1,y1,x2,y2. The x1,y1 are the position of the left-top corner af the image
         and the x2,y2 are for the right-bottom corner-->
-    </map> -->
+    </map>
 
 
 <br>
@@ -74,8 +74,10 @@ Bienvenue sur <b>AIR Columbia</b>!!
         </tr>
         <tr>
             <td>Nombre de places:</td>
-            //the type number makes the case with the arrow to move the number, the min value assure us to not recieve any begative number
-            <td><input class="form-control" type="number" min="0" name="places" placeholder="Nombre de places"></td>
+            <!--the type number makes the case with the arrow to move the number,
+             the min value assure us to not recieve any begative number
+             the max value assure us to stay in the right span-->
+            <td><input class="form-control" type="number" min="0" max="10" name="places" placeholder="Nombre de places"></td>
         </tr>
         <tr>
             <td>Assurance annulation</td>
