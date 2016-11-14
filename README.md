@@ -19,4 +19,3 @@ the view, set the session, protect the code, etc.
 
 - Our class "Technologie web"
 - To make this Readme with the *Markdown* language https://guides.github.com/features/mastering-markdown/
-ojjpfr
