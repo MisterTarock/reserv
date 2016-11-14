@@ -30,9 +30,11 @@ Autor: Paolo De Keyzer, 13201
 
 <br>
 <h2><b>Reservation</b></h2>
+<text>
+    Bienvenue sur <b>AIR Columbia</b>!!
+    <br>Nous ferons tout pour que vous passiez un agréable trajet!
+</text>
 
-Bienvenue sur <b>AIR Columbia</b>!!
-<br>Nous ferons tout pour que vous passiez un agréable trajet!
 <br>
 <br>
 
@@ -74,7 +76,6 @@ Bienvenue sur <b>AIR Columbia</b>!!
             <?php
             if ($destErr != "")
             {
-
                 echo "<span class='error'> ".$destErr."</span><br>";
             }
             ?>

@@ -4,6 +4,39 @@
  * Autor: Paolo De Keyzer, 13201
  */
 
+html
+{
+    font-family: "Cambria", Times, serif;
+}
+h1
+{
+    font-family: "Magneto", Times, serif;
+    color: #cc0099 ; /*to define my color in HEXa*/
+}
+h2
+{
+    font-family: "Cambria", Times, serif;
+    color: yellowgreen;
+}
+div#reserv
+{
+    width: 60%;
+    border: 15px solid green;
+    padding: 15px;
+    margin: 15px;
+}
+
+text
+{
+    color: mediumslateblue;
+}
+
+.error
+    /*the CSS and the PHP can't speak with each other so we have to use the class set in the <span class=" ">
+      We can call the class with the "." */
+{
+    color: red;
+}
 
 td, th /* Toutes les cellules des tableaux... */
 {
@@ -14,30 +47,7 @@ table
     border-collapse: separate; /* Les bordures du tableau seront collées (plus joli) */
     border: 1px solid black; /* auront une bordure de 1px */
 }
-html
-{
-    font-family: "Cambria", Times, serif;
-}
-h1
-{
-    font-family: "Magneto", Times, serif;
-}
-h2
-{
-    font-family: "Cambria", Times, serif;
-}
-div#reserv
-{
-    width: 60%;
-    border: 15px solid green;
-    padding: 15px;
-    margin: 15px;
-}
 
-span#error
-{
-    color: red;
-}
 
 
 
