@@ -36,8 +36,11 @@ Nous vous prions de bien reconsulter vos données afin d'être sûr qu'elle soie
 
             <?php
             $people=$reservation->getPassengers();
-            foreach($people as $person){
-                echo $person->getName();
+            for ($i=1;$i<=$reservation->getPlace();$i++){
+                echo "<label >Nom</label>";
+                echo "<p >".$reservation->getPassengers()[$i-1][0]."</p>";
+                echo "<label >Age</label>";
+                echo "<p >".$reservation->getPassengers()[$i-1][1]."</p>";
             }
 
             if ($reservation->assuranceCheck()) {

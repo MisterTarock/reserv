@@ -23,6 +23,7 @@ $destErr="";
 $error=false;
 $placesErr="";
 $placesOOB="";
+$passengers= array();
 // To init the value and set the error below
 
 
@@ -116,9 +117,10 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
             else{
                 $nom=$_POST["exampleInputName"];
                 $age=$_POST["exampleInputAge"];
-                foreach($nom as $i){
-
-                    $reservation->addPerson(new Personne($nom,$age[$i]));
+                for($i=0;$i<$reservation->getPlace();$i++){
+                    array_push($person, array($_POST["exampleInputName" . $i]));
+                    array_push($person[$i],$_POST["exampleInputAge" . $i]);
+                    $reservation->setPerson($passengers);
 
                 }
                 echo count($reservation->getPassengers());

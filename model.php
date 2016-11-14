@@ -17,7 +17,7 @@ class Reservation
     private $_destination; //to init the different variable
     private $_place;
     private $_assurance;
-    private $_passengers;
+    private $_passengers=array();
 
 
 
@@ -47,30 +47,19 @@ class Reservation
     public function assuranceCheck(){
         return $this->_assurance;
     }
-    public function addPerson(Personne $personne){
-        $this->_passengers=$personne;
+    public function addPerson($personne,$i){
+        ${"person$i"}=new Personne($personne);
+        $this->_passengers[]=${"variable$i"};
     }
     public function getPassengers(){
         return $this->_passengers;
     }
-}
-
-class Personne
-{
-    private $name;
-    private $age;
-
-    public function __construct($name, $age)
+    public function setPersonne($person)
     {
-        $this->name = $name;
-        $this->age = $age;
-    }
-    public function getName(){
-        return $this->name;
-    }
-    public function getAge(){
-        return $this->age;
+
+        $this->_passengers = $person;
     }
 }
+
 
 ?>
