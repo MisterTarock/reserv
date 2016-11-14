@@ -36,12 +36,9 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
          **/
 
         case 1:
-<<<<<<< HEAD
             if (isset($_SESSION['assurance'])){
                 $reservation->setAsssurance(true);
             }
-=======
->>>>>>> 202d9816efa34428add34a25e977bc9233172c92
             if (isset($_POST['cancel']) && $_POST['cancel']=='Annuler la réservation')
             {
                 session_destroy();
