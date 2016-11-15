@@ -117,7 +117,6 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
             else{
 
                 for($i=0;$i<$reservation->getPlace();$i++){
-                    echo $_POST["exampleInputAge".$i];
                     array_push($passengers, array($_POST["exampleInputName".$i]));
                     array_push($passengers[$i],$_POST["exampleInputAge".$i]);
                     $reservation->setPersonne($passengers);

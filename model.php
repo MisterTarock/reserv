@@ -56,7 +56,6 @@ class Reservation
     }
     public function setPersonne($person)
     {
-
         $this->_passengers = $person;
     }
 }

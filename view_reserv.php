@@ -51,12 +51,12 @@ Autor: Paolo De Keyzer, 13201
     <tbody>
         <tr>
             <td>< 25 ans:</td>
-            <td>10euros</td>
+            <td>10 €</td>
         </tr>
 
         <tr>
             <td>> 25 ans:</td>
-            <td>20euros</td>
+            <td>20 €</td>
         </tr>
     </tbody>
 </table>
@@ -97,7 +97,7 @@ Autor: Paolo De Keyzer, 13201
 
         </tr>
         <tr>
-            <td>Assurance annulation</td>
+            <td>Assurance annulation (5 €):</td>
 
             <td><input type="checkbox" name="assurance" value="true" /></td>
         </tr>

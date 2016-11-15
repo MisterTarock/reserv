@@ -1,3 +1,15 @@
+A faire au prochain cours
+
 savoir editer une reservation
 savoir encoder en base de données orienté objet
-ne pas bouffer du boeuf
+>>>>>>>>>
+A faire si on est chaud
+
+savoir garder les infos dans les cases quand on revient en arriere
+
+>>>>>>>>>
+A faire d'office
+
+verifier les erreure sur page valid genre entrer un age et entre un nom
+
+additionner le prix de l'assurance dans le calcul à la fin
