@@ -23,7 +23,22 @@ Autor: Paolo De Keyzer, 13201
 
 Votre demande à bien été traitée, merci de payer celle-ci au plus vite sur notre compte.
 <br>
-La somme attendue est de........ sur le compte 123-123456-12  <!--mettre le prix calculer par le modele serait cool-->
+<?php
+$totalprice=0;
+for ($i=1;$i<=$reservation->getPlace();$i++){
+    if($reservation->getPassengers()[$i-1][1]<25){
+        $totalprice=$totalprice+10;
+
+    }
+    else{
+        $totalprice=$totalprice+20;
+    }
+
+}
+
+echo "La somme attendue est de ".$totalprice."€ sur le compte 123-123456-12 ";
+$totalprice=0;
+?>
 <br>
 <br>
 <form action="index.php" method="POST">

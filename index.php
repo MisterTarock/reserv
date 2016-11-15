@@ -115,18 +115,17 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
 
             }
             else{
-                $nom=$_POST["exampleInputName"];
-                $age=$_POST["exampleInputAge"];
+
                 for($i=0;$i<$reservation->getPlace();$i++){
-                    array_push($person, array($_POST["exampleInputName" . $i]));
-                    array_push($person[$i],$_POST["exampleInputAge" . $i]);
-                    $reservation->setPerson($passengers);
+                    echo $_POST["exampleInputAge".$i];
+                    array_push($passengers, array($_POST["exampleInputName".$i]));
+                    array_push($passengers[$i],$_POST["exampleInputAge".$i]);
+                    $reservation->setPersonne($passengers);
 
                 }
-                echo count($reservation->getPassengers());
-
                 $_SESSION['reserv']=serialize($reservation);
                 include('view_valid.php');
+                break;
 
             }
 
