@@ -16,7 +16,8 @@ additionner le prix de l'assurance dans le calcul à la fin
 
 savoir garder les infos dans les cases quand on revient en arriere
 
-modifier le CSS peut etre utiliser plus de fonction bootstraps ou comment pour dire qu'on voulait faire notre propre CSS
+modifier le CSS peut etre utiliser plus de fonction bootstraps ou 
+faire des comment pour dire qu'on voulait faire notre propre CSS
 
 faire des comments ANGLAIS partout ;)
 

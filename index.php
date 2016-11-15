@@ -19,12 +19,15 @@ else   //If the session already exist, we retake it
     $reservation = $_SESSION["reserv"];
 }
 
-$destErr="";
-$error=false;
-$placesErr="";
-$placesOOB="";
-$passengers= array();
 // To init the value and set the error below
+$passengers= array(); // to set the array to stock the info of the passengers
+
+$error=false;  //To make the navigation between the pages
+
+$placesErr="";
+$destErr="";
+$nameErr="";
+$ageErr="";
 
 
 /** gets the step from current form
@@ -64,6 +67,8 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                     $placesErr = "Entrer un nombre de places";
                     $error=true;}
 
+                //to insure us that the number will be between the span of the numbers attended
+                //already taken by the min and max value of the type number
                 else if ($_POST["places"]<1 || $_POST["places"]>10) {
                     $placesErr = "Entrer un nombre de places valide (entre 1 et 10)";
                     $error=true;
@@ -122,6 +127,27 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                     $reservation->setPersonne($passengers);
 
                 }
+
+                /*
+
+               if (empty($_POST["name"])) {
+                   $nameErr = "Nom requis";
+                   $error=true;
+               }
+               else {
+                   $reservation->setName($_POST['name']);
+                   $nameErr="";
+
+               if (empty($_POST["age"])) {
+                   $ageErr = "Age requis";
+                   $error=true;
+               }
+               else {
+                   $reservation->setAge($_POST['age']);
+                   $ageErr="";
+
+               */
+
                 $_SESSION['reserv']=serialize($reservation);
                 include('view_valid.php');
                 break;

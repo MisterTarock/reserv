@@ -44,17 +44,28 @@ quelques informations sur vous.
                 echo'</div>';
             echo'<div class="form-group">';
                 echo'<label for="exampleInputAge'.$i.'">Age</label>';
+                echo'<input type="number" class="form-control" type="number" min="1" id="exampleInputAge'.$i.'" name="exampleInputAge'.$i.'" placeholder="Age"';
+                if (!empty($reservation->getPassengers()[$i][1])){
+                    echo 'value='.$reservation->getPassengers()[$i][1].'>';
+                }
+                else{
+                    echo '>';
+                }
+                echo'</div>';}
 
-            echo'<input type="number" class="form-control" type="number" min="1" id="exampleInputAge'.$i.'" name="exampleInputAge'.$i.'" placeholder="Age"';
-            if (!empty($reservation->getPassengers()[$i][1])){
-                echo 'value='.$reservation->getPassengers()[$i][1].'>';
-            }
-            else{
-                echo '>';
-            }
-            echo'</div>';}
+        /*
 
+        if ($nameErr != "")
+        {
+            echo "<span class='error'> ".$nameErr."</span><br>";
+        }
 
+        if ($ageErr != "")
+        {
+            echo "<span class='error'> ".$ageErr."</span><br>";
+        }
+
+        */
 
 
         ?>
