@@ -34,14 +34,38 @@ quelques informations sur vous.
 
             echo'<div class="form-group">';
                 echo'<label for="exampleInputName'.$i.'">Nom</label>';
-                echo'<input type="name" class="form-control" id="exampleInputName'.$i.'" name="exampleInputName'.$i.'" placeholder="Nom">';
+                echo'<input type="name" class="form-control" id="exampleInputName'.$i.'" name="exampleInputName'.$i.'" placeholder="Nom"';
+                if (!empty($reservation->getPassengers()[$i][0])){
+                    echo 'value='.$reservation->getPassengers()[$i][0].'>';
+                }
+                else{
+                    echo '>';
+                }
                 echo'</div>';
             echo'<div class="form-group">';
                 echo'<label for="exampleInputAge'.$i.'">Age</label>';
-            echo'<input type="number" class="form-control" type="number" min="1" id="exampleInputAge'.$i.'" name="exampleInputAge'.$i.'" placeholder="Age">';
-            echo'</div>';}
+                echo'<input type="number" class="form-control" type="number" min="1" id="exampleInputAge'.$i.'" name="exampleInputAge'.$i.'" placeholder="Age"';
+                if (!empty($reservation->getPassengers()[$i][1])){
+                    echo 'value='.$reservation->getPassengers()[$i][1].'>';
+                }
+                else{
+                    echo '>';
+                }
+                echo'</div>';}
 
+        /*
 
+        if ($nameErr != "")
+        {
+            echo "<span class='error'> ".$nameErr."</span><br>";
+        }
+
+        if ($ageErr != "")
+        {
+            echo "<span class='error'> ".$ageErr."</span><br>";
+        }
+
+        */
 
 
         ?>

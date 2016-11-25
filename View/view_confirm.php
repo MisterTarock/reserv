@@ -30,10 +30,15 @@ for ($i=1;$i<=$reservation->getPlace();$i++){
         $totalprice=$totalprice+10;
 
     }
-    else{
+
+    if ($reservation->getPassengers()[$i-1][1]>25){
         $totalprice=$totalprice+20;
     }
 
+
+}
+if($reservation->assuranceCheck()){
+    $totalprice=$totalprice+5;
 }
 
 echo "La somme attendue est de ".$totalprice."€ sur le compte 123-123456-12 ";
@@ -43,15 +48,16 @@ $totalprice=0;
 <br>
 <form action="../index.php" method="POST">
 
-    <input class="btn btn-warning" name="cancel" type="submit" value="Retour à la page d'acceuil">
+    <input class="btn btn-warning" name="cancel" value="Retour à la page d'acceuil" onclick=redirect()>
 
 </form>
 
 
-<?php
-
-
-?>
+<script>function redirect() {
+        <?php $reservation = new Reservation;
+        $_SESSION["reserv"] = $reservation; ?>
+        window.location.assign("index.php");
+    }</script>
 
 
 </body>

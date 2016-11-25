@@ -47,10 +47,6 @@ class Reservation
     public function assuranceCheck(){
         return $this->_assurance;
     }
-    public function addPerson($personne,$i){
-        ${"person$i"}=new Personne($personne);
-        $this->_passengers[]=${"variable$i"};
-    }
     public function getPassengers(){
         return $this->_passengers;
     }
