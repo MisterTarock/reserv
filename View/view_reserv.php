@@ -64,7 +64,7 @@ Autor: Paolo De Keyzer, 13201
 <br>
 <br>
 
-<form action="index.php" method="POST" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>>
+<form action="../index.php" method="POST" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>>
 
 
     <table>

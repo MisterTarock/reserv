@@ -1,9 +1,14 @@
 <?php
-session_start();  //We have to make a session to stock the value temporary between the different view
+/**
+ * Created by PhpStorm.
+ * Autor: Victor Puissant Baeyens, 12098
+ * Autor: Paolo De Keyzer, 13201
+ */
+include_once("model.php"); //each controller calls the model that are needed
+
+/*This will be the logic file were the data will be calculated*/
 
 
-<<<<<<< HEAD
-session_start();  //We have to make a session to stock the value between the different view
 if (!isset($SESSION['reserv'])){
     $reservation=new Reservation();
     $SESSION['reserv']=$reservation;
@@ -14,15 +19,12 @@ else   //If the session already exist, we retake it
     $reservation = $_SESSION["reserv"];
 }
 
-// To init the value and set the error below
-$passengers= array(); // to set the array to stock the info of the passengers
-
-$error=false;  //To make the navigation between the pages
-
-$placesErr="";
 $destErr="";
-$nameErr=[];
-$ageErr=[];
+$error=false;
+$placesErr="";
+$placesOOB="";
+$passengers= array();
+// To init the value and set the error below
 
 
 /** gets the step from current form
@@ -44,8 +46,6 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
             if (isset($_POST['cancel']) && $_POST['cancel']=='Annuler la réservation')
             {
                 session_destroy();
-                $reservation=new Reservation();
-                $SESSION['reserv']=$reservation;
                 include('view_reserv.php');
                 $step=NULL;
 
@@ -64,8 +64,6 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                     $placesErr = "Entrer un nombre de places";
                     $error=true;}
 
-                //to insure us that the number will be between the span of the numbers attended
-                //already taken by the min and max value of the type number
                 else if ($_POST["places"]<1 || $_POST["places"]>10) {
                     $placesErr = "Entrer un nombre de places valide (entre 1 et 10)";
                     $error=true;
@@ -103,8 +101,6 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
             if (isset($_POST['cancel']) && $_POST['cancel']=='Annuler la réservation')
             {
                 session_destroy();
-                $reservation=new Reservation();
-                $SESSION['reserv']=$reservation;
                 $step=NULL;
                 include('view_reserv.php');
 
@@ -121,37 +117,14 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
             else{
 
                 for($i=0;$i<$reservation->getPlace();$i++){
-                    $error=false;
-                    if(empty($_POST["exampleInputName".$i])){
-                        array_push($nameErr,"Nom Requis");
-                        $error=true;
-                    }
-                    else{
-                        array_push($passengers, array($_POST["exampleInputName".$i]));
-                        array_push($nameErr,"");
-                    }
-                    if (empty($_POST["exampleInputAge".$i])){
-                        array_push($ageErr,"Age requis");
-                        $error=true;
-                    }
-                    else if (isset($passengers[$i])){
-                        array_push($passengers[$i],$_POST["exampleInputAge".$i]);
-                        array_push($ageErr,"");
-                    }
-
+                    array_push($passengers, array($_POST["exampleInputName".$i]));
+                    array_push($passengers[$i],$_POST["exampleInputAge".$i]);
                     $reservation->setPersonne($passengers);
 
                 }
                 $_SESSION['reserv']=serialize($reservation);
-                if ($error==true){
-
-                    include("view_detail.php");
-                    break;
-                }
-                else {
-                    include('view_valid.php');
-                    break;
-                }
+                include('view_valid.php');
+                break;
 
             }
 
@@ -161,8 +134,6 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
             if (isset($_POST['cancel']) && $_POST['cancel']=="Annuler la réservation")
             {
                 session_destroy();
-                $reservation=new Reservation();
-                $SESSION['reserv']=$reservation;
                 $_assurance=NULL;
                 include('view_reserv.php');
                 $step=NULL;
@@ -194,7 +165,3 @@ else
 
         }
     }
-=======
-//router
-if (!empty()$_GET['controller'])
->>>>>>> f61fa52844663144f06161b508b2441f04a026c5
