@@ -22,7 +22,7 @@ else   //If the session already exist, we retake it
     $reservation = $_SESSION["reserv"];
 }
 
-
+$passengers=array();
 // To init the value and set the error below
 
 

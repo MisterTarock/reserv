@@ -18,11 +18,11 @@ class Reservation
     private $_place;
     private $_assurance;
     private $_passengers=array();
-    private $_error;
-    private $_nameErr;
-    private $_ageErr;
-    private $_destErr;
-    private $_placesErr;
+    private $_error=false;
+    private $_nameErr=array();
+    private $_ageErr=array();
+    private $_destErr="";
+    private $_placesErr="";
 
 
 
@@ -59,18 +59,18 @@ class Reservation
     {
         $this->_passengers = $person;
     }
-    public function setNameError($nameErr)
+    public function setNameErr($nameErr)
     {
         $this->_nameErr = $nameErr;
     }
-    public function getNameError(){
+    public function getNameErr(){
         return $this->_nameErr;
     }
-    public function setAgeError($ageErr)
+    public function setAgeErr($ageErr)
     {
         $this->_ageErr = $ageErr;
     }
-    public function getAgeError(){
+    public function getAgeErr(){
         return $this->_ageErr;
     }
     public function setError($error)
@@ -80,18 +80,18 @@ class Reservation
     public function getError(){
         return $this->_error;
     }
-    public function setPlacesError($placesErr)
+    public function setPlacesErr($placesErr)
     {
         $this->_placesErr = $placesErr;
     }
-    public function getPlacesError(){
+    public function getPlacesErr(){
         return $this->_placesErr;
     }
-    public function setDestError($destErr)
+    public function setDestErr($destErr)
     {
         $this->_destErr = $destErr;
     }
-    public function getDestError(){
+    public function getDestErr(){
         return $this->_destErr;
     }
 
