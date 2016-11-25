@@ -25,18 +25,7 @@ else   //If the session already exist, we retake it
 
 $passengers=array();
 
-/*dans le controlleur
 
-// To init the value and set the error below
-$passengers= array(); // to set the array to stock the info of the passengers
-
-$error=false;  //To make the navigation between the pages
-
-$placesErr="";
-$destErr="";
-$nameErr="";
-$ageErr="";
-*/
 
 /** gets the step from current form
  *  the step help us to know where we are in the recording process of a reservation
@@ -65,23 +54,23 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
             else{
 
                 if (empty($_POST["destination"])) {
-                    $destErr = "Destination requise";
-                    $error=true;
+                    $reservation->setDestErr("Destination requise");
+                    $reservation->setError(true);
                 } else {
                     $reservation->setDestination($_POST['destination']);
-                    $destErr="";
+                    $reservation->setDestErr("");
                 }
                 if (empty($_POST["places"])) {
-                    $placesErr = "Entrer un nombre de places";
-                    $error=true;}
+                    $reservation->setPlacesErr("Entrer un nombre de places");
+                    $reservation->setError(true);}
                 //to insure us that the number will be between the span of the numbers attended
                 //already taken by the min and max value of the type number
                 else if ($_POST["places"]<1 || $_POST["places"]>10) {
-                    $placesErr = "Entrer un nombre de places valide (entre 1 et 10)";
-                    $error=true;
+                    $reservation->setPlacesErr("Entrer un nombre de places valide (entre 1 et 10)");
+                    $reservation->setError(true);
                 } else {
                     $reservation->setPlace($_POST['places']);
-                    $placesErr="";
+                    $reservation->setPlacesErr("");
                 }
 
 
@@ -93,7 +82,7 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                 }
 
                 $_SESSION['reserv']=serialize($reservation);
-                if($error==true){
+                if($reservation->getError()==true){
                     include('View/view_reserv.php');
                     break;
                 }
