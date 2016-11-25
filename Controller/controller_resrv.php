@@ -22,9 +22,18 @@ else   //If the session already exist, we retake it
     $reservation = $_SESSION["reserv"];
 }
 
+/*dans le controlleur
 
 // To init the value and set the error below
+$passengers= array(); // to set the array to stock the info of the passengers
 
+$error=false;  //To make the navigation between the pages
+
+$placesErr="";
+$destErr="";
+$nameErr="";
+$ageErr="";
+*/
 
 /** gets the step from current form
  *  the step help us to know where we are in the recording process of a reservation
@@ -53,23 +62,23 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
             else{
 
                 if (empty($_POST["destination"])) {
-                    $reservation->setDestError("Destination requise");
-                    $reservation->setError(true);
+                    $destErr = "Destination requise";
+                    $error=true;
                 } else {
                     $reservation->setDestination($_POST['destination']);
-                    $reservation->setDestErr("");
+                    $destErr="";
                 }
                 if (empty($_POST["places"])) {
-                    $reservation->setPlacesErr("Entrer un nombre de places");
-                    $reservation->setError(true);}
-
+                    $placesErr = "Entrer un nombre de places";
+                    $error=true;}
+                //to insure us that the number will be between the span of the numbers attended
+                //already taken by the min and max value of the type number
                 else if ($_POST["places"]<1 || $_POST["places"]>10) {
-                    $reservation->setPlacesErr("Entrer un nombre de places valide (entre 1 et 10)");
-                    $reservation->setError(true);
-                }
-                else {
+                    $placesErr = "Entrer un nombre de places valide (entre 1 et 10)";
+                    $error=true;
+                } else {
                     $reservation->setPlace($_POST['places']);
-                    $reservation->setPlacesErr("");
+                    $placesErr="";
                 }
 
 
@@ -122,6 +131,25 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                     $reservation->setPersonne($passengers);
 
                 }
+
+                /*
+              if (empty($_POST["name"])) {
+                  $nameErr = "Nom requis";
+                  $error=true;
+              }
+              else {
+                  $reservation->setName($_POST['name']);
+                  $nameErr="";
+              if (empty($_POST["age"])) {
+                  $ageErr = "Age requis";
+                  $error=true;
+              }
+              else {
+                  $reservation->setAge($_POST['age']);
+                  $ageErr="";
+              */
+
+
                 $_SESSION['reserv']=serialize($reservation);
                 include('View/view_valid.php');
                 break;
