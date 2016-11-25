@@ -10,13 +10,6 @@ A faire si on est chaud
 >>>>>>>>>
 A faire d'office
 
-verifier les erreure sur page détail genre entrer un age et entre un nom
-
-additionner le prix de l'assurance dans le calcul à la fin
-
-savoir garder les infos dans les cases quand on revient en arriere
-le mettre pour la page reserv aussi
-
 modifier le CSS peut etre utiliser plus de fonction bootstraps ou 
 faire des comment pour dire qu'on voulait faire notre propre CSS
 
@@ -36,4 +29,3 @@ Un seul fichier PDF contenant :
 Fait
 
 savoir garder les infos dans les cases quand on revient en arriere de la page detail
-

@@ -30,9 +30,15 @@ quelques informations sur vous.
 <div id="reserv">
     <form action="../index.php" method="POST">
         <?php
+
+
         for ($i=0;$i<$reservation->getPlace();$i++){
 
             echo'<div class="form-group">';
+            if ($nameErr!=[] && isset($nameErr[$i]) && $nameErr[$i] != "")
+            {
+                echo "<span class='error'> ".$nameErr[$i]."</span><br>";
+            }
                 echo'<label for="exampleInputName'.$i.'">Nom</label>';
                 echo'<input type="name" class="form-control" id="exampleInputName'.$i.'" name="exampleInputName'.$i.'" placeholder="Nom"';
                 if (!empty($reservation->getPassengers()[$i][0])){
@@ -43,8 +49,12 @@ quelques informations sur vous.
                 }
                 echo'</div>';
             echo'<div class="form-group">';
+            if ($ageErr!=[] && isset($ageErr[$i]) && $ageErr[$i] != "")
+            {
+                echo "<span class='error'> ".$ageErr[$i]."</span><br>";
+            }
                 echo'<label for="exampleInputAge'.$i.'">Age</label>';
-                echo'<input type="number" class="form-control" type="number" min="1" id="exampleInputAge'.$i.'" name="exampleInputAge'.$i.'" placeholder="Age"';
+                echo'<input type="number" class="form-control" type="number" min="1" id="exampleInputAge'.$i.'" name="exampleInputAge'.$i.'" placeholder="Age" ';
                 if (!empty($reservation->getPassengers()[$i][1])){
                     echo 'value='.$reservation->getPassengers()[$i][1].'>';
                 }
@@ -53,19 +63,7 @@ quelques informations sur vous.
                 }
                 echo'</div>';}
 
-        /*
 
-        if ($nameErr != "")
-        {
-            echo "<span class='error'> ".$nameErr."</span><br>";
-        }
-
-        if ($ageErr != "")
-        {
-            echo "<span class='error'> ".$ageErr."</span><br>";
-        }
-
-        */
 
 
         ?>
