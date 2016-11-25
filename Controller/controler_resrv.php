@@ -4,7 +4,7 @@
  * Autor: Victor Puissant Baeyens, 12098
  * Autor: Paolo De Keyzer, 13201
  */
-include_once("model.php"); //each controller calls the model that are needed
+include_once("Model/model.php"); //each controller calls the model that are needed
 
 /*This will be the logic file were the data will be calculated*/
 
@@ -46,7 +46,7 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
             if (isset($_POST['cancel']) && $_POST['cancel']=='Annuler la réservation')
             {
                 session_destroy();
-                include('view_reserv.php');
+                include('View/view_reserv.php');
                 $step=NULL;
 
                 break;
@@ -82,11 +82,11 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
 
                 $_SESSION['reserv']=serialize($reservation);
                 if($error==true){
-                    include('view_reserv.php');
+                    include('View/view_reserv.php');
                     break;
                 }
                 else{
-                    include('view_detail.php');
+                    include('View/view_detail.php');
                     break;
                 }
 
@@ -102,13 +102,13 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
             {
                 session_destroy();
                 $step=NULL;
-                include('view_reserv.php');
+                include('View/view_reserv.php');
 
 
                 break;
             }
             else if (isset($_POST['return']) && $_POST['return']=="Retour à la page précedente"){
-                include('view_reserv.php');
+                include('View/view_reserv.php');
                 $step=1;
 
                 break;
@@ -123,7 +123,7 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
 
                 }
                 $_SESSION['reserv']=serialize($reservation);
-                include('view_valid.php');
+                include('View/view_valid.php');
                 break;
 
             }
@@ -135,20 +135,20 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
             {
                 session_destroy();
                 $_assurance=NULL;
-                include('view_reserv.php');
+                include('View/view_reserv.php');
                 $step=NULL;
 
                 break;
             }
             else if (isset($_POST['return']) && $_POST['return']=="Retour à la page précedente"){
-                include('view_detail.php');
+                include('View/view_detail.php');
                 $step=2;
 
                 break;
 
             }
             $_SESSION['reserv']=serialize($reservation);
-            include('view_confirm.php');
+            include('View/view_confirm.php');
             break;
 
 
@@ -161,7 +161,7 @@ else
         {
 
             default:
-                include('view_reserv.php');
+                include('View/view_reserv.php');
 
         }
     }
