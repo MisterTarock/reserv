@@ -41,7 +41,7 @@ $totalprice=0;
 ?>
 <br>
 <br>
-<form action="index.php" method="POST">
+<form action="../index.php" method="POST">
 
     <input class="btn btn-warning" name="cancel" type="submit" value="Retour à la page d'acceuil">
 
