@@ -64,8 +64,7 @@ Autor: Paolo De Keyzer, 13201
 <br>
 <br>
 
-<form action="../index.php" method="POST" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>>
-
+<form action="index.php" method="POST" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>>
 
     <table>
         <caption><b>Réservation</b></caption>
@@ -84,9 +83,9 @@ Autor: Paolo De Keyzer, 13201
             }
             echo '</td>';
             echo '<br>';
-            if ($destErr != "")
+            if ($reservation->getDestErr() != "")
             {
-                echo "<span class='error'> ".$destErr."</span><br>";
+                echo "<span class='error'> ".$reservation->getDestErr()."</span><br>";
             }
             ?>
         </tr>
@@ -107,9 +106,9 @@ Autor: Paolo De Keyzer, 13201
             }
             echo '</td>';
 
-            if ($placesErr != "")
+            if ($reservation->getPlacesErr() != "")
             {
-                echo "<span class='error'> ".$placesErr."</span><br>";
+                echo "<span class='error'> ".$reservation->getPlacesErr()."</span><br>";
             }
             ?>
 

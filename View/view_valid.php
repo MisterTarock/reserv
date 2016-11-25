@@ -26,7 +26,7 @@ Nous vous prions de bien reconsulter vos données afin d'être sûr qu'elle soie
 <br>
 
 <div id="reserv">
-    <form action="../index.php" method="POST">
+    <form action="index.php" method="POST">
 
         <div class="form-group">
             <label for="exampleInputName1">Récapitulatif</label>

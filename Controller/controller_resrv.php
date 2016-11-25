@@ -4,7 +4,10 @@
  * Autor: Victor Puissant Baeyens, 12098
  * Autor: Paolo De Keyzer, 13201
  */
-include_once("Model/model.php"); //each controller calls the model that are needed
+
+include_once("Model/model.php");
+
+ //each controller calls the model that are needed
 
 /*This will be the logic file were the data will be calculated*/
 
@@ -19,11 +22,7 @@ else   //If the session already exist, we retake it
     $reservation = $_SESSION["reserv"];
 }
 
-$destErr="";
-$error=false;
-$placesErr="";
-$placesOOB="";
-$passengers= array();
+
 // To init the value and set the error below
 
 
@@ -54,22 +53,23 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
             else{
 
                 if (empty($_POST["destination"])) {
-                    $destErr = "Destination requise";
-                    $error=true;
+                    $reservation->setDestError("Destination requise");
+                    $reservation->setError(true);
                 } else {
                     $reservation->setDestination($_POST['destination']);
-                    $destErr="";
+                    $reservation->setDestErr("");
                 }
                 if (empty($_POST["places"])) {
-                    $placesErr = "Entrer un nombre de places";
-                    $error=true;}
+                    $reservation->setPlacesErr("Entrer un nombre de places");
+                    $reservation->setError(true);}
 
                 else if ($_POST["places"]<1 || $_POST["places"]>10) {
-                    $placesErr = "Entrer un nombre de places valide (entre 1 et 10)";
-                    $error=true;
-                } else {
+                    $reservation->setPlacesErr("Entrer un nombre de places valide (entre 1 et 10)");
+                    $reservation->setError(true);
+                }
+                else {
                     $reservation->setPlace($_POST['places']);
-                    $placesErr="";
+                    $reservation->setPlacesErr("");
                 }
 
 

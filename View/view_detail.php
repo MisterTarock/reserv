@@ -28,7 +28,7 @@ quelques informations sur vous.
 <br>
 
 <div id="reserv">
-    <form action="../index.php" method="POST">
+    <form action="index.php" method="POST">
         <?php
 
 
