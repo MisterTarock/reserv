@@ -26,8 +26,8 @@ $error=false;  //To make the navigation between the pages
 
 $placesErr="";
 $destErr="";
-$nameErr="";
-$ageErr="";
+$nameErr=[];
+$ageErr=[];
 
 
 /** gets the step from current form
@@ -49,6 +49,8 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
             if (isset($_POST['cancel']) && $_POST['cancel']=='Annuler la réservation')
             {
                 session_destroy();
+                $reservation=new Reservation();
+                $SESSION['reserv']=$reservation;
                 include('view_reserv.php');
                 $step=NULL;
 
@@ -106,6 +108,8 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
             if (isset($_POST['cancel']) && $_POST['cancel']=='Annuler la réservation')
             {
                 session_destroy();
+                $reservation=new Reservation();
+                $SESSION['reserv']=$reservation;
                 $step=NULL;
                 include('view_reserv.php');
 
@@ -122,35 +126,37 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
             else{
 
                 for($i=0;$i<$reservation->getPlace();$i++){
-                    array_push($passengers, array($_POST["exampleInputName".$i]));
-                    array_push($passengers[$i],$_POST["exampleInputAge".$i]);
+                    $error=false;
+                    if(empty($_POST["exampleInputName".$i])){
+                        array_push($nameErr,"Nom Requis");
+                        $error=true;
+                    }
+                    else{
+                        array_push($passengers, array($_POST["exampleInputName".$i]));
+                        array_push($nameErr,"");
+                    }
+                    if (empty($_POST["exampleInputAge".$i])){
+                        array_push($ageErr,"Age requis");
+                        $error=true;
+                    }
+                    else if (isset($passengers[$i])){
+                        array_push($passengers[$i],$_POST["exampleInputAge".$i]);
+                        array_push($ageErr,"");
+                    }
+
                     $reservation->setPersonne($passengers);
 
                 }
-
-                /*
-
-               if (empty($_POST["name"])) {
-                   $nameErr = "Nom requis";
-                   $error=true;
-               }
-               else {
-                   $reservation->setName($_POST['name']);
-                   $nameErr="";
-
-               if (empty($_POST["age"])) {
-                   $ageErr = "Age requis";
-                   $error=true;
-               }
-               else {
-                   $reservation->setAge($_POST['age']);
-                   $ageErr="";
-
-               */
-
                 $_SESSION['reserv']=serialize($reservation);
-                include('view_valid.php');
-                break;
+                if ($error==true){
+
+                    include("view_detail.php");
+                    break;
+                }
+                else {
+                    include('view_valid.php');
+                    break;
+                }
 
             }
 
@@ -160,6 +166,8 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
             if (isset($_POST['cancel']) && $_POST['cancel']=="Annuler la réservation")
             {
                 session_destroy();
+                $reservation=new Reservation();
+                $SESSION['reserv']=$reservation;
                 $_assurance=NULL;
                 include('view_reserv.php');
                 $step=NULL;

@@ -72,8 +72,18 @@ Autor: Paolo De Keyzer, 13201
 
         <tr>
             <td>Destination:</td>
-            <td><input class="form-control" type="text" name="destination" placeholder="Destination"></td>
+
+
             <?php
+            echo '<td><input class="form-control" type="text" name="destination" placeholder="Destination" ';
+            if (!empty($reservation->getDestination())){
+                echo 'value='.$reservation->getDestination().'>';
+            }
+            else{
+                echo '>';
+            }
+            echo '</td>';
+            echo '<br>';
             if ($destErr != "")
             {
                 echo "<span class='error'> ".$destErr."</span><br>";
@@ -86,8 +96,16 @@ Autor: Paolo De Keyzer, 13201
              the min value assure us to not recieve any begative number
              the max value assure us to stay in the right span-->
 
-            <td><input class="form-control" type="number" min="1" max="10" name="places" placeholder="Nombre de places"></td>
+
             <?php
+            echo '<td><input class="form-control" type="number" min="1" max="10" name="places" placeholder="Nombre de places" ';
+            if (!empty($reservation->getPlace())){
+                echo 'value='.$reservation->getPlace().'>';
+            }
+            else{
+                echo '>';
+            }
+            echo '</td>';
 
             if ($placesErr != "")
             {
