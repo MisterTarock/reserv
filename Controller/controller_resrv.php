@@ -24,7 +24,8 @@ else   //If the session already exist, we retake it
 
 
 $passengers=array();
-
+$nameErr=array();
+$ageErr=array();
 
 
 /** gets the step from current form
@@ -81,12 +82,14 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                     $reservation->setAssurance(true);
                 }
 
-                $_SESSION['reserv']=serialize($reservation);
+
                 if($reservation->getError()==true){
+                    $_SESSION['reserv']=serialize($reservation);
                     include('View/view_reserv.php');
                     break;
                 }
                 else{
+                    $_SESSION['reserv']=serialize($reservation);
                     include('View/view_detail.php');
                     break;
                 }
@@ -115,40 +118,44 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                 break;
 
             }
-            else{
+            else {
 
-                for($i=0;$i<$reservation->getPlace();$i++){
-                    array_push($passengers, array($_POST["exampleInputName".$i]));
-                    array_push($passengers[$i],$_POST["exampleInputAge".$i]);
+                for ($i = 0; $i < $reservation->getPlace(); $i++) {
+
+
+
+
+                    if (empty($_POST["exampleInputName" . $i])) {
+                        array_push($nameErr,"Nom requis");
+                        $reservation->setNameErr($nameErr);
+                        $reservation->setError(true);
+                    } else {
+                        array_push($passengers, array($_POST["exampleInputName" . $i]));
+                        array_push($nameErr,"");
+
+                    }
+                    if (empty($_POST["exampleInputAge" . $i])) {
+                        array_push($ageErr,"Age requis");
+                        $reservation->setAgeErr($ageErr);
+                        $reservation->setError(true);
+                    } else {
+                        array_push($passengers, array($_POST["exampleInputAge" . $i]));
+                        array_push($ageErr,"");
+                    }
                     $reservation->setPersonne($passengers);
-
+                }
+                if($reservation->getError()==true){
+                    $_SESSION['reserv']=serialize($reservation);
+                    include('View/view_valid.php');
+                    break;
+                }
+                else{
+                    $_SESSION['reserv']=serialize($reservation);
+                    include('View/view_detail.php');
+                    break;
                 }
 
-                /*
-              if (empty($_POST["name"])) {
-                  $nameErr = "Nom requis";
-                  $error=true;
-              }
-              else {
-                  $reservation->setName($_POST['name']);
-                  $nameErr="";
-              if (empty($_POST["age"])) {
-                  $ageErr = "Age requis";
-                  $error=true;
-              }
-              else {
-                  $reservation->setAge($_POST['age']);
-                  $ageErr="";
-              */
-
-
-                $_SESSION['reserv']=serialize($reservation);
-                include('View/view_valid.php');
-                break;
-
             }
-
-            break;
         case 3:
             $reservation=unserialize($_SESSION['reserv']);
             if (isset($_POST['cancel']) && $_POST['cancel']=="Annuler la réservation")

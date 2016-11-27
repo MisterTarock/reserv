@@ -19,8 +19,8 @@ class Reservation
     private $_assurance;
     private $_passengers=array();
     private $_error=false;
-    private $_nameErr=array();
-    private $_ageErr=array();
+    private $_nameErr;
+    private $_ageErr;
     private $_destErr="";
     private $_placesErr="";
 

@@ -35,9 +35,9 @@ quelques informations sur vous.
         for ($i=0;$i<$reservation->getPlace();$i++){
 
             echo'<div class="form-group">';
-            if ($nameErr!=[] && isset($nameErr[$i]) && $nameErr[$i] != "")
+            if ($reservation->getNameErr()!=[] && isset($reservation->getNameErr()[$i]) && $reservation->getNameErr()[$i] != "")
             {
-                echo "<span class='error'> ".$nameErr[$i]."</span><br>";
+                echo "<span class='error'> ".$reservation->getNameErr()[$i]."</span><br>";
             }
                 echo'<label for="exampleInputName'.$i.'">Nom</label>';
                 echo'<input type="name" class="form-control" id="exampleInputName'.$i.'" name="exampleInputName'.$i.'" placeholder="Nom"';
@@ -49,9 +49,9 @@ quelques informations sur vous.
                 }
                 echo'</div>';
             echo'<div class="form-group">';
-            if ($ageErr!=[] && isset($ageErr[$i]) && $ageErr[$i] != "")
+            if ($reservation->getAgeErr()!=[] && isset($reservation->getAgeErr()[$i]) && $reservation->getAgeErr()[$i] != "")
             {
-                echo "<span class='error'> ".$ageErr[$i]."</span><br>";
+                echo "<span class='error'> ".$reservation->getAgeErr()[$i]."</span><br>";
             }
                 echo'<label for="exampleInputAge'.$i.'">Age</label>';
                 echo'<input type="number" class="form-control" type="number" min="1" id="exampleInputAge'.$i.'" name="exampleInputAge'.$i.'" placeholder="Age" ';
