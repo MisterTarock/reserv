@@ -1,0 +1,1 @@
+le dossier "mysqli" est à mettre dans C:\wamp64\bin\mysql\mysql5.7.14\data
