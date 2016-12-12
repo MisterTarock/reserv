@@ -46,9 +46,11 @@ $totalprice=0;
 ?>
 <br>
 <br>
-<form action="index.php" method="POST">
+<input action="index.php" method="POST">
 
-    <input class="btn btn-warning" name="cancel" value="Retour à la page d'acceuil" onclick=redirect()>
+    <input class="btn btn-warning" class="glyphicon glyphicon-plane" name="cancel" value="Retour à la page d'acceuil" onclick=redirect()>
+        <span class="glyphicon glyphicon-plane"></span>
+    </input>
 
 </form>
 

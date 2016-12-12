@@ -54,7 +54,7 @@ quelques informations sur vous.
                 echo "<span class='error'> ".$reservation->getAgeErr()[$i]."</span><br>";
             }
                 echo'<label for="exampleInputAge'.$i.'">Age</label>';
-                echo'<input type="number" class="form-control" type="number" min="1" id="exampleInputAge'.$i.'" name="exampleInputAge'.$i.'" placeholder="Age" ';
+                echo'<input type="number" class="form-control" type="number" min="1" max="125" id="exampleInputAge'.$i.'" name="exampleInputAge'.$i.'" placeholder="Age" ';
                 if (!empty($reservation->getPassengers()[$i][1])){
                     echo 'value='.$reservation->getPassengers()[$i][1].'>';
                 }

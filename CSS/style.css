@@ -32,8 +32,8 @@ text
 }
 
 .error
-    /*the CSS and the PHP can't speak with each other so we have to use the class set in the <span class=" ">
-      We can call the class with the "." */
+/*the CSS and the PHP can't speak with each other so we have to use the class set in the <span class=" ">
+  We can call the class with the "." */
 {
     color: red;
 }
