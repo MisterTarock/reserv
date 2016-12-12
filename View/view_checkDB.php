@@ -32,25 +32,24 @@ Autor: Paolo De Keyzer, 13201
     <form action="index.php" method="POST">
 
         <table class="table">
-        <caption><b>Tarifs</b></caption>  <!--To make the title for the table-->
-            <thead>
-            <tr>
-                <th>Âge</th>
-                <th>Prix</th>
-            </tr>
-            </thead>
+            <tr><td>Destination</td><td>Nom?</td><td>Assurance?</td><td>Modifier</td><td>Supprimer</td></tr>
+            <?php
 
-            <tbody>
-            <tr>
-                <td>< 25 ans:</td>
-                <td>10 €</td>
-            </tr>
+            while($row = $query->fetch_array()){
+                 echo "<tr><td>" . $row['Destination'] . "</td>";
+                 $flightID=$row['ID'];
+                 $sql="SELECT * FROM mysqli.passengers
+WHERE Reservation=$flightID";
+                $querybis=$db->query($sql);
+                echo "<td>";
+                while($passRow = $querybis->fetch_array()){
+                    echo $passRow['Name'] . " - " . $passRow['Age'] . " ans <br>" ;
+                }
+                echo "</td><td>" . $row['Assurance'] ."</td><td>";
+                echo "<a href='https://www.youtube.com/watch?v=dQw4w9WgXcQ'>Editer</a></td><td>Supprimer</td></tr>";
 
-            <tr>
-                <td>> 25 ans:</td>
-                <td>20 €</td>
-            </tr>
-            </tbody>
+            }
+            ?>
         </table>
 
         <input type="hidden" name="step" value="2">

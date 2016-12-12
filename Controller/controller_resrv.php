@@ -18,11 +18,6 @@ include_once("Model/model.php");
 
 /*This will be the logic file were the data will be calculated*/
 
-
-$db = new mysqli('localhost', 'root', '', 'mysqli') or die('Could not select database');
-if ($db->connect_errno) {
-    echo 'Echec lors de la connexion à MySQLi : ('.$db->connect_errno.') '.$db->connect_error;
-}
 if (!isset($SESSION['reserv'])){
     $reservation=new Reservation();
     $SESSION['reserv']=$reservation;
