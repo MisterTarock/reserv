@@ -43,7 +43,7 @@ Nous vous prions de bien reconsulter vos données afin d'être sûr qu'elle soie
                 echo "<p >".$reservation->getPassengers()[$i-1][1]."</p>";
             }
 
-            if ($reservation->assuranceCheck()) {
+            if ($reservation->assuranceCheck()=='Yes') {
                 echo 'Avec assurance annulation.<br><br>';
             } else {
                 echo 'Sans assurance annulation.<br><br>';

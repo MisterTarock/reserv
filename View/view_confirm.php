@@ -37,7 +37,7 @@ for ($i=1;$i<=$reservation->getPlace();$i++){
 
 
 }
-if($reservation->assuranceCheck()){
+if($reservation->assuranceCheck()=='Yes'){
     $totalprice=$totalprice+5;
 }
 

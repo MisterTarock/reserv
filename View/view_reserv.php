@@ -18,7 +18,7 @@ Autor: Paolo De Keyzer, 13201
 <body>
 
 
-<h1>Bogota Airlines<!--to make a big headline//--></h1>
+<h1>Air Columbia<!--to make a big headline//--></h1>
 <!--
     <img src="bogota_flag.png" alt="flag" usemap="#flagmap" style="float:right; width:400px;height:400px;">
     <map name="flagmap">
@@ -31,7 +31,7 @@ Autor: Paolo De Keyzer, 13201
 <br>
 <h2><b>Reservation</b></h2>
 <text>
-    Bienvenue sur <b>AIR Columbia</b>!!
+    Bienvenue sur <b>Air Columbia</b>!!
     <br>Nous ferons tout pour que vous passiez un agréable trajet!
 </text>
 

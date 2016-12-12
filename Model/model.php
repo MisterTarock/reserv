@@ -19,10 +19,11 @@ class Reservation
     private $_assurance;
     private $_passengers=array();
     private $_error=false;
-    private $_nameErr;
-    private $_ageErr;
+    private $_nameErr=array();
+    private $_ageErr=array();
     private $_destErr="";
     private $_placesErr="";
+    private $_reservID;
 
 
 
@@ -31,6 +32,12 @@ class Reservation
 
     //To set the value and define them
     //We have to set each value at the time
+    public function setReservID($reservID){
+        $this->_reservID=$reservID;
+    }
+    public function getReservID(){
+        return $this->_reservID;
+    }
     public function setDestination($destination)
     {
         $this->_destination = $destination;
