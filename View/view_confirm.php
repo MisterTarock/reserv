@@ -4,9 +4,6 @@ Autor: Victor Puissant Baeyens, 12098
 Autor: Paolo De Keyzer, 13201
 -->
 
-<!--This will be the view file-->
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,52 +14,78 @@ Autor: Paolo De Keyzer, 13201
 </head>
 
 <body>
+<div class="container-fluid">
 
-<h1>Bogota Airlines</h1> <!--to make a big headline//-->
-<h2><b>Confirmation des billets</b></h2>
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Bogota Airlines</h1> <!--to make a big headline//-->
+            <h2><b>Confirmation des billets</b></h2>
+            <text>
+                Votre demande à bien été traitée, merci de payer celle-ci au plus vite sur notre compte.
+                <br>La somme attendue est de
+            </text>
 
-Votre demande à bien été traitée, merci de payer celle-ci au plus vite sur notre compte.
-<br>
-<?php
-$totalprice=0;
-for ($i=1;$i<=$reservation->getPlace();$i++){
-    if($reservation->getPassengers()[$i-1][1]<25){
-        $totalprice=$totalprice+10;
+            <span class="error">
+            <?php
+            $totalprice=0;
+            for ($i=1;$i<=$reservation->getPlace();$i++){
+                if($reservation->getPassengers()[$i-1][1]<25){
+                    $totalprice=$totalprice+10;
 
-    }
+                }
 
-    if ($reservation->getPassengers()[$i-1][1]>25){
-        $totalprice=$totalprice+20;
-    }
-
-
-}
-if($reservation->assuranceCheck()=='Yes'){
-    $totalprice=$totalprice+5;
-}
-
-echo "La somme attendue est de ".$totalprice."€ sur le compte 123-123456-12 ";
-$totalprice=0;
-?>
-<br>
-<br>
-<input action="index.php" method="POST">
+                if ($reservation->getPassengers()[$i-1][1]>25){
+                    $totalprice=$totalprice+20;
+                }
 
 
-    <input type="hidden" name="step" value="4">
-    <input class="btn btn-warning" name="cancel" value="Retour à la page d'acceuil">
-    <input class="btn btn-primary" name="return" type="submit" value="Retour à la page précedente">
+            }
+            if($reservation->assuranceCheck()=='Yes'){
+                $totalprice=$totalprice+5;
+            }
+            echo $totalprice;
+            $totalprice=0;
+
+            ?>
+            </span>
+            <text>
+                € sur le compte <span class="positiv">123-123456-12</span>
+            </text>
+        </div>
+    </div>
+
+    <div class="row">
+        <br>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+        <form action="index.php" method="POST">
+            <input type="hidden" name="step" value="4">
+            <button class="btn btn-primary" name="return" type="submit">
+                <span class="glyphicon glyphicon-step-backward"></span>
+                Retour à la page précedente
+            </button>
+            <button class="btn btn-warning" name="cancel" type="submit">
+                Retour à la page d'acceuil
+                <span class="glyphicon glyphicon-fast-forward"></span>
+            </button>
+        </form>
+        </div>
+    </div>
 
 
-</form>
 
 
-<script>function redirect() {
-        <?php $reservation = new Reservation;
-        $_SESSION["reserv"] = $reservation; ?>
-        window.location.assign("index.php");
-    }</script>
+<!--Je sais pas pourquoi c'est là et j'ai le sentiments que ca fait bien planté ^^ -->
+<script>function redirect()
+            {
+                <?php $reservation = new Reservation;
+                $_SESSION["reserv"] = $reservation; ?>
+                window.location.assign("index.php");
+            }
+</script>
 
-
+</div>
 </body>
 </html>

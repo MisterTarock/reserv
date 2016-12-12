@@ -4,9 +4,6 @@ Autor: Victor Puissant Baeyens, 12098
 Autor: Paolo De Keyzer, 13201
 -->
 
-
-<!--This will be the view file-->
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,8 +14,8 @@ Autor: Paolo De Keyzer, 13201
 </head>
 
 <body>
-
 <div class="container-fluid">
+
     <div class="row">
         <div class="col-md-5">
             <h1>Bogota Airlines</h1><!--to make a big headline//-->
@@ -35,120 +32,103 @@ Autor: Paolo De Keyzer, 13201
         </div>
     </div>
 
-    <br>
-    <br>
-<div class="row">
-    <div class="col-md-4">
-        <table class="table" style="text-align:center">
-            <caption><b>Tarifs</b></caption>  <!--To make the title for the table-->
+    <div id="reserv" class="col-md-12">
 
-            <tr>
-                <th style="text-align:center">Âge</th>
-                <th style="text-align:center">Prix</th>
-            </tr>
+        <div class="row">
+            <div class="col-md-4">
+                <table class="table" style="text-align:center">
+                    <caption><b>Tarifs</b></caption>  <!--To make the title for the table-->
+                    <tr>
+                        <th style="text-align:center">Âge</th> <th style="text-align:center">Prix</th> <!--To make the title for the column-->
+                    </tr>
 
+                    <tbody>
+                    <tr>
+                        <td>< 25 ans:</td> <td>10 €</td>
+                    </tr>
+                    <tr>
+                        <td>> 25 ans:</td> <td>20 €</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
-            <tbody>
-            <tr>
-                <td>< 25 ans:</td>
-                <td>10 €</td>
-            </tr>
-
-            <tr>
-                <td>> 25 ans:</td>
-                <td>20 €</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-md-8">
         <form action="index.php" method="POST" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table">
+                    <caption><b>Réservation</b></caption>  <!--To make the title for the table-->
 
-        <table class="table">
-            <caption><b>Réservation</b></caption>
+                    <tr>
+                        <td style="text-align:center"><b>Destination:</b></td> <!--To make the title for the line-->
+                        <?php
+                        echo '<td><input class="form-control" type="text" name="destination" placeholder="Destination" ';
+                        if (!empty($reservation->getDestination())){
+                            echo 'value='.$reservation->getDestination().'>';
+                        }
+                        else{
+                            echo '>';
+                        }
+                        echo '</td>';
+                        if ($reservation->getDestErr() != "")
+                        {
+                            echo "<span class='error'> ".$reservation->getDestErr()."</span><br>";
+                        }
+                        ?>
+                    </tr>
+                    <tr>
+                        <td style="text-align:center"><b>Nombre de places:</b></td>
+                        <?php
+                        echo '<td><input class="form-control" type="number" min="1" max="10" name="places" placeholder="Nombre de places" ';
+                        /*the type number makes the case with the arrow to move the number,
+                         the min value assure us to not receive any negative number
+                         the max value assure us to stay in the right span*/
+                        if (!empty($reservation->getPlace())){
+                            echo 'value='.$reservation->getPlace().'>';
+                        }
+                        else{
+                            echo '>';
+                        }
+                        echo '</td>';
+                        if ($reservation->getPlacesErr() != "") {
+                            echo "<span class='error'> ".$reservation->getPlacesErr()."</span><br>";
+                        }
+                        ?>
+                    </tr>
+                    <tr>
+                        <td style="text-align:center"><b>Assurance annulation (5 €):</b></td>
+                        <td><input type="checkbox" name="assurance" value="true" /></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
 
-            <tr>
-                <td style="text-align:center"><b>Destination:</b></td>
+        <div class="row">
+            <div class="col-md-12">
+                <input type="hidden" name="step" value="1">
+                <div class="form-group">
+                    <button class="btn btn-primary" name="submit" type="submit">
+                        Etape suivante
+                    <span class="glyphicon glyphicon-plane"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
 
-
-                <?php
-                echo '<td><input class="form-control" type="text" name="destination" placeholder="Destination" ';
-                if (!empty($reservation->getDestination())){
-                    echo 'value='.$reservation->getDestination().'>';
-                }
-                else{
-                    echo '>';
-                }
-                echo '</td>';
-                echo '<br>';
-                if ($reservation->getDestErr() != "")
-                {
-                    echo "<span class='error'> ".$reservation->getDestErr()."</span><br>";
-                }
-                ?>
-            </tr>
-            <tr>
-                <td style="text-align:center"><b>Nombre de places:</b></td>
-                <!--the type number makes the case with the arrow to move the number,
-                 the min value assure us to not recieve any begative number
-                 the max value assure us to stay in the right span-->
-
-
-                <?php
-                echo '<td><input class="form-control" type="number" min="1" max="10" name="places" placeholder="Nombre de places" ';
-                if (!empty($reservation->getPlace())){
-                    echo 'value='.$reservation->getPlace().'>';
-                }
-                else{
-                    echo '>';
-                }
-                echo '</td>';
-
-                if ($reservation->getPlacesErr() != "")
-                {
-                    echo "<span class='error'> ".$reservation->getPlacesErr()."</span><br>";
-                }
-                ?>
-
-            </tr>
-            <tr>
-                <td style="text-align:center"><b>Assurance annulation (5 €):</b></td>
-
-                <td><input type="checkbox" name="assurance" value="true" /></td>
-            </tr>
-        </table>
-
-
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <button class="btn btn-danger" name="cancel" type="submit">
+                        Annuler la réservation
+                        <span class="glyphicon glyphicon-warning-sign"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        </form>
     </div>
 
 </div>
-
-
-
-
-
-
-    <input type="hidden" name="step" value="1">
-
-    <div class="form-group">
-        <input class="btn btn-primary"  name="submit" type="submit" value="Etape suivante">
-        <span class="glyphicon glyphicon-plane"></span>
-    </div>
-
-    <br>
-    <input class="btn btn-danger" name="cancel" type="submit" value="Annuler la réservation">
-
-
-</form>
-
-
-
-
-</div>
-
-
 </body>
 </html>

@@ -4,9 +4,6 @@ Autor: Victor Puissant Baeyens, 12098
 Autor: Paolo De Keyzer, 13201
 -->
 
-<!--This will be the view file-->
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,61 +14,116 @@ Autor: Paolo De Keyzer, 13201
 </head>
 
 <body>
+<div class="container-fluid">
 
-<h1>Bogota Airlines</h1> <!--to make a big headline//-->
-<h2><b>Validation des Réservations</b></h2>
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Bogota Airlines</h1> <!--to make a big headline//-->
+            <h2><b>Validation des Réservations</b></h2>
+            <text>
+                Nous vous prions de bien reconsulter vos données afin d'être sûr qu'elle soient exacte.
+                <br>Si vous constatez un problème, veuillez contacter l'administrateur.
+            </text>
+            <br>
+            <br>
+        </div>
+    </div>
 
-Nous vous prions de bien reconsulter vos données afin d'être sûr qu'elle soient exacte.
-<br>
-<br>
 
-<div id="reserv">
+<div id="detail">
     <form action="index.php" method="POST">
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table" style="text-align:center">
+                    <label for="exampleInputName1">Récapitulatif</label>  <!--To make the title for the table-->
+                    <tr>
+                        <!--To make the title for the column-->
+                        <th style="text-align:center">Destination:</th> <th style="text-align:center">Nombre de places:</th>
+                    </tr>
 
-        <div class="form-group">
-            <label for="exampleInputName1">Récapitulatif</label>
-            <p> Destination:<?php echo $reservation->getDestination(); ?> </p>
-            <p> Nombre de places <?php echo $reservation->getPlace(); ?> </p>
+                    <tbody>
+                    <tr>
+                        <td><?php echo $reservation->getDestination(); ?></td>
+                        <td><?php echo $reservation->getPlace(); ?></td>
+                    </tr>
 
-
-            <?php
-            $people=$reservation->getPassengers();
-            for ($i=1;$i<=$reservation->getPlace();$i++){
-                echo "<label >Nom</label>";
-                echo "<p >".$reservation->getPassengers()[$i-1][0]."</p>";
-                echo "<label >Age</label>";
-                echo "<p >".$reservation->getPassengers()[$i-1][1]."</p>";
-            }
-
-            if ($reservation->assuranceCheck()=='Yes') {
-                echo 'Avec assurance annulation.<br><br>';
-            } else {
-                echo 'Sans assurance annulation.<br><br>';
-            }
-            ?>
+                </table>
+            </div>
         </div>
 
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table" style="text-align:center">
+                    <label for="exampleInputName1">Personnes</label>  <!--To make the title for the table-->
+                    <tr>
+                        <!--To make the title for the column-->
+                        <th style="text-align:center">Nom:</th> <th style="text-align:center">Age:</th>
+                    </tr>
 
+                    <tbody>
+                    <tr>
+                        <td><?php
+                            $people=$reservation->getPassengers();
+                            for ($i=1;$i<=$reservation->getPlace();$i++){
+                            echo "<p >".$reservation->getPassengers()[$i-1][0]."</p>";
+                            }
+                            ?>
+                        </td>
+                        <td><?php
+                            $people=$reservation->getPassengers();
+                            for ($i=1;$i<=$reservation->getPlace();$i++){
+                                echo "<p >".$reservation->getPassengers()[$i-1][1]."</p>";
+                            }
+                            ?>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
+        <span class="positiv">
+            <?php
+            if ($reservation->assuranceCheck()=='Yes')
+            {
+                echo 'Avec assurance annulation.';
+            }
+            ?>
+        </span>
+        <span class="error">
+            <?php
+            if ($reservation->assuranceCheck()!=='Yes')
+            {
+                echo 'Sans assurance annulation.';
+            }
+            ?>
+        </span>
 
+        <div class="row">
+            <br>
+        </div>
 
-        <input type="hidden" name="step" value="3">
-        <input class="btn btn-primary" name="return" type="submit" value="Retour à la page précedente">
-        <input class="btn btn-primary" name="submit" type="submit" value="Confirmer">
-        <br>
-        <input class="btn btn-danger" name="cancel" type="submit" value="Annuler la réservation">
+        <div class="row">
+            <div class="col-md-12">
+                <input type="hidden" name="step" value="3">
+                <input class="btn btn-primary" name="return" type="submit" value="Retour à la page précedente">
+                <button class="btn btn-primary" name="submit" type="submit">
+                    Confirmer
+                    <span class="glyphicon glyphicon-thumbs-up"></span>
+                </button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <input class="btn btn-danger" name="cancel" type="submit" value="Annuler la réservation">
+            </div>
+        </div>
 
     </form>
 
 </div>
 
-
-
-<?php
-
-
-?>
-
-
+</div>
 </body>
 </html>

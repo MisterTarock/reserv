@@ -2,6 +2,10 @@ A faire au prochain cours
 
 savoir editer une reservation
 savoir encoder en base de données orienté objet
+
+-attention l'assurance annul reset toute seul quand on fait des précédent
+-la dernière page bug blindé quand on l'a refresh
+-controle des cases attendant des lettres
 >>>>>>>>>
 A faire si on est chaud
 

@@ -4,10 +4,6 @@ Autor: Victor Puissant Baeyens, 12098
 Autor: Paolo De Keyzer, 13201
 -->
 
-
-<!--This will be the view file-->
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,22 +14,26 @@ Autor: Paolo De Keyzer, 13201
 </head>
 
 <body>
-
 <div class="container-fluid">
-    <h1>Bogota Airlines</h1> <!--to make a big headline//-->
-    <h2><b>Vérification de la DataBase</b></h2>
-    <text>
-        Voici un listing des différentes réservations faites auprès de notre compagnie:
-    </text>
 
-<br>
-<br>
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Bogota Airlines</h1> <!--to make a big headline//-->
+            <h2><b>Vérification de la DataBase</b></h2>
+            <text>
+                Voici un listing des différentes réservations faites auprès de notre compagnie:
+            </text>
+        </div>
+    </div>
 
 <div id="reserv">
     <form action="index.php" method="POST">
 
         <table class="table">
-            <tr><td>Destination</td><td>Nom?</td><td>Assurance?</td><td>Modifier</td><td>Supprimer</td></tr>
+            <tr>
+                <th style="text-align:center">Destination</th> <th style="text-align:center">Nom</th> <th style="text-align:center">Assurance</th>
+                <th style="text-align:center">Modifier</th> <th style="text-align:center">Supprimer</th>
+            </tr>
             <?php
 
             while($row = $query->fetch_array()){

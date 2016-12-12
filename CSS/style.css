@@ -18,24 +18,26 @@ h2
     font-family: "Cambria", Times, serif;
     color: yellowgreen;
 }
+text
+{
+    font-family: "Cambria", Times, serif;
+    font-size:medium;
+    color: mediumslateblue;
+}
+
 div#reserv  /*We use the # as an ID selector that can be used only in one place and for this one var*/
+{
+    width: 100%;
+    border: 15px solid green;
+    padding: 15px;
+    margin: 15px;
+}
+div#detail  /*We use the # as an ID selector that can be used only in one place and for this one var*/
 {
     width: 60%;
     border: 15px solid green;
     padding: 15px;
     margin: 15px;
-}
-
-text
-{
-    color: mediumslateblue;
-}
-
-.error
-/*the CSS and the PHP can't speak with each other so we have to use the class set in the <span class=" ">
-  We can call the class with the "." */
-{
-    color: red;
 }
 
 td, th /* Toutes les cellules des tableaux... */
@@ -47,6 +49,21 @@ table
     border-collapse: separate; /* Les bordures du tableau seront collées (plus joli) */
     border: 1px solid black; /* auront une bordure de 1px */
 }
+
+.error
+/*the CSS and the PHP can't speak with each other so we have to use the class set in the <span class=" ">
+  We can call the class with the "." */
+{
+    color: red;
+}
+.positiv
+    /*the CSS and the PHP can't speak with each other so we have to use the class set in the <span class=" ">
+      We can call the class with the "." */
+{
+    color: deepskyblue;
+}
+
+
 
 
 
