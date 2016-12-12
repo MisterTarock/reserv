@@ -39,7 +39,7 @@ Autor: Paolo De Keyzer, 13201
 <br>
 
 <!--To set the prices-->
-<table>
+<table class="table">
     <caption><b>Tarifs</b></caption>  <!--To make the title for the table-->
     <thead>
         <tr>
@@ -66,7 +66,7 @@ Autor: Paolo De Keyzer, 13201
 
 <form action="index.php" method="POST" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>>
 
-    <table>
+    <table class="table">
         <caption><b>Réservation</b></caption>
 
         <tr>
@@ -123,7 +123,9 @@ Autor: Paolo De Keyzer, 13201
 
 
     <input type="hidden" name="step" value="1">
-    <input class="btn btn-primary" name="submit" type="submit" value="Etape suivante">
+    <button type="submit" class="btn btn-primary" name="submit" type="submit" value="Etape suivante">
+    <span  class="glyphicon-search" ></span>
+    </button>
 
     <br>
     <input class="btn btn-danger" name="cancel" type="submit" value="Annuler la réservation">
