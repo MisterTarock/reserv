@@ -26,7 +26,6 @@ class Reservation
     private $_reservID;
 
 
-
     //To make the construct
     //We have to set all the variable from this class at once
 

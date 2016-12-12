@@ -18,11 +18,6 @@ include_once("Model/model.php");
 
 /*This will be the logic file were the data will be calculated*/
 
-
-$db = new mysqli('localhost', 'root', '', 'mysqli') or die('Could not select database');
-if ($db->connect_errno) {
-    echo 'Echec lors de la connexion à MySQLi : ('.$db->connect_errno.') '.$db->connect_error;
-}
 if (!isset($SESSION['reserv'])){
     $reservation=new Reservation();
     $SESSION['reserv']=$reservation;
@@ -223,6 +218,31 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
             }
             $_SESSION['reserv']=serialize($reservation);
             include('View/view_confirm.php');
+            break;
+        case 4:
+            $reservation=unserialize($_SESSION['reserv']);
+            if (isset($_POST['cancel']) && $_POST['cancel']=="Retour à la page d'acceuil")
+            {
+                session_destroy();
+                $reservation=new Reservation();
+                $SESSION['reserv']=$reservation;
+                $_assurance=NULL;
+                include('View/view_reserv.php');
+                $step=NULL;
+
+                break;
+            }
+            else if (isset($_POST['return']) && $_POST['return']=="Retour à la page précedente"){
+                include('View/view_valid.php');
+                $step=3;
+                $_SESSION['reserv']=serialize($reservation);
+
+
+                break;
+
+            }
+            $_SESSION['reserv']=serialize($reservation);
+
             break;
 
 
