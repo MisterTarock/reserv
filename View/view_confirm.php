@@ -48,7 +48,9 @@ $totalprice=0;
 <br>
 <form action="index.php" method="POST">
 
-    <input class="btn btn-warning" name="cancel" value="Retour à la page d'acceuil" onclick=redirect()>
+    <input type="hidden" name="step" value="4">
+    <input class="btn btn-warning" name="cancel" value="Retour à la page d'acceuil">
+    <input class="btn btn-primary" name="return" type="submit" value="Retour à la page précedente">
 
 </form>
 
