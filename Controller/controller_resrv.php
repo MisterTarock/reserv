@@ -4,12 +4,12 @@
  * Autor: Victor Puissant Baeyens, 12098
  * Autor: Paolo De Keyzer, 13201
  */
-$db;
 
-$this->db = new mysqli('localhost', 'root', '', 'mysqli') or die('Could not select database');
 
-if ($this->db->connect_errno) {
-    echo 'Echec lors de la connexion à MySQLi : ('.$this->db->connect_errno.') '.$this->db->connect_error;
+$db = new mysqli('localhost', 'root', '', 'mysqli') or die('Could not select database');
+
+if ($db->connect_errno) {
+    echo 'Echec lors de la connexion à MySQLi : ('.$db->connect_errno.') '.$db->connect_error;
 }
 
 include_once("Model/model.php");
