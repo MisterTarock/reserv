@@ -70,12 +70,13 @@ Autor: Paolo De Keyzer, 13201
         <div class="col-md-12">
         <form action="index.php" method="POST">
             <input type="hidden" name="step" value="4">
+
             <button class="btn btn-primary" name="return" type="submit">
                 <span class="glyphicon glyphicon-step-backward"></span>
                 Retour à la page précedente
             </button>
-            <button class="btn btn-warning" name="cancel" type="submit">
-                Retour à la page d'acceuil
+            <button class="btn btn-warning" name="cancel" type="submit" value="Annuler la réservation">
+                Direction la page d'acceuil
                 <span class="glyphicon glyphicon-fast-forward"></span>
             </button>
         </form>

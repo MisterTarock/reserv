@@ -114,7 +114,11 @@ Autor: Paolo De Keyzer, 13201
         <div class="row">
             <div class="col-md-12">
                 <input type="hidden" name="step" value="3">
-                <input class="btn btn-primary" name="return" type="submit" value="Retour à la page précedente">
+
+                <button class="btn btn-primary" name="return" type="submit" value="Retour à la page précedente">
+                    <span class="glyphicon glyphicon-step-backward"></span>
+                    Retour à la page précedente
+                </button>
                 <button class="btn btn-primary" name="submit" type="submit">
                     Confirmer
                     <span class="glyphicon glyphicon-thumbs-up"></span>
@@ -124,9 +128,9 @@ Autor: Paolo De Keyzer, 13201
 
         <div class="row">
             <div class="col-md-12">
-                <button class="btn btn-danger" name="cancel" type="submit">
+                <button class="btn btn-danger" name="cancel" type="submit" value="Annuler la réservation">
                     Annuler la réservation
-                    <span class="glyphicon glyphicon-warning-sign"></span>
+                    <span class="glyphicon glyphicon-alert"></span>
                 </button>
             </div>
         </div>

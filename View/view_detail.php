@@ -80,17 +80,24 @@ Autor: Paolo De Keyzer, 13201
         <div class="row">
             <div class="col-md-12">
                 <input type="hidden" name="step" value="2">
-                <input class="btn btn-primary" name="return" type="submit" value="Retour à la page précedente">
-                <input class="btn btn-primary" name="submit"type="submit" value="Etape suivante">
+
+                <button class="btn btn-primary" name="return" type="submit" value="Retour à la page précedente">
+                    <span class="glyphicon glyphicon-step-backward"></span>
+                    Retour à la page précedente
+                </button>
+                <button class="btn btn-primary" name="submit" type="submit">
+                    Etape suivante
+                    <span class="glyphicon glyphicon-plane"></span>
+                </button>
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group">
-                    <button class="btn btn-danger" name="cancel" type="submit">
+                    <button class="btn btn-danger" name="cancel" type="submit" value="Annuler la réservation">
                         Annuler la réservation
-                        <span class="glyphicon glyphicon-warning-sign"></span>
+                        <span class="glyphicon glyphicon-alert"></span>
                     </button>
                 </div>
             </div>
