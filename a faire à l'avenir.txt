@@ -6,6 +6,7 @@ savoir encoder en base de données orienté objet
 -attention l'assurance annul reset toute seul quand on fait des précédent
 -la dernière page bug blindé quand on l'a refresh
 -controle des cases attendant des lettres
+-proteger le code contre les attaque sql et javascript
 >>>>>>>>>
 A faire si on est chaud
 
