@@ -124,7 +124,7 @@ Autor: Paolo De Keyzer, 13201
 
         <div class="row">
             <div class="col-md-12">
-                <button class="btn btn-danger" name="cancel" type="submit">
+                <button class="btn btn-danger" name="cancel" type="submit" value="Annuler la réservation">
                     Annuler la réservation
                     <span class="glyphicon glyphicon-warning-sign"></span>
                 </button>

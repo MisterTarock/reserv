@@ -24,6 +24,7 @@ class Reservation
     private $_destErr="";
     private $_placesErr="";
     private $_reservID;
+    private $_step;
 
 
     //To make the construct
@@ -36,6 +37,12 @@ class Reservation
     }
     public function getReservID(){
         return $this->_reservID;
+    }
+    public function setStep($step){
+        $this->_step=$step;
+    }
+    public function getStep(){
+        return $this->_step;
     }
     public function setDestination($destination)
     {
