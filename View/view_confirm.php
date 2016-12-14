@@ -70,12 +70,14 @@ Autor: Paolo De Keyzer, 13201
         <div class="col-md-12">
         <form action="index.php" method="POST">
             <input type="hidden" name="step" value="4">
+
             <button class="btn btn-primary" name="return" value="Retour à la page précedente" >
                 Retour à la page précédente
                 <span class="glyphicon glyphicon-backward"></span>
             </button>
             <button class="btn btn-warning" name="cancel" type="submit" value="Retour à la page d'accueil" >
                 Retour à la page d'acceuil
+
                 <span class="glyphicon glyphicon-fast-forward"></span>
             </button>
             <?php

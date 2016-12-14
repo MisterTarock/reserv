@@ -129,7 +129,7 @@ Autor: Paolo De Keyzer, 13201
                 <div class="form-group">
                     <button class="btn btn-danger" name="cancel" type="submit" value="Annuler la réservation">
                         Annuler la réservation
-                        <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-alert"></span>
                     </button>
                 </div>
             </div>
