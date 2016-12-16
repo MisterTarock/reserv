@@ -102,9 +102,6 @@ Autor: Paolo De Keyzer, 13201
             }
     }
 </script>
-<script>
-
-</script>
 </div>
 </body>
 </html>

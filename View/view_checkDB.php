@@ -35,7 +35,7 @@ Autor: Paolo De Keyzer, 13201
     </div>
 
 <div id="reserv">
-    <form action="index.php" method="POST">
+    <form action="controller_DB.php" method="POST">
 
         <table class="table">
             <tr>
@@ -55,17 +55,17 @@ Autor: Paolo De Keyzer, 13201
                     echo $passRow['Name'] . " - " . $passRow['Age'] . " ans <br>" ;
                 }
                 echo "</td><td>" . $row['Assurance'] ."</td><td>";
-                echo "<a href='https://www.youtube.com/watch?v=dQw4w9WgXcQ'>Editer</a></td><td>Supprimer</td></tr>";
+                echo '<input type="hidden" name="id" value="<?php echo $row['.$flightID.'];?>">';
+                echo '<button class="btn btn-warning" name="edit" type="submit" value="Editer" >Editer</button></td>';
+                echo '<td><button class="btn btn-warning" name="delete" type="submit" value="Supprimer" >Supprimer</button></td></tr>';
 
             }
+
+
             ?>
         </table>
 
-        <input type="hidden" name="step" value="2">
-        <input class="btn btn-primary" name="return" type="submit" value="Retour à la page précedente">
-        <input class="btn btn-primary" name="submit"type="submit" value="Etape suivante">
-        <br>
-        <input class="btn btn-danger" name="cancel" type="submit" value="Annuler la réservation">
+
 
     </form>
 </div>
@@ -75,7 +75,17 @@ Autor: Paolo De Keyzer, 13201
 
 
 </div>
+<script>
+    function edit($i){
 
+        <?php $reservation = new Reservation;
+        $_SESSION["reserv"] = $reservation;
+        $sql="SELECT * FROM 'reservations'
+WHERE ID=".$i;
+        ?>
+    }
+
+</script>
 </body>
 </html>
 
