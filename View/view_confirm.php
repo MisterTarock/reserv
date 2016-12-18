@@ -71,14 +71,19 @@ Autor: Paolo De Keyzer, 13201
         <form action="index.php" method="POST">
             <input type="hidden" name="step" value="4">
 
-            <button class="btn btn-primary" name="return" type="submit">
-                <span class="glyphicon glyphicon-step-backward"></span>
-                Retour à la page précedente
+            <button class="btn btn-primary" name="return" value="Retour à la page précedente" >
+                Retour à la page précédente
+                <span class="glyphicon glyphicon-backward"></span>
             </button>
-            <button class="btn btn-warning" name="cancel" type="submit" value="Annuler la réservation">
-                Direction la page d'acceuil
+            <button class="btn btn-warning" name="cancel" type="submit" value="Retour à la page d'accueil" >
+                Retour à la page d'acceuil
+
                 <span class="glyphicon glyphicon-fast-forward"></span>
             </button>
+            <?php
+            $_SESSION['reserv']=serialize($reservation);
+            ?>
+
         </form>
         </div>
     </div>
@@ -87,14 +92,16 @@ Autor: Paolo De Keyzer, 13201
 
 
 <!--Je sais pas pourquoi c'est là et j'ai le sentiments que ca fait bien planté ^^ -->
-<script>function redirect()
+<script>
+    function redirect()
             {
                 <?php $reservation = new Reservation;
-                $_SESSION["reserv"] = $reservation; ?>
+                $_SESSION["reserv"] = $reservation;
+                 ?>
                 window.location.assign("index.php");
             }
+    }
 </script>
-
 </div>
 </body>
 </html>

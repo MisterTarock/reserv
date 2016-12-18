@@ -150,7 +150,7 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
 
                     if (empty($_POST["exampleInputName" . $i])) {
                         array_push($nameErr,"Nom requis");
-                        array_push($passengers, array());
+                        array_push($passengers, array(''));
 
                         $reservation->setError(true);
                     } else {
@@ -220,12 +220,13 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
             include('View/view_confirm.php');
             break;
         case 4:
-            $reservation=unserialize($_SESSION['reserv']);
-            if (isset($_POST['cancel']) && $_POST['cancel']=="Retour à la page d'acceuil")
+
+            if (isset($_POST['cancel']) && $_POST['cancel']=="Retour à la page d'accueil")
             {
                 session_destroy();
                 $reservation=new Reservation();
                 $SESSION['reserv']=$reservation;
+                $_SESSION['reserv']=serialize($reservation);
                 $_assurance=NULL;
                 include('View/view_reserv.php');
                 $step=NULL;
@@ -235,8 +236,6 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
             else if (isset($_POST['return']) && $_POST['return']=="Retour à la page précedente"){
                 include('View/view_valid.php');
                 $step=3;
-                $_SESSION['reserv']=serialize($reservation);
-
 
                 break;
 

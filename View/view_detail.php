@@ -42,6 +42,7 @@ Autor: Paolo De Keyzer, 13201
         <div class="row">
             <div class="col-md-12">
                 <?php
+                $reservation=unserialize($_SESSION['reserv']);
 
                 for ($i=0;$i<$reservation->getPlace();$i++){
 
