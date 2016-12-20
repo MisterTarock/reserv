@@ -26,7 +26,8 @@ Autor: Paolo De Keyzer, 13201
 
     <div class="row">
         <div class="col-md-12">
-            <h1>Bogota Airlines</h1> <!--to make a big headline//-->
+            <!--to make a big headline//-->
+            <h1>Bogota Airlines</h1>
             <h2><b>Détail des Réservations</b></h2>
             <text>
                 Afin de pouvoir vous fournir un vol le plus agréable possible, nous désirons connaître

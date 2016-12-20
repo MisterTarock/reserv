@@ -23,7 +23,8 @@ if (!isset($SESSION['reserv'])){
     $SESSION['reserv']=$reservation;
 
 }
-else   //If the session already exist, we retake it
+//If the session already exist, we retake it
+else
 {
     $reservation = $_SESSION["reserv"];
 }
