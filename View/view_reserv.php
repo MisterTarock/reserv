@@ -27,7 +27,7 @@ Autor: Paolo De Keyzer, 13201
 
     <div class="row">
         <div class="col-md-5">
-            <!--to make a big headline//-->
+            <!--to make a big headline-->
             <h1>Bogota Airlines</h1>
             <br>
             <h2><b>Reservation</b></h2>
@@ -37,11 +37,12 @@ Autor: Paolo De Keyzer, 13201
                 au sein d'une des avions de notre compagnie!
             </text>
         </div>
+        <!--to define a column between the div and give its size-->
         <div class="col-md-7">
             <img src="bogota.png" class="img-responsive" alt="flag" style="float:right">
         </div>
     </div>
-
+    <!--with the id "reserv" we can find this particular div and apply it a CSS-->
     <div id="reserv" class="col-md-12">
 
         <div class="row">
@@ -70,11 +71,10 @@ Autor: Paolo De Keyzer, 13201
         <div class="row">
             <div class="col-md-12">
                 <table class="table">
-                    <!--To make the title for the table-->
                     <caption><b>Réservation</b></caption>
 
                     <tr>
-                        <!--To make the title for the line-->
+                        <!--The style allow us to define the place of our text in the case-->
                         <td style="text-align:center"><b>Destination:</b></td>
                         <?php
                         echo '<td><input class="form-control" type="text" name="destination" placeholder="Destination" ';
@@ -122,6 +122,15 @@ Autor: Paolo De Keyzer, 13201
             <div class="col-md-12">
                 <input type="hidden" name="step" value="1">
                 <div class="form-group">
+                    <!--To set the glyphicon in our button, we have to make a class button and the span with the glyph in it
+                        The class define the color and style of the button in bootstraps
+                        The value is necessary to communicate with the controller
+                    -->
+
+                    <!--Utility du name????????? et pq le button suivant lui a pas besion de value??????
+                 -->
+
+
                     <button class="btn btn-primary" name="submit" type="submit">
                         Etape suivante
                     <span class="glyphicon glyphicon-plane"></span>
