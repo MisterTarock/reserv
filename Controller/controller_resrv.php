@@ -29,7 +29,7 @@ if(!isset($_SESSION['reserv'])){session_start(); }
 else{
     $reservation=new Reservation();
     $_SESSION['reserv']=$reservation;
-    var_dump($reservation);}
+    var_dump($reservation);}*/
 
 unserialize($_SESSION['reserv']);
 $reservation=$_SESSION['reserv'];
@@ -41,7 +41,7 @@ $ageErr=array();
 
 
 /** gets the step from current form
- *  the step help us to know where we are in the recording process of a reservation
+the step help us to know where we are in the recording process of a reservation
  **/
 $step = isset($_POST['step']) ? $_POST['step'] : NULL;
 if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
