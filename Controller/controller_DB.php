@@ -31,11 +31,10 @@ if ($db->connect_errno) {
 $request="SELECT * FROM mysqli.reservations";
 
 $query=$db->query($request);
+
 if(isset($_GET['id'])){$id=$_GET['id'];}
 if(isset($_GET['page'])){
     $page=$_GET['page'];
-
-
     if ($page=='edit' && isset($_GET['id'])){
         $sql="SELECT * FROM mysqli.reservations
     WHERE ID=".$id;

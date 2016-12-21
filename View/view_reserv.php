@@ -17,7 +17,8 @@ Autor: Paolo De Keyzer, 13201
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" type="text/css" href="CSS\style.css">
-    <title>Réservation</title> <!-- to name the page//-->
+    <!-- to name the page//-->
+    <title>Réservation</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
@@ -26,7 +27,8 @@ Autor: Paolo De Keyzer, 13201
 
     <div class="row">
         <div class="col-md-5">
-            <h1>Bogota Airlines</h1><!--to make a big headline//-->
+            <!--to make a big headline-->
+            <h1>Bogota Airlines</h1>
             <br>
             <h2><b>Reservation</b></h2>
             <text>
@@ -35,19 +37,22 @@ Autor: Paolo De Keyzer, 13201
                 au sein d'une des avions de notre compagnie!
             </text>
         </div>
+        <!--to define a column between the div and give its size-->
         <div class="col-md-7">
             <img src="bogota.png" class="img-responsive" alt="flag" style="float:right">
         </div>
     </div>
-
+    <!--with the id "reserv" we can find this particular div and apply it a CSS-->
     <div id="reserv" class="col-md-12">
 
         <div class="row">
             <div class="col-md-4">
                 <table class="table" style="text-align:center">
-                    <caption><b>Tarifs</b></caption>  <!--To make the title for the table-->
+                    <!--To make the title for the table-->
+                    <caption><b>Tarifs</b></caption>
                     <tr>
-                        <th style="text-align:center">Âge</th> <th style="text-align:center">Prix</th> <!--To make the title for the column-->
+                        <!--To make the title for the column-->
+                        <th style="text-align:center">Âge</th> <th style="text-align:center">Prix</th>
                     </tr>
 
                     <tbody>
@@ -66,12 +71,15 @@ Autor: Paolo De Keyzer, 13201
         <div class="row">
             <div class="col-md-12">
                 <table class="table">
-                    <caption><b>Réservation</b></caption>  <!--To make the title for the table-->
+                    <caption><b>Réservation</b></caption>
 
                     <tr>
-                        <td style="text-align:center"><b>Destination:</b></td> <!--To make the title for the line-->
+                        <!--The style allow us to define the place of our text in the case-->
+                        <td style="text-align:center"><b>Destination:</b></td>
                         <?php
-                        echo '<td><input class="form-control" type="text" name="destination" placeholder="Destination" ';
+                        //The maxlength parameter protect us against anyone who want
+                        // to past a complete book in input in place of the destination
+                        echo '<td><input class="form-control" type="text" maxlength="30" name="destination" placeholder="Destination" ';
 
                         if (!empty($reservation->getDestination())){
                             echo 'value='.$reservation->getDestination().'>';
@@ -89,10 +97,11 @@ Autor: Paolo De Keyzer, 13201
                     <tr>
                         <td style="text-align:center"><b>Nombre de places:</b></td>
                         <?php
-                        echo '<td><input class="form-control" type="number" min="1" max="10" name="places" placeholder="Nombre de places" ';
                         /*the type number makes the case with the arrow to move the number,
                          the min value assure us to not receive any negative number
                          the max value assure us to stay in the right span*/
+                        echo '<td><input class="form-control" type="number" maxlength="30" min="1" max="10" name="places" placeholder="Nombre de places" ';
+
                         if (!empty($reservation->getPlace())){
                             echo 'value='.$reservation->getPlace().'>';
                         }
@@ -117,6 +126,15 @@ Autor: Paolo De Keyzer, 13201
             <div class="col-md-12">
                 <input type="hidden" name="step" value="1">
                 <div class="form-group">
+                    <!--To set the glyphicon in our button, we have to make a class button and the span with the glyph in it
+                        The class define the color and style of the button in bootstraps
+                        The value is necessary to communicate with the controller
+                    -->
+
+                    <!--Utility du name????????? et pq le button suivant lui a pas besion de value??????
+                 -->
+
+
                     <button class="btn btn-primary" name="submit" type="submit">
                         Etape suivante
                     <span class="glyphicon glyphicon-plane"></span>

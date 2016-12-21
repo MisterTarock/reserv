@@ -25,15 +25,16 @@ if(!isset($_SESSION['reserv'])){session_start(); }
 
 
 }
+
 else{
     $reservation=new Reservation();
     $_SESSION['reserv']=$reservation;
-    var_dump($reservation);
-}*/
+    var_dump($reservation);}
+
 unserialize($_SESSION['reserv']);
 $reservation=$_SESSION['reserv'];
 var_dump($_SESSION['reserv']);
-$passengers=array();
+
 $nameErr=array();
 $ageErr=array();
 
@@ -71,7 +72,9 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                     $reservation->setDestErr("Destination requise");
                     $reservation->setError(true);
                 } else {
-                    $reservation->setDestination($_POST['destination']);
+                    //To protect us against XSS injection we set an "htmlspecialchars"
+                    // to render the html and javascript as plain text in our input
+                    $reservation->setDestination(htmlspecialchars($_POST['destination']) );
                     $reservation->setDestErr("");
                 }
                 if (empty($_POST["places"])) {
@@ -79,17 +82,17 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                     $reservation->setError(true);}
                 //to insure us that the number will be between the span of the numbers attended
                 //already taken by the min and max value of the type number
-                else if ($_POST["places"]<1 || $_POST["places"]>10) {
+                else if (htmlspecialchars($_POST["places"]<1 || $_POST["places"]>10)) {
                     $reservation->setPlacesErr("Entrer un nombre de places valide (entre 1 et 10)");
                     $reservation->setError(true);
                 } else {
-                    $reservation->setPlace($_POST['places']);
+                    $reservation->setPlace(htmlspecialchars($_POST['places']));
                     $reservation->setPlacesErr("");
                 }
 
 
 
-                $reservation->setPlace($_POST['places']);
+                $reservation->setPlace(htmlspecialchars($_POST['places']));
                 if (isset($_POST["assurance"])){
 
                     $reservation->setAssurance('Yes');
@@ -108,12 +111,10 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                     $dest=$reservation->getDestination();
                     $insu=$reservation->AssuranceCheck();
                     if ($reservation->getReservID()!=NULL){
-                        $sql = "UPDATE mysqli.reservations
-           SET Destination='".$dest."',Assurance='".$insu."' WHERE ID=".$reservation->getReservID();
+                        $sql = "UPDATE mysqli.reservations SET Destination='".$dest."',Assurance='".$insu."' WHERE ID=".$reservation->getReservID();
                     }
                     else {
-                        $sql = "INSERT INTO mysqli.reservations (Destination, Assurance)
-           VALUES ('$dest','$insu') ";}
+                        $sql = "INSERT INTO mysqli.reservations (Destination, Assurance) VALUES (msqli_real_escape_string('$dest','$insu')) ";}
                     if ($db->query($sql) == true) {
 
                         $id_insert = $db->insert_id;
@@ -158,8 +159,7 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                 $reservation->setError(false);
                 $id_travel = $reservation->getReservID();
                 if ($reservation->getPassengers()!=NULL){
-                    $clear="DELETE FROM mysqli.passengers
-WHERE Reservation=".$reservation->getReservID();
+                    $clear="DELETE FROM mysqli.passengers WHERE Reservation=".$reservation->getReservID();
                     $db->query($clear);
                 }
 
@@ -172,7 +172,7 @@ WHERE Reservation=".$reservation->getReservID();
 
                         $reservation->setError(true);
                     } else {
-                        array_push($passengers, array($_POST["exampleInputName" . $i]));
+                        array_push($passengers, array(htmlspecialchars($_POST["exampleInputName" . $i])));
                         array_push($nameErr,"");
 
                     }
@@ -180,7 +180,7 @@ WHERE Reservation=".$reservation->getReservID();
                         array_push($ageErr,"Age requis");
                         $reservation->setError(true);
                     } else {
-                        array_push($passengers[$i], $_POST["exampleInputAge" . $i]);
+                        array_push($passengers[$i], htmlspecialchars($_POST["exampleInputAge" . $i]));
                         array_push($ageErr,"");
                     }
                     if ($reservation->getError()==false){
@@ -188,9 +188,9 @@ WHERE Reservation=".$reservation->getReservID();
                         $dude=$passengers[$i][0];
                         $dudesAge=$passengers[$i][1];
 
-
-                        $voyager = "INSERT INTO mysqli.passengers( Name, Age, Reservation)
-                        VALUES( '$dude', '$dudesAge', '$id_travel')";}
+                        //We use "mysql_real_escape_string" to conserve the symbol as plain text
+                        // and protect our SQL ataBase
+                        $voyager = "INSERT INTO mysqli.passengers( Name, Age, Reservation) VALUES(mysqli_real_escape_string('$dude', '$dudesAge', '$id_travel'))";}
 
                         if ($db->query($voyager) == true) {
                             //echo 'Record updated successfully';
