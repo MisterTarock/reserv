@@ -65,7 +65,9 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                     $reservation->setDestErr("Destination requise");
                     $reservation->setError(true);
                 } else {
-                    $reservation->setDestination($_POST['destination']);
+                    //To protect us against XSS injection we set an "htmlspecialchars"
+                    // to render the html and javascript as plain text in our input
+                    $reservation->setDestination(htmlspecialchars($_POST['destination']) );
                     $reservation->setDestErr("");
                 }
                 if (empty($_POST["places"])) {
@@ -73,17 +75,17 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                     $reservation->setError(true);}
                 //to insure us that the number will be between the span of the numbers attended
                 //already taken by the min and max value of the type number
-                else if ($_POST["places"]<1 || $_POST["places"]>10) {
+                else if (htmlspecialchars($_POST["places"]<1 || $_POST["places"]>10)) {
                     $reservation->setPlacesErr("Entrer un nombre de places valide (entre 1 et 10)");
                     $reservation->setError(true);
                 } else {
-                    $reservation->setPlace($_POST['places']);
+                    $reservation->setPlace(htmlspecialchars($_POST['places']));
                     $reservation->setPlacesErr("");
                 }
 
 
 
-                $reservation->setPlace($_POST['places']);
+                $reservation->setPlace(htmlspecialchars($_POST['places']));
                 if (isset($_POST["assurance"])){
 
                     $reservation->setAssurance('Yes');
@@ -155,7 +157,7 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
 
                         $reservation->setError(true);
                     } else {
-                        array_push($passengers, array($_POST["exampleInputName" . $i]));
+                        array_push($passengers, array(htmlspecialchars($_POST["exampleInputName" . $i])));
                         array_push($nameErr,"");
 
                     }
@@ -163,7 +165,7 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                         array_push($ageErr,"Age requis");
                         $reservation->setError(true);
                     } else {
-                        array_push($passengers[$i], $_POST["exampleInputAge" . $i]);
+                        array_push($passengers[$i], htmlspecialchars($_POST["exampleInputAge" . $i]));
                         array_push($ageErr,"");
                     }
                     if ($reservation->getError()==false){
