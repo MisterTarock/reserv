@@ -12,27 +12,42 @@ if ($db->connect_errno) {
     echo 'Echec lors de la connexion à MySQLi : ('.$db->connect_errno.') '.$db->connect_error;
 }
 
-include_once("Model/model.php");
+include_once('Model/model.php');
+
+
+
+if(array_key_exists('reserv',$_SESSION) && !empty($_SESSION['reserv']) && isset($_SESSION['reserv'])) {
+
+    if (NULL!=(unserialize($_SESSION['reserv']))) {
+        unserialize($_SESSION['reserv']);
+        $reservation=$_SESSION['reserv'];
+
+    }
+    else{
+        session_destroy();
+        $reservation=new Reservation();
+        $_SESSION['reserv']=$reservation;
+    }
+}
+
+else{
+    $reservation=new Reservation();
+    $_SESSION['reserv']=$reservation;
+
+}
+
 
  //each controller calls the model that are needed
 
 /*This will be the logic file were the data will be calculated*/
 
-if (!isset($SESSION['reserv'])){
-    $reservation=new Reservation();
-    $SESSION['reserv']=$reservation;
 
-}
-//If the session already exist, we retake it
-else
-{
-    $reservation = $_SESSION["reserv"];
-}
 
 
 $passengers=array();
 $nameErr=array();
 $ageErr=array();
+
 
 
 /** gets the step from current form
@@ -54,6 +69,8 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
             if (isset($_POST['cancel']) && $_POST['cancel']=='Annuler la réservation')
             {
                 session_destroy();
+                $reservation=new Reservation();
+                $_SESSION['reserv']=$reservation;
                 include('View/view_reserv.php');
                 $step=NULL;
 
@@ -103,12 +120,18 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                 else{
                     $dest=$reservation->getDestination();
                     $insu=$reservation->AssuranceCheck();
-                    $sql = "INSERT INTO mysqli.reservations (Destination, Assurance)
-           VALUES ('$dest','$insu') ";
+                    if ($reservation->getReservID()!=NULL){
+                        $sql = "UPDATE mysqli.reservations
+           SET Destination='".$dest."',Assurance='".$insu."' WHERE ID=".$reservation->getReservID();
+                    }
+                    else {
+                        $sql = "INSERT INTO mysqli.reservations (Destination, Assurance)
+           VALUES ('$dest','$insu') ";}
                     if ($db->query($sql) == true) {
 
                         $id_insert = $db->insert_id;
-                        $reservation->setReservID($id_insert);
+                        if ($reservation->getReservID()==NULL){
+                            $reservation->setReservID($id_insert);}
                     } else {
                         echo 'Error inserting record: '.$db->error;
                     }
@@ -129,7 +152,7 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
             {
                 session_destroy();
                 $reservation=new Reservation();
-                $SESSION['reserv']=$reservation;
+                $_SESSION['reserv']=$reservation;
 
                 include('View/view_reserv.php');
                 $step=NULL;
@@ -147,6 +170,11 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
             else {
                 $reservation->setError(false);
                 $id_travel = $reservation->getReservID();
+                if ($reservation->getPassengers()!=NULL){
+                    $clear="DELETE FROM mysqli.passengers
+WHERE Reservation=".$reservation->getReservID();
+                    $db->query($clear);
+                }
 
                 for ($i = 0; $i < $reservation->getPlace(); $i++) {
 
@@ -169,10 +197,13 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                         array_push($ageErr,"");
                     }
                     if ($reservation->getError()==false){
+
                         $dude=$passengers[$i][0];
                         $dudesAge=$passengers[$i][1];
+
+
                         $voyager = "INSERT INTO mysqli.passengers( Name, Age, Reservation)
-            VALUES( '$dude', '$dudesAge', '$id_travel')";
+                        VALUES( '$dude', '$dudesAge', '$id_travel')";}
 
                         if ($db->query($voyager) == true) {
                             //echo 'Record updated successfully';
@@ -198,14 +229,14 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                     break;
                 }
 
-            }
+
         case 3:
             $reservation=unserialize($_SESSION['reserv']);
             if (isset($_POST['cancel']) && $_POST['cancel']=="Annuler la réservation")
             {
                 session_destroy();
                 $reservation=new Reservation();
-                $SESSION['reserv']=$reservation;
+                $_SESSION['reserv']=$reservation;
                 $_assurance=NULL;
                 include('View/view_reserv.php');
                 $step=NULL;
@@ -228,7 +259,7 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
             {
                 session_destroy();
                 $reservation=new Reservation();
-                $SESSION['reserv']=$reservation;
+                $_SESSION['reserv']=$reservation;
                 $_SESSION['reserv']=serialize($reservation);
                 $_assurance=NULL;
                 include('View/view_reserv.php');

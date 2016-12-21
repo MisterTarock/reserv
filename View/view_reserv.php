@@ -78,6 +78,7 @@ Autor: Paolo De Keyzer, 13201
                         <td style="text-align:center"><b>Destination:</b></td>
                         <?php
                         echo '<td><input class="form-control" type="text" name="destination" placeholder="Destination" ';
+
                         if (!empty($reservation->getDestination())){
                             echo 'value='.$reservation->getDestination().'>';
                         }
