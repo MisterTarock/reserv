@@ -33,8 +33,7 @@ $request="SELECT * FROM mysqli.reservations";
 $query=$db->query($request);
 $id=$_GET['id'];
 $page=$_GET['page'];
-$sql="SELECT * FROM mysqli.reservations
-WHERE ID=".$id;
+$sql="SELECT * FROM mysqli.reservations WHERE ID=".$id;
 $qEdit=$db->query($sql);
 if ($page=='edit'){
     $reservation = new Reservation;
@@ -42,8 +41,7 @@ if ($page=='edit'){
     $row=$qEdit->fetch_array(MYSQLI_ASSOC);
     $reservation->setAssurance($row['Assurance']);
     $reservation->setDestination($row['Destination']);
-    $SQL="SELECT * FROM mysqli.passengers
-    WHERE Reservation=".$id;
+    $SQL="SELECT * FROM mysqli.passengers WHERE Reservation=".$id;
     $qEditBis=$db->query($SQL);
     $i=0;
     while($line = $qEditBis->fetch_array()) {
@@ -64,11 +62,9 @@ if ($page=='del'){
     $row=$qEdit->fetch_array(MYSQLI_ASSOC);
     $reservation->setAssurance($row['Assurance']);
     $reservation->setDestination($row['Destination']);
-    $SQL="DELETE FROM mysqli.passengers
-    WHERE Reservation=".$id;
+    $SQL="DELETE FROM mysqli.passengers WHERE Reservation=".$id;
     $qEditBis=$db->query($SQL);
-    $SQL="DELETE FROM mysqli.reservations
-    WHERE ID=".$id;
+    $SQL="DELETE FROM mysqli.reservations WHERE ID=".$id;
     $qEditBis=$db->query($SQL);
 
     if($i=0){

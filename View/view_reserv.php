@@ -77,7 +77,9 @@ Autor: Paolo De Keyzer, 13201
                         <!--The style allow us to define the place of our text in the case-->
                         <td style="text-align:center"><b>Destination:</b></td>
                         <?php
-                        echo '<td><input class="form-control" type="text" name="destination" placeholder="Destination" ';
+                        //The maxlength parameter protect us against anyone who want
+                        // to past a complete book in input in place of the destination
+                        echo '<td><input class="form-control" type="text" maxlength="30" name="destination" placeholder="Destination" ';
 
                         if (!empty($reservation->getDestination())){
                             echo 'value='.$reservation->getDestination().'>';
@@ -95,10 +97,11 @@ Autor: Paolo De Keyzer, 13201
                     <tr>
                         <td style="text-align:center"><b>Nombre de places:</b></td>
                         <?php
-                        echo '<td><input class="form-control" type="number" min="1" max="10" name="places" placeholder="Nombre de places" ';
                         /*the type number makes the case with the arrow to move the number,
                          the min value assure us to not receive any negative number
                          the max value assure us to stay in the right span*/
+                        echo '<td><input class="form-control" type="number" maxlength="30" min="1" max="10" name="places" placeholder="Nombre de places" ';
+
                         if (!empty($reservation->getPlace())){
                             echo 'value='.$reservation->getPlace().'>';
                         }

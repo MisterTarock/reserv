@@ -53,7 +53,7 @@ Autor: Paolo De Keyzer, 13201
                         echo "<span class='error'> ".$reservation->getNameErr()[$i]."</span><br>";
                     }
                     echo'<label for="exampleInputName'.$i.'">Nom</label>';
-                    echo'<input type="name" class="form-control" id="exampleInputName'.$i.'" name="exampleInputName'.$i.'" placeholder="Nom"';
+                    echo'<input type="name" class="form-control" maxlength="30" id="exampleInputName'.$i.'" name="exampleInputName'.$i.'" placeholder="Nom"';
                     if (!empty($reservation->getPassengers()[$i][0])){
                         echo 'value='.$reservation->getPassengers()[$i][0].'>';
                     }
@@ -67,7 +67,7 @@ Autor: Paolo De Keyzer, 13201
                         echo "<span class='error'> ".$reservation->getAgeErr()[$i]."</span><br>";
                     }
                     echo'<label for="exampleInputAge'.$i.'">Age</label>';
-                    echo'<input type="number" class="form-control" type="number" min="1" max="125" id="exampleInputAge'.$i.'" name="exampleInputAge'.$i.'" placeholder="Age" ';
+                    echo'<input type="number" class="form-control" maxlength="30" min="1" max="125" id="exampleInputAge'.$i.'" name="exampleInputAge'.$i.'" placeholder="Age" ';
                     if (!empty($reservation->getPassengers()[$i][1])){
                         echo 'value='.$reservation->getPassengers()[$i][1].'>';
                     }

@@ -121,12 +121,10 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                     $dest=$reservation->getDestination();
                     $insu=$reservation->AssuranceCheck();
                     if ($reservation->getReservID()!=NULL){
-                        $sql = "UPDATE mysqli.reservations
-           SET Destination='".$dest."',Assurance='".$insu."' WHERE ID=".$reservation->getReservID();
+                        $sql = "UPDATE mysqli.reservations SET Destination='".$dest."',Assurance='".$insu."' WHERE ID=".$reservation->getReservID();
                     }
                     else {
-                        $sql = "INSERT INTO mysqli.reservations (Destination, Assurance)
-           VALUES ('$dest','$insu') ";}
+                        $sql = "INSERT INTO mysqli.reservations (Destination, Assurance) VALUES (msqli_real_escape_string('$dest','$insu')) ";}
                     if ($db->query($sql) == true) {
 
                         $id_insert = $db->insert_id;
@@ -171,8 +169,7 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                 $reservation->setError(false);
                 $id_travel = $reservation->getReservID();
                 if ($reservation->getPassengers()!=NULL){
-                    $clear="DELETE FROM mysqli.passengers
-WHERE Reservation=".$reservation->getReservID();
+                    $clear="DELETE FROM mysqli.passengers WHERE Reservation=".$reservation->getReservID();
                     $db->query($clear);
                 }
 
@@ -201,9 +198,9 @@ WHERE Reservation=".$reservation->getReservID();
                         $dude=$passengers[$i][0];
                         $dudesAge=$passengers[$i][1];
 
-
-                        $voyager = "INSERT INTO mysqli.passengers( Name, Age, Reservation)
-                        VALUES( '$dude', '$dudesAge', '$id_travel')";}
+                        //We use "mysql_real_escape_string" to conserve the symbol as plain text
+                        // and protect our SQL ataBase
+                        $voyager = "INSERT INTO mysqli.passengers( Name, Age, Reservation) VALUES(mysqli_real_escape_string('$dude', '$dudesAge', '$id_travel'))";}
 
                         if ($db->query($voyager) == true) {
                             //echo 'Record updated successfully';
