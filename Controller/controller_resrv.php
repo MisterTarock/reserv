@@ -15,33 +15,24 @@ if ($db->connect_errno) {
 include_once('Model/model.php');
 
 
+if(!isset($_SESSION['reserv'])){session_start(); }
 
-if(array_key_exists('reserv',$_SESSION) && !empty($_SESSION['reserv']) && isset($_SESSION['reserv'])) {
+/*This will be the logic file were the data will be calculated*/
 
-    if (NULL!=(unserialize($_SESSION['reserv']))) {
-        unserialize($_SESSION['reserv']);
-        $reservation=$_SESSION['reserv'];
+/*if(isset($_SESSION['reserv']) && $_SESSION['reserv']!=null){
+    unserialize($_SESSION['reserv']);
+    $reservation=$_SESSION['reserv'];
 
-    }
-    else{
-        session_destroy();
-        $reservation=new Reservation();
-        $_SESSION['reserv']=$reservation;
-    }
+
 }
 else{
     $reservation=new Reservation();
     $_SESSION['reserv']=$reservation;
-}
-
-
- //each controller calls the model that are needed
-
-/*This will be the logic file were the data will be calculated*/
-
-
-
-
+    var_dump($reservation);
+}*/
+unserialize($_SESSION['reserv']);
+$reservation=$_SESSION['reserv'];
+var_dump($_SESSION['reserv']);
 $passengers=array();
 $nameErr=array();
 $ageErr=array();

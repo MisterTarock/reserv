@@ -81,7 +81,7 @@ Autor: Paolo De Keyzer, 13201
                 <span class="glyphicon glyphicon-fast-forward"></span>
             </button>
             <?php
-            $_SESSION['reserv']=serialize($reservation);
+            session_destroy();
             ?>
 
         </form>
