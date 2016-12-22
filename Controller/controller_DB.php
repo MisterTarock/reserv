@@ -16,18 +16,21 @@ include_once("../Model/model.php");
 
 
 $db = new mysqli('localhost', 'root', '', 'mysqli') or die('Could not select database');
-if ($db->connect_errno) {
+if ($db->connect_errno)
+{
     echo 'Echec lors de la connexion à MySQLi : ('.$db->connect_errno.') '.$db->connect_error;
 }
 $request="SELECT * FROM mysqli.reservations";
 $query=$db->query($request);
 
 if(isset($_GET['id'])){$id=$_GET['id'];}
-if(isset($_GET['page'])){
+if(isset($_GET['page']))
+{
     $page=$_GET['page'];
-    if ($page=='edit' && isset($_GET['id'])){
+    if ($page=='edit' && isset($_GET['id']))
+    {
         $sql="SELECT * FROM mysqli.reservations
-    WHERE ID=".$id;
+              WHERE ID=".$id;
         $qEdit=$db->query($sql);
         $reservation = new Reservation;
         $_SESSION['reserv'] = $reservation;
@@ -35,10 +38,11 @@ if(isset($_GET['page'])){
         $reservation->setAssurance($row['Assurance']);
         $reservation->setDestination($row['Destination']);
         $SQL="SELECT * FROM mysqli.passengers
-        WHERE Reservation=".$id;
+              WHERE Reservation=".$id;
         $qEditBis=$db->query($SQL);
         $i=0;
-        while($line = $qEditBis->fetch_array()) {
+        while($line = $qEditBis->fetch_array())
+        {
             array_push($passengers, array($line['Name']));
             array_push($passengers[$i], $line['Age']);
             $i+=1;
@@ -50,17 +54,18 @@ if(isset($_GET['page'])){
         header('location:../index.php');
 
     }
-    if ($page=='del'){
+    if ($page=='del')
+    {
         $sql="SELECT * FROM mysqli.reservations
-    WHERE ID=".$id;
+              WHERE ID=".$id;
         $qEdit=$db->query($sql);
         $reservation = new Reservation;
         $_SESSION["reserv"] = $reservation;
         $SQL="DELETE FROM mysqli.passengers
-        WHERE Reservation=".$id;
+              WHERE Reservation=".$id;
         $qEditBis=$db->query($SQL);
         $SQL="DELETE FROM mysqli.reservations
-        WHERE ID=".$id;
+              WHERE ID=".$id;
         $qEditBis=$db->query($SQL);
         session_destroy();
 
