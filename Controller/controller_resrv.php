@@ -115,8 +115,6 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                 {
                     $dest=$reservation->getDestination();
                     $insu=$reservation->AssuranceCheck();
-                    var_dump(intval($reservation->getPlace()));
-                    var_dump($reservation->getOldPlace());
                     if ($reservation->getReservID()!=NULL)
                     {
                         $sql = "UPDATE mysqli.reservations SET Destination='".$dest."',Assurance='".$insu."' 
