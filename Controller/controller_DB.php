@@ -7,29 +7,19 @@
 
 
 
-session_start();
+
 include_once("../Model/model.php");
 
 //each controller calls the model that are needed
 
 /*This will be the logic file were the data will be calculated*/
 
-$passengers=array();
-$db = new mysqli('localhost', 'root', '', 'mysqli') or die('Could not select database');
-if ($db->connect_errno) {
-    echo 'Echec lors de la connexion à MySQLi : ('.$db->connect_errno.') '.$db->connect_error;
-}
-$request="SELECT * FROM mysqli.reservations";
-$query=$db->query($request);
-include("../View/view_checkDB.php");
-$db->close();
 
 $db = new mysqli('localhost', 'root', '', 'mysqli') or die('Could not select database');
 if ($db->connect_errno) {
     echo 'Echec lors de la connexion à MySQLi : ('.$db->connect_errno.') '.$db->connect_error;
 }
 $request="SELECT * FROM mysqli.reservations";
-
 $query=$db->query($request);
 
 if(isset($_GET['id'])){$id=$_GET['id'];}
@@ -79,8 +69,6 @@ if(isset($_GET['page'])){
 
     }
 }
-
-?>
 
 
 

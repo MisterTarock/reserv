@@ -26,8 +26,7 @@ Autor: Paolo De Keyzer, 13201
 
     <div class="row">
         <div class="col-md-12">
-            <!--to make a big headline//-->
-            <h1>Bogota Airlines</h1>
+            <h1>Bogota Airlines</h1> <!--to make a big headline//-->
             <h2><b>Validation des Réservations</b></h2>
             <text>
                 Nous vous prions de bien reconsulter vos données afin d'être sûr qu'elle soient exacte.
@@ -44,8 +43,7 @@ Autor: Paolo De Keyzer, 13201
         <div class="row">
             <div class="col-md-12">
                 <table class="table" style="text-align:center">
-                    <!--To make the title for the table-->
-                    <label for="exampleInputName1">Récapitulatif</label>
+                    <label for="exampleInputName1">Récapitulatif</label>  <!--To make the title for the table-->
                     <tr>
                         <!--To make the title for the column-->
                         <th style="text-align:center">Destination:</th> <th style="text-align:center">Nombre de places:</th>
@@ -64,8 +62,7 @@ Autor: Paolo De Keyzer, 13201
         <div class="row">
             <div class="col-md-12">
                 <table class="table" style="text-align:center">
-                    <!--To make the title for the table-->
-                    <label for="exampleInputName1">Personnes</label>
+                    <label for="exampleInputName1">Personnes</label>  <!--To make the title for the table-->
                     <tr>
                         <!--To make the title for the column-->
                         <th style="text-align:center">Nom:</th> <th style="text-align:center">Age:</th>
