@@ -26,7 +26,8 @@ Autor: Paolo De Keyzer, 13201
 
     <div class="row">
         <div class="col-md-12">
-            <h1>Bogota Airlines</h1> <!--to make a big headline//-->
+            <!--to make a big headline//-->
+            <h1>Bogota Airlines</h1>
             <h2><b>Confirmation des billets</b></h2>
             <text>
                 Votre demande à bien été traitée, merci de payer celle-ci au plus vite sur notre compte.
@@ -80,9 +81,7 @@ Autor: Paolo De Keyzer, 13201
 
                 <span class="glyphicon glyphicon-fast-forward"></span>
             </button>
-            <?php
-            $_SESSION['reserv']=serialize($reservation);
-            ?>
+
 
         </form>
         </div>
@@ -91,17 +90,7 @@ Autor: Paolo De Keyzer, 13201
 
 
 
-<!--Je sais pas pourquoi c'est là et j'ai le sentiments que ca fait bien planté ^^ -->
-<script>
-    function redirect()
-            {
-                <?php $reservation = new Reservation;
-                $_SESSION["reserv"] = $reservation;
-                 ?>
-                window.location.assign("index.php");
-            }
-    }
-</script>
+
 </div>
 </body>
 </html>

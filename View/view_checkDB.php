@@ -26,7 +26,8 @@ Autor: Paolo De Keyzer, 13201
 
     <div class="row">
         <div class="col-md-12">
-            <h1>Bogota Airlines</h1> <!--to make a big headline//-->
+            <!--to make a big headline//-->
+            <h1>Bogota Airlines</h1>
             <h2><b>Vérification de la DataBase</b></h2>
             <text>
                 Voici un listing des différentes réservations faites auprès de notre compagnie:
@@ -57,7 +58,7 @@ Autor: Paolo De Keyzer, 13201
                  echo "</td><td>" . $row['Assurance'] ."</td><td>";
                  echo '<a class="btn btn-warning" href="Controller_DB.php?id='.$row['ID'].'&page=edit" >Editer</a></td>';
                  echo '<td><a class="btn btn-warning" href="Controller_DB.php?id='.$row['ID'].'&page=del" >Supprimer</a></td></tr>';
-                 $i=0;
+
 
             }
 

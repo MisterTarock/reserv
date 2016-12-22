@@ -12,44 +12,29 @@ if ($db->connect_errno) {
     echo 'Echec lors de la connexion à MySQLi : ('.$db->connect_errno.') '.$db->connect_error;
 }
 
-include_once('Model/model.php');
+include('Model/model.php');
 
-
-
-if(array_key_exists('reserv',$_SESSION) && !empty($_SESSION['reserv']) && isset($_SESSION['reserv'])) {
-
-    if (NULL!=(unserialize($_SESSION['reserv']))) {
-        unserialize($_SESSION['reserv']);
-        $reservation=$_SESSION['reserv'];
-
-    }
-    else{
-        session_destroy();
-        $reservation=new Reservation();
-        $_SESSION['reserv']=$reservation;
-    }
-}
-else{
-    $reservation=new Reservation();
-    $_SESSION['reserv']=$reservation;
-}
-
-
- //each controller calls the model that are needed
 
 /*This will be the logic file were the data will be calculated*/
 
 
+if(!isset($_SESSION['reserv'])){
+    $reservation=new Reservation();
+    $_SESSION['reserv']=serialize($reservation);
 
+}
+else{
+    $reservation=unserialize($_SESSION['reserv']);
+}
 
-$passengers=array();
 $nameErr=array();
 $ageErr=array();
+$passengers=array();
 
 
 
 /** gets the step from current form
- *  the step help us to know where we are in the recording process of a reservation
+the step help us to know where we are in the recording process of a reservation
  **/
 $step = isset($_POST['step']) ? $_POST['step'] : NULL;
 if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
@@ -80,7 +65,9 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                     $reservation->setDestErr("Destination requise");
                     $reservation->setError(true);
                 } else {
-                    $reservation->setDestination($_POST['destination']);
+                    //To protect us against XSS injection we set an "htmlspecialchars"
+                    // to render the html and javascript as plain text in our input
+                    $reservation->setDestination(htmlspecialchars($_POST['destination']) );
                     $reservation->setDestErr("");
                 }
                 if (empty($_POST["places"])) {
@@ -88,17 +75,17 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                     $reservation->setError(true);}
                 //to insure us that the number will be between the span of the numbers attended
                 //already taken by the min and max value of the type number
-                else if ($_POST["places"]<1 || $_POST["places"]>10) {
+                else if (htmlspecialchars($_POST["places"]<1 || $_POST["places"]>10)) {
                     $reservation->setPlacesErr("Entrer un nombre de places valide (entre 1 et 10)");
                     $reservation->setError(true);
                 } else {
-                    $reservation->setPlace($_POST['places']);
+                    $reservation->setPlace(htmlspecialchars($_POST['places']));
                     $reservation->setPlacesErr("");
                 }
 
 
 
-                $reservation->setPlace($_POST['places']);
+                $reservation->setPlace(htmlspecialchars($_POST['places']));
                 if (isset($_POST["assurance"])){
 
                     $reservation->setAssurance('Yes');
@@ -117,12 +104,10 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                     $dest=$reservation->getDestination();
                     $insu=$reservation->AssuranceCheck();
                     if ($reservation->getReservID()!=NULL){
-                        $sql = "UPDATE mysqli.reservations
-           SET Destination='".$dest."',Assurance='".$insu."' WHERE ID=".$reservation->getReservID();
+                        $sql = "UPDATE mysqli.reservations SET Destination='".$dest."',Assurance='".$insu."' WHERE ID=".$reservation->getReservID();
                     }
                     else {
-                        $sql = "INSERT INTO mysqli.reservations (Destination, Assurance)
-           VALUES ('$dest','$insu') ";}
+                        $sql = "INSERT INTO mysqli.reservations (Destination, Assurance) VALUES ('$dest','$insu') ";}
                     if ($db->query($sql) == true) {
 
                         $id_insert = $db->insert_id;
@@ -132,6 +117,7 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                         echo 'Error inserting record: '.$db->error;
                     }
                     $_SESSION['reserv']=serialize($reservation);
+                    var_dump($_SESSION['reserv']);
                     include('View/view_detail.php');
                     break;
                 }
@@ -167,8 +153,7 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                 $reservation->setError(false);
                 $id_travel = $reservation->getReservID();
                 if ($reservation->getPassengers()!=NULL){
-                    $clear="DELETE FROM mysqli.passengers
-WHERE Reservation=".$reservation->getReservID();
+                    $clear="DELETE FROM mysqli.passengers WHERE Reservation=".$reservation->getReservID();
                     $db->query($clear);
                 }
 
@@ -181,7 +166,7 @@ WHERE Reservation=".$reservation->getReservID();
 
                         $reservation->setError(true);
                     } else {
-                        array_push($passengers, array($_POST["exampleInputName" . $i]));
+                        array_push($passengers, array(htmlspecialchars($_POST["exampleInputName" . $i])));
                         array_push($nameErr,"");
 
                     }
@@ -197,9 +182,9 @@ WHERE Reservation=".$reservation->getReservID();
                         $dude=$passengers[$i][0];
                         $dudesAge=$passengers[$i][1];
 
-
-                        $voyager = "INSERT INTO mysqli.passengers( Name, Age, Reservation)
-                        VALUES( '$dude', '$dudesAge', '$id_travel')";}
+                        //We use "mysql_real_escape_string" to conserve the symbol as plain text
+                        // and protect our SQL ataBase
+                        $voyager = "INSERT INTO mysqli.passengers( Name, Age, Reservation) VALUES('$dude', '$dudesAge', '$id_travel')";}
 
                         if ($db->query($voyager) == true) {
                             //echo 'Record updated successfully';
@@ -264,6 +249,8 @@ WHERE Reservation=".$reservation->getReservID();
                 break;
             }
             else if (isset($_POST['return']) && $_POST['return']=="Retour à la page précedente"){
+
+                $_SESSION['reserv']=serialize($reservation);
                 include('View/view_valid.php');
                 $step=3;
 
