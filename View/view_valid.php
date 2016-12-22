@@ -8,13 +8,19 @@ Autor: Paolo De Keyzer, 13201
 <html>
 <head>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
 
     <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+          crossorigin="anonymous">
 
     <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
 
     <link rel="stylesheet" type="text/css" href="CSS\style.css">
     <title>Validation</title> <!-- to name the page//-->
@@ -46,13 +52,18 @@ Autor: Paolo De Keyzer, 13201
                     <label for="exampleInputName1">Récapitulatif</label>  <!--To make the title for the table-->
                     <tr>
                         <!--To make the title for the column-->
-                        <th style="text-align:center">Destination:</th> <th style="text-align:center">Nombre de places:</th>
+                        <th style="text-align:center">Destination:</th>
+                        <th style="text-align:center">Nombre de places:</th>
                     </tr>
 
                     <tbody>
                     <tr>
-                        <td><?php echo $reservation->getDestination(); ?></td>
-                        <td><?php echo $reservation->getPlace(); ?></td>
+                        <td>
+                            <?php echo $reservation->getDestination(); ?>
+                        </td>
+                        <td>
+                            <?php echo $reservation->getPlace(); ?>
+                        </td>
                     </tr>
 
                 </table>
@@ -65,23 +76,28 @@ Autor: Paolo De Keyzer, 13201
                     <label for="exampleInputName1">Personnes</label>  <!--To make the title for the table-->
                     <tr>
                         <!--To make the title for the column-->
-                        <th style="text-align:center">Nom:</th> <th style="text-align:center">Age:</th>
+                        <th style="text-align:center">Nom:</th>
+                        <th style="text-align:center">Age:</th>
                     </tr>
 
                     <tbody>
                     <tr>
-                        <td><?php
-                            $people=$reservation->getPassengers();
-                            for ($i=1;$i<=$reservation->getPlace();$i++){
-                            echo "<p >".$reservation->getPassengers()[$i-1][0]."</p>";
-                            }
+                        <td>
+                            <?php
+                                $people=$reservation->getPassengers();
+                                for ($i=1;$i<=$reservation->getPlace();$i++)
+                                {
+                                    echo "<p >".$reservation->getPassengers()[$i-1][0]."</p>";
+                                }
                             ?>
                         </td>
-                        <td><?php
-                            $people=$reservation->getPassengers();
-                            for ($i=1;$i<=$reservation->getPlace();$i++){
-                                echo "<p >".$reservation->getPassengers()[$i-1][1]."</p>";
-                            }
+                        <td>
+                            <?php
+                                $people=$reservation->getPassengers();
+                                for ($i=1;$i<=$reservation->getPlace();$i++)
+                                {
+                                    echo "<p >".$reservation->getPassengers()[$i-1][1]."</p>";
+                                }
                             ?>
                         </td>
                     </tr>
@@ -92,18 +108,18 @@ Autor: Paolo De Keyzer, 13201
 
         <span class="positiv">
             <?php
-            if ($reservation->assuranceCheck()=='Yes')
-            {
-                echo 'Avec assurance annulation.';
-            }
+                if ($reservation->assuranceCheck()=='Yes')
+                {
+                    echo 'Avec assurance annulation.';
+                }
             ?>
         </span>
         <span class="error">
             <?php
-            if ($reservation->assuranceCheck()!=='Yes')
-            {
-                echo 'Sans assurance annulation.';
-            }
+                if ($reservation->assuranceCheck()!=='Yes')
+                {
+                    echo 'Sans assurance annulation.';
+                }
             ?>
         </span>
 

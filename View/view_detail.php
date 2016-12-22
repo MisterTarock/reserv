@@ -8,13 +8,19 @@ Autor: Paolo De Keyzer, 13201
 <html>
 <head>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
 
     <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+          crossorigin="anonymous">
 
     <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
 
     <link rel="stylesheet" type="text/css" href="CSS\style.css">
     <title>Détails</title> <!-- to name the page//-->
@@ -42,38 +48,47 @@ Autor: Paolo De Keyzer, 13201
         <div class="row">
             <div class="col-md-12">
                 <?php
-                $reservation=unserialize($_SESSION['reserv']);
+                    $reservation=unserialize($_SESSION['reserv']);
 
-                for ($i=0;$i<$reservation->getPlace();$i++){
-
-                    echo'<div class="form-group">';
-                    if ($reservation->getNameErr()!=[] && isset($reservation->getNameErr()[$i]) && $reservation->getNameErr()[$i] != "")
+                    for ($i=0;$i<$reservation->getPlace();$i++)
                     {
-                        echo "<span class='error'> ".$reservation->getNameErr()[$i]."</span><br>";
-                    }
-                    echo'<label for="exampleInputName'.$i.'">Nom</label>';
-                    echo'<input type="name" class="form-control" maxlength="30" id="exampleInputName'.$i.'" name="exampleInputName'.$i.'" placeholder="Nom"';
-                    if (!empty($reservation->getPassengers()[$i][0])){
-                        echo 'value='.$reservation->getPassengers()[$i][0].'>';
-                    }
-                    else{
-                        echo '>';
-                    }
-                    echo'</div>';
-                    echo'<div class="form-group">';
-                    if ($reservation->getAgeErr()!=[] && isset($reservation->getAgeErr()[$i]) && $reservation->getAgeErr()[$i] != "")
-                    {
-                        echo "<span class='error'> ".$reservation->getAgeErr()[$i]."</span><br>";
-                    }
-                    echo'<label for="exampleInputAge'.$i.'">Age</label>';
-                    echo'<input type="number" class="form-control" min="1" max="125" id="exampleInputAge'.$i.'" name="exampleInputAge'.$i.'" placeholder="Age" ';
-                    if (!empty($reservation->getPassengers()[$i][1])){
-                        echo 'value='.$reservation->getPassengers()[$i][1].'>';
-                    }
-                    else{
-                        echo '>';
-                    }
-                    echo'</div>';}
+                        echo'<div class="form-group">';
+                        if ($reservation->getNameErr()!=[]
+                            && isset($reservation->getNameErr()[$i])
+                            && $reservation->getNameErr()[$i] != "")
+                        {
+                            echo "<span class='error'> ".$reservation->getNameErr()[$i]."</span><br>";
+                        }
+                        echo'<label for="exampleInputName'.$i.'">Nom</label>';
+                        echo'<input type="name" class="form-control" maxlength="30" id="exampleInputName'.$i.'" 
+                                    name="exampleInputName'.$i.'" placeholder="Nom"';
+                        if (!empty($reservation->getPassengers()[$i][0]))
+                        {
+                            echo 'value='.$reservation->getPassengers()[$i][0].'>';
+                        }
+                        else
+                        {
+                            echo '>';
+                        }
+                        echo'</div>';
+                        echo'<div class="form-group">';
+                        if ($reservation->getAgeErr()!=[]
+                            && isset($reservation->getAgeErr()[$i])
+                            && $reservation->getAgeErr()[$i] != "")
+                        {
+                            echo "<span class='error'> ".$reservation->getAgeErr()[$i]."</span><br>";
+                        }
+                        echo'<label for="exampleInputAge'.$i.'">Age</label>';
+                        echo'<input type="number" class="form-control" min="1" max="125" id="exampleInputAge'.$i.'" 
+                                    name="exampleInputAge'.$i.'" placeholder="Age" ';
+                        if (!empty($reservation->getPassengers()[$i][1])){
+                            echo 'value='.$reservation->getPassengers()[$i][1].'>';
+                        }
+                        else
+                        {
+                            echo '>';
+                        }
+                        echo'</div>';}
                 ?>
             </div>
         </div>
