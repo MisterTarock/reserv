@@ -5,7 +5,7 @@
  * Autor: Paolo De Keyzer, 13201
  */
 
-
+//database opening with error management used in the whole script
 $db = new mysqli('localhost', 'root', '', 'mysqli') or die('Could not select database');
 
 if ($db->connect_errno)
@@ -18,7 +18,7 @@ include('Model/model.php');
 
 /*This will be the logic file were the data will be calculated*/
 
-
+//check if there is an existing Session. If so, the programs loads it. If not,  it creates a new one
 if(!isset($_SESSION['reserv']))
 {
     $reservation=new Reservation();
@@ -34,9 +34,7 @@ $ageErr=array();
 $passengers=array();
 
 
-/** gets the step from current form
-the step help us to know where we are in the recording process of a reservation
- **/
+/*Since we stay always on the same controller, we use a step system in order to navigate trough the pages*/
 $step = isset($_POST['step']) ? $_POST['step'] : NULL;
 if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
 {
@@ -46,11 +44,15 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
          *  redirection to the correct view according to that
          **/
 
+
         case 1:
+            //checks if the checkbox is checked
             if (isset($_SESSION['assurance']))
             {
                 $reservation->setAsssurance(true);
             }
+            //In case we click on the "Annuler la réservation" button , it destroys the session
+            // and goes back to homepage
             if (isset($_POST['cancel']) && $_POST['cancel']=='Annuler la réservation')
             {
                 session_destroy();
@@ -62,10 +64,15 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
 
             else
             {
+                //various errors management (checks if destination/#of places is empty) and fills the Session if no
+                // error is thrown
+
 
                 if (empty($_POST["destination"]))
                 {
+                    // in case of an error , it displays the type above the input
                     $reservation->setDestErr("Destination requise");
+                    //this error is checked at the end of the step
                     $reservation->setError(true);
                 }
                 else
@@ -76,6 +83,7 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                     $reservation->setDestErr("");
                 }
 
+                //same error management than the destination
                 if (empty($_POST["places"]))
                 {
                     $reservation->setPlacesErr("Entrer un nombre de places");
@@ -84,6 +92,7 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                 //already taken by the min and max value of the type number
                 else if (htmlspecialchars($_POST["places"]<1 || $_POST["places"]>10))
                 {
+                    //we added a maximum of 10 bookable places at once
                     $reservation->setPlacesErr("Entrer un nombre de places valide (entre 1 et 10)");
                     $reservation->setError(true);
                 }
@@ -94,9 +103,11 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                 }
 
 
+                //stores the number of places
                 $reservation->setPlace(htmlspecialchars($_POST['places']));
                 if (isset($_POST["assurance"])){
 
+                    //stores if there is an insurance or not
                     $reservation->setAssurance('Yes');
                 }
                 else
@@ -105,6 +116,9 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                 }
 
 
+                //here we check if there has been any error. If so, we reload the page with the errors displayed
+                // (see view). If not, we go to the next step. (the step is incremented in the view. here we redirect
+                // to index.
                 if($reservation->getError()==true)
                 {
                     $_SESSION['reserv']=serialize($reservation);
