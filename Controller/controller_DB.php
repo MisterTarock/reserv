@@ -7,7 +7,7 @@
 
 
 
-session_start();
+
 include_once("../Model/model.php");
 
 //each controller calls the model that are needed
