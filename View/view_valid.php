@@ -21,9 +21,11 @@ Autor: Paolo De Keyzer, 13201
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
             crossorigin="anonymous"></script>
-
+    <!--Our CSS-->
     <link rel="stylesheet" type="text/css" href="CSS\style.css">
-    <title>Validation</title> <!-- to name the page//-->
+
+
+    <title>Validation</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
@@ -32,7 +34,7 @@ Autor: Paolo De Keyzer, 13201
 
     <div class="row">
         <div class="col-md-12">
-            <h1>Bogota Airlines</h1> <!--to make a big headline//-->
+            <h1>Bogota Airlines</h1>
             <h2><b>Validation des Réservations</b></h2>
             <text>
                 Nous vous prions de bien reconsulter vos données afin d'être sûr qu'elle soient exacte.
@@ -43,117 +45,117 @@ Autor: Paolo De Keyzer, 13201
         </div>
     </div>
 
+    <!--To apply CSS by use of the id "detail" ang define the size and the color of our form -->
+    <div id="detail">
+        <form action="index.php" method="POST">
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table" style="text-align:center">
+                        <label for="exampleInputName1">Récapitulatif</label>  <!--To make the title for the table-->
+                        <tr>
+                            <!--To make the title for the column-->
+                            <th style="text-align:center">Destination:</th>
+                            <th style="text-align:center">Nombre de places:</th>
+                        </tr>
 
-<div id="detail">
-    <form action="index.php" method="POST">
-        <div class="row">
-            <div class="col-md-12">
-                <table class="table" style="text-align:center">
-                    <label for="exampleInputName1">Récapitulatif</label>  <!--To make the title for the table-->
-                    <tr>
-                        <!--To make the title for the column-->
-                        <th style="text-align:center">Destination:</th>
-                        <th style="text-align:center">Nombre de places:</th>
-                    </tr>
+                        <tbody>
+                        <tr>
+                            <td>
+                                <?php echo $reservation->getDestination(); ?>
+                            </td>
+                            <td>
+                                <?php echo $reservation->getPlace(); ?>
+                            </td>
+                        </tr>
 
-                    <tbody>
-                    <tr>
-                        <td>
-                            <?php echo $reservation->getDestination(); ?>
-                        </td>
-                        <td>
-                            <?php echo $reservation->getPlace(); ?>
-                        </td>
-                    </tr>
-
-                </table>
+                    </table>
+                </div>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="col-md-12">
-                <table class="table" style="text-align:center">
-                    <label for="exampleInputName1">Personnes</label>  <!--To make the title for the table-->
-                    <tr>
-                        <!--To make the title for the column-->
-                        <th style="text-align:center">Nom:</th>
-                        <th style="text-align:center">Age:</th>
-                    </tr>
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table" style="text-align:center">
+                        <label for="exampleInputName1">Personnes</label>  <!--To make the title for the table-->
+                        <tr>
+                            <!--To make the title for the column-->
+                            <th style="text-align:center">Nom:</th>
+                            <th style="text-align:center">Age:</th>
+                        </tr>
 
-                    <tbody>
-                    <tr>
-                        <td>
-                            <?php
-                                $people=$reservation->getPassengers();
-                                for ($i=1;$i<=$reservation->getPlace();$i++)
-                                {
-                                    echo "<p >".$reservation->getPassengers()[$i-1][0]."</p>";
-                                }
-                            ?>
-                        </td>
-                        <td>
-                            <?php
-                                $people=$reservation->getPassengers();
-                                for ($i=1;$i<=$reservation->getPlace();$i++)
-                                {
-                                    echo "<p >".$reservation->getPassengers()[$i-1][1]."</p>";
-                                }
-                            ?>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+                        <tbody>
+                        <tr>
+                            <td>
+                                <?php
+                                    $people=$reservation->getPassengers();
+                                    for ($i=1;$i<=$reservation->getPlace();$i++)
+                                    {
+                                        echo "<p >".$reservation->getPassengers()[$i-1][0]."</p>";
+                                    }
+                                ?>
+                            </td>
+                            <td>
+                                <?php
+                                    $people=$reservation->getPassengers();
+                                    for ($i=1;$i<=$reservation->getPlace();$i++)
+                                    {
+                                        echo "<p >".$reservation->getPassengers()[$i-1][1]."</p>";
+                                    }
+                                ?>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
 
-        <span class="positiv">
-            <?php
-                if ($reservation->assuranceCheck()=='Yes')
-                {
-                    echo 'Avec assurance annulation.';
-                }
-            ?>
-        </span>
-        <span class="error">
-            <?php
-                if ($reservation->assuranceCheck()!=='Yes')
-                {
-                    echo 'Sans assurance annulation.';
-                }
-            ?>
-        </span>
+            <span class="positiv">
+                <?php
+                    if ($reservation->assuranceCheck()=='Yes')
+                    {
+                        echo 'Avec assurance annulation.';
+                    }
+                ?>
+            </span>
+            <span class="error">
+                <?php
+                    if ($reservation->assuranceCheck()!=='Yes')
+                    {
+                        echo 'Sans assurance annulation.';
+                    }
+                ?>
+            </span>
 
-        <div class="row">
-            <br>
-        </div>
-
-        <div class="row">
-            <div class="col-md-12">
-                <input type="hidden" name="step" value="3">
-
-                <button class="btn btn-primary" name="return" type="submit" value="Retour à la page précedente">
-                    <span class="glyphicon glyphicon-step-backward"></span>
-                    Retour à la page précedente
-                </button>
-                <button class="btn btn-primary" name="submit" type="submit">
-                    Confirmer
-                    <span class="glyphicon glyphicon-thumbs-up"></span>
-                </button>
+            <div class="row">
+                <br>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="col-md-12">
-                <button class="btn btn-danger" name="cancel" type="submit" value="Annuler la réservation">
-                    Annuler la réservation
-                    <span class="glyphicon glyphicon-alert"></span>
-                </button>
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="hidden" name="step" value="3">
+
+                    <button class="btn btn-primary" name="return" type="submit" value="Retour à la page précedente">
+                        <span class="glyphicon glyphicon-step-backward"></span>
+                        Retour à la page précedente
+                    </button>
+                    <button class="btn btn-primary" name="submit" type="submit">
+                        Confirmer
+                        <span class="glyphicon glyphicon-thumbs-up"></span>
+                    </button>
+                </div>
             </div>
-        </div>
 
-    </form>
+            <div class="row">
+                <div class="col-md-12">
+                    <button class="btn btn-danger" name="cancel" type="submit" value="Annuler la réservation">
+                        Annuler la réservation
+                        <span class="glyphicon glyphicon-alert"></span>
+                    </button>
+                </div>
+            </div>
 
-</div>
+        </form>
+
+    </div>
 
 </div>
 </body>

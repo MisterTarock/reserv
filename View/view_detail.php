@@ -21,9 +21,11 @@ Autor: Paolo De Keyzer, 13201
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
             crossorigin="anonymous"></script>
-
+    <!--Our CSS-->
     <link rel="stylesheet" type="text/css" href="CSS\style.css">
-    <title>Détails</title> <!-- to name the page//-->
+
+
+    <title>Détails</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
@@ -32,7 +34,7 @@ Autor: Paolo De Keyzer, 13201
 
     <div class="row">
         <div class="col-md-12">
-            <h1>Bogota Airlines</h1> <!--to make a big headline//-->
+            <h1>Bogota Airlines</h1>
             <h2><b>Détail des Réservations</b></h2>
             <text>
                 Afin de pouvoir vous fournir un vol le plus agréable possible, nous désirons connaître
@@ -43,6 +45,7 @@ Autor: Paolo De Keyzer, 13201
         </div>
     </div>
 
+    <!--To apply CSS by use of the id "detail" ang define the size and the color of our form -->
     <div id="detail">
     <form action="index.php" method="POST">
         <div class="row">

@@ -21,9 +21,10 @@ Autor: Paolo De Keyzer, 13201
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
             crossorigin="anonymous"></script>
-
+    <!--Our CSS-->
     <link rel="stylesheet" type="text/css" href="CSS\style.css">
-    <!-- to name the page//-->
+
+
     <title>Réservation</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -33,7 +34,8 @@ Autor: Paolo De Keyzer, 13201
 
     <div class="row">
         <div class="col-md-5">
-            <h1>Bogota Airlines</h1><!--to make a big headline//-->
+
+            <h1>Bogota Airlines</h1>
             <br>
             <h2><b>Reservation</b></h2>
             <text>
@@ -47,15 +49,15 @@ Autor: Paolo De Keyzer, 13201
         </div>
     </div>
 
+    <!--To apply CSS by use of the id "reserv" ang define the size and the color of our form -->
     <div id="reserv" class="col-md-12">
 
         <div class="row">
             <div class="col-md-4">
                 <table class="table" style="text-align:center">
-                    <!--To make the title for the table-->
                     <caption><b>Tarifs</b></caption>
+
                     <tr>
-                        <!--To make the title for the column-->
                         <th style="text-align:center">Âge</th> <th style="text-align:center">Prix</th>
                     </tr>
 
@@ -75,10 +77,10 @@ Autor: Paolo De Keyzer, 13201
         <div class="row">
             <div class="col-md-12">
                 <table class="table">
-                    <caption><b>Réservation</b></caption>  <!--To make the title for the table-->
+                    <caption><b>Réservation</b></caption>
 
                     <tr>
-                        <td style="text-align:center"><b>Destination:</b></td> <!--To make the title for the line-->
+                        <td style="text-align:center"><b>Destination:</b></td>
                         <?php
                             //The maxlength parameter protect us against anyone who want
                             // to past a complete book in input in place of the destination
