@@ -28,11 +28,12 @@ class Reservation
     private $_step;
 
 
-    //To make the construct
+
     //We have to set all the variable from this class at once
 
     //To set the value and define them
     //We have to set each value at the time
+    //and every variable is retrievable with the getters
     public function setReservID($reservID)
     {
         $this->_reservID=$reservID;

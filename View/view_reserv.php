@@ -86,6 +86,7 @@ Autor: Paolo De Keyzer, 13201
                             // to past a complete book in input in place of the destination
                             echo '<td><input class="form-control" type="text" maxlength="30" 
                                              name="destination" placeholder="Destination" ';
+                            //retrieve session values if already set
                             if (!empty($reservation->getDestination()))
                             {
                                 echo 'value='.$reservation->getDestination().'>';
@@ -96,6 +97,7 @@ Autor: Paolo De Keyzer, 13201
                             }
                             echo '</td>';
 
+                            //throws error if field empty
                             if ($reservation->getDestErr() != "")
                             {
                                 echo "<span class='error'> ".$reservation->getDestErr()."</span><br>";
@@ -132,6 +134,7 @@ Autor: Paolo De Keyzer, 13201
                         <td>
                             <input type="checkbox" name="assurance" value="true"
                                 <?php
+                                    //checks if checkbox is checked
                                     if($reservation->AssuranceCheck()=='Yes')
                                     {
                                         echo 'checked';
