@@ -13,8 +13,8 @@
 
 class Reservation
 {
-
-    private $_destination; //to init the different variable
+    //to init the different variable
+    private $_destination;
     private $_place;
     private $_assurance;
     private $_passengers=array();
@@ -32,40 +32,48 @@ class Reservation
 
     //To set the value and define them
     //We have to set each value at the time
-    public function setReservID($reservID){
+    public function setReservID($reservID)
+    {
         $this->_reservID=$reservID;
     }
-    public function getReservID(){
+    public function getReservID()
+    {
         return $this->_reservID;
     }
-    public function setStep($step){
+    public function setStep($step)
+    {
         $this->_step=$step;
     }
-    public function getStep(){
+    public function getStep()
+    {
         return $this->_step;
     }
     public function setDestination($destination)
     {
         $this->_destination = $destination;
     }
-    public function getDestination(){
+    public function getDestination()
+    {
         return $this->_destination;
     }
     public function setPlace($place)
     {
         $this->_place = $place;
     }
-    public function getPlace(){
+    public function getPlace()
+    {
         return $this->_place;
     }
     public function setAssurance($assurance)
     {
         $this->_assurance = $assurance;
     }
-    public function assuranceCheck(){
+    public function assuranceCheck()
+    {
         return $this->_assurance;
     }
-    public function getPassengers(){
+    public function getPassengers()
+    {
         return $this->_passengers;
     }
     public function setPersonne($person)
@@ -76,35 +84,40 @@ class Reservation
     {
         $this->_nameErr = $nameErr;
     }
-    public function getNameErr(){
+    public function getNameErr()
+    {
         return $this->_nameErr;
     }
     public function setAgeErr($ageErr)
     {
         $this->_ageErr = $ageErr;
     }
-    public function getAgeErr(){
+    public function getAgeErr()
+    {
         return $this->_ageErr;
     }
     public function setError($error)
     {
         $this->_error = $error;
     }
-    public function getError(){
+    public function getError()
+    {
         return $this->_error;
     }
     public function setPlacesErr($placesErr)
     {
         $this->_placesErr = $placesErr;
     }
-    public function getPlacesErr(){
+    public function getPlacesErr()
+    {
         return $this->_placesErr;
     }
     public function setDestErr($destErr)
     {
         $this->_destErr = $destErr;
     }
-    public function getDestErr(){
+    public function getDestErr()
+    {
         return $this->_destErr;
     }
 
