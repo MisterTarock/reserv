@@ -115,11 +115,14 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                 {
                     $dest=$reservation->getDestination();
                     $insu=$reservation->AssuranceCheck();
+                    var_dump(intval($reservation->getPlace()));
+                    var_dump($reservation->getOldPlace());
                     if ($reservation->getReservID()!=NULL)
                     {
                         $sql = "UPDATE mysqli.reservations SET Destination='".$dest."',Assurance='".$insu."' 
                                 WHERE ID=".$reservation->getReservID();
                     }
+
 
                     else
                     {
@@ -171,7 +174,11 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
             {
                 $reservation->setError(false);
                 $id_travel = $reservation->getReservID();
-
+                if ($reservation->getReservID()!=NULL && $reservation->getPlace()!=$reservation->getOldPlace())
+                {
+                    $sql = "DELETE FROM mysqli.passengers
+                                WHERE Reservation=".$id_travel;
+                    $qEditBis=$db->query($sql);}
                 for ($i = 0; $i < $reservation->getPlace(); $i++)
                 {
                     if (empty($_POST["exampleInputName" . $i]))
@@ -205,8 +212,21 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
 
                         //We use "mysql_real_escape_string" to conserve the symbol as plain text
                         // and protect our SQL ataBase
-                        $voyager = "INSERT INTO mysqli.passengers( Name, Age, Reservation) 
+                        if ($reservation->getReservID()!=NULL && $reservation->getPlace()!=$reservation->getOldPlace())
+                        {
+                            $voyager = "INSERT INTO mysqli.passengers( Name, Age, Reservation) 
                                     VALUES('$dude', '$dudesAge', '$id_travel')";
+                        }
+                        if($reservation->getPassengers()!=NULL  && intval($reservation->getPlace())==$reservation->getOldPlace())
+                        {
+                            $voyager = "UPDATE mysqli.passengers SET Name='$dude', Age='$dudesAge' 
+                                    WHERE Reservation=".$id_travel;
+                        }
+                        else
+                        {
+                            $voyager = "INSERT INTO mysqli.passengers( Name, Age, Reservation) 
+                                    VALUES('$dude', '$dudesAge', '$id_travel')";
+                        }
                     }
 
 

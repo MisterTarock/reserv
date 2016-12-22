@@ -9,20 +9,27 @@
 
 
 include_once("../Model/model.php");
-
+session_start();
 //each controller calls the model that are needed
 
 /*This will be the logic file were the data will be calculated*/
-
-
+$passengers=array();
 $db = new mysqli('localhost', 'root', '', 'mysqli') or die('Could not select database');
-if ($db->connect_errno)
-{
+if ($db->connect_errno) {
     echo 'Echec lors de la connexion à MySQLi : ('.$db->connect_errno.') '.$db->connect_error;
 }
 $request="SELECT * FROM mysqli.reservations";
 $query=$db->query($request);
-include('../View/view_checkDB.php');
+include("../View/view_checkDB.php");
+$db->close();
+
+$db = new mysqli('localhost', 'root', '', 'mysqli') or die('Could not select database');
+if ($db->connect_errno) {
+    echo 'Echec lors de la connexion à MySQLi : ('.$db->connect_errno.') '.$db->connect_error;
+}
+$request="SELECT * FROM mysqli.reservations";
+
+$query=$db->query($request);
 
 if(isset($_GET['id'])){$id=$_GET['id'];}
 if(isset($_GET['page']))
@@ -30,27 +37,24 @@ if(isset($_GET['page']))
     $page=$_GET['page'];
 
     if ($page=='edit' && isset($_GET['id'])){
-        $passengers=array();
-
-
         $sql="SELECT * FROM mysqli.reservations
-              WHERE ID=".$id;
+     WHERE ID=".$id;
         $qEdit=$db->query($sql);
         $reservation = new Reservation;
-        $_SESSION['reserv'] = $reservation;
+        $_SESSION["reserv"] = $reservation;
         $row=$qEdit->fetch_array(MYSQLI_ASSOC);
         $reservation->setAssurance($row['Assurance']);
         $reservation->setDestination($row['Destination']);
         $SQL="SELECT * FROM mysqli.passengers
-              WHERE Reservation=".$id;
+         WHERE Reservation=".$id;
         $qEditBis=$db->query($SQL);
         $i=0;
-        while($line = $qEditBis->fetch_array())
-        {
+        while($line = $qEditBis->fetch_array()) {
             array_push($passengers, array($line['Name']));
             array_push($passengers[$i], $line['Age']);
             $i+=1;
         }
+        $reservation->setOldPlace($i);
         $reservation->setPlace($i);
         $reservation->SetPersonne($passengers);
         $reservation->setReservID($id);
@@ -60,6 +64,7 @@ if(isset($_GET['page']))
     }
     if ($page=='del')
     {
+        echo 'Etes vous sur? Si oui Appuyez à nouveau sur le bouton Supprimer';
         $sql="SELECT * FROM mysqli.reservations
               WHERE ID=".$id;
         $qEdit=$db->query($sql);

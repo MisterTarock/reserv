@@ -16,6 +16,7 @@ class Reservation
     //to init the different variable
     private $_destination;
     private $_place;
+    private $_oldplace;
     private $_assurance;
     private $_passengers=array();
     private $_error=false;
@@ -63,6 +64,13 @@ class Reservation
     public function getPlace()
     {
         return $this->_place;
+    }
+    public function setOldPlace($place)
+    {
+        $this->_oldplace = $place;
+    }
+    public function getOldPlace(){
+        return $this->_oldplace;
     }
     public function setAssurance($assurance)
     {
