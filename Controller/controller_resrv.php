@@ -17,17 +17,7 @@ include('Model/model.php');
 
 /*This will be the logic file were the data will be calculated*/
 
-/*if(isset($_SESSION['reserv']) && $_SESSION['reserv']!=null){
-    unserialize($_SESSION['reserv']);
-    $reservation=$_SESSION['reserv'];
 
-
-}
-
-else{
-    $reservation=new Reservation();
-    $_SESSION['reserv']=$reservation;
-    var_dump($reservation);}*/
 if(!isset($_SESSION['reserv'])){
     $reservation=new Reservation();
     $_SESSION['reserv']=serialize($reservation);
