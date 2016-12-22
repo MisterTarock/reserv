@@ -8,13 +8,19 @@ Autor: Paolo De Keyzer, 13201
 <html>
 <head>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
 
     <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+          crossorigin="anonymous">
 
     <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
 
     <link rel="stylesheet" type="text/css" href="CSS\style.css">
     <title>Confirmation</title> <!-- to name the page//-->
@@ -35,27 +41,28 @@ Autor: Paolo De Keyzer, 13201
 
             <span class="error">
             <?php
-            $totalprice=0;
-            for ($i=1;$i<=$reservation->getPlace();$i++){
-                if($reservation->getPassengers()[$i-1][1]<25){
-                    $totalprice=$totalprice+10;
+                $totalprice=0;
+                for ($i=1;$i<=$reservation->getPlace();$i++)
+                {
+                    if($reservation->getPassengers()[$i-1][1]<25)
+                    {
+                        $totalprice=$totalprice+10;
+                    }
 
+                    if ($reservation->getPassengers()[$i-1][1]>25)
+                    {
+                        $totalprice=$totalprice+20;
+                    }
                 }
-
-                if ($reservation->getPassengers()[$i-1][1]>25){
-                    $totalprice=$totalprice+20;
+                if($reservation->assuranceCheck()=='Yes')
+                {
+                    $totalprice=$totalprice+5;
                 }
-
-
-            }
-            if($reservation->assuranceCheck()=='Yes'){
-                $totalprice=$totalprice+5;
-            }
-            echo $totalprice;
-            $totalprice=0;
-
+                echo $totalprice;
+                $totalprice=0;
             ?>
             </span>
+
             <text>
                 € sur le compte <span class="positiv">123-123456-12</span>
             </text>
@@ -81,13 +88,9 @@ Autor: Paolo De Keyzer, 13201
                 <span class="glyphicon glyphicon-fast-forward"></span>
             </button>
 
-
         </form>
         </div>
     </div>
-
-
-
 
 
 </div>
