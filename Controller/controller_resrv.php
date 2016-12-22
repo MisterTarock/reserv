@@ -138,7 +138,6 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                         echo 'Error inserting record: '.$db->error;
                     }
                     $_SESSION['reserv']=serialize($reservation);
-                    var_dump($_SESSION['reserv']);
                     include('View/view_detail.php');
                     break;
                 }

@@ -22,13 +22,17 @@ if ($db->connect_errno)
 }
 $request="SELECT * FROM mysqli.reservations";
 $query=$db->query($request);
+include('../View/view_checkDB.php');
 
 if(isset($_GET['id'])){$id=$_GET['id'];}
 if(isset($_GET['page']))
 {
     $page=$_GET['page'];
-    if ($page=='edit' && isset($_GET['id']))
-    {
+
+    if ($page=='edit' && isset($_GET['id'])){
+        $passengers=array();
+
+
         $sql="SELECT * FROM mysqli.reservations
               WHERE ID=".$id;
         $qEdit=$db->query($sql);
@@ -69,9 +73,7 @@ if(isset($_GET['page']))
         $qEditBis=$db->query($SQL);
         session_destroy();
 
-        header("controller_DB.php");
-        exit();
-
+        header("location:controller_DB.php");
     }
 }
 
