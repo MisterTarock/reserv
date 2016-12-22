@@ -33,7 +33,7 @@ if(isset($_GET['page']))
     if ($page=='edit' && isset($_GET['id'])){
 
         //in case of edition
-        $sql="SELECT * FROM mysqli.reservations WHERE ID=".$id;
+        $sql="SELECT * FROM mysqli.reservations WHERE ID=".$db->real_escape_string($id);
 
         $qEdit=$db->query($sql);
         $reservation = new Reservation;
@@ -42,7 +42,7 @@ if(isset($_GET['page']))
         $row=$qEdit->fetch_array(MYSQLI_ASSOC);
         $reservation->setAssurance($row['Assurance']);
         $reservation->setDestination($row['Destination']);
-        $SQL="SELECT * FROM mysqli.passengers WHERE Reservation=".$id;
+        $SQL="SELECT * FROM mysqli.passengers WHERE Reservation=".$db->real_escape_string($id);
         $qEditBis=$db->query($SQL);
         $i=0;
         //fetch the passengers from the passengers database
@@ -63,9 +63,9 @@ if(isset($_GET['page']))
     //in case of deletion
     if ($page=='del')
     {
-        $SQL="DELETE FROM mysqli.passengers WHERE Reservation=".$id;
+        $SQL="DELETE FROM mysqli.passengers WHERE Reservation=".$db->real_escape_string($id);
         $qEditBis=$db->query($SQL);
-        $SQL="DELETE FROM mysqli.reservations WHERE ID=".$id;
+        $SQL="DELETE FROM mysqli.reservations WHERE ID=".$db->real_escape_string($id);
         $qEditBis=$db->query($SQL);
         session_destroy();
 
