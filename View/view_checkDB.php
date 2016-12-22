@@ -26,8 +26,7 @@ Autor: Paolo De Keyzer, 13201
 
     <div class="row">
         <div class="col-md-12">
-            <!--to make a big headline//-->
-            <h1>Bogota Airlines</h1>
+            <h1>Bogota Airlines</h1> <!--to make a big headline//-->
             <h2><b>Vérification de la DataBase</b></h2>
             <text>
                 Voici un listing des différentes réservations faites auprès de notre compagnie:
@@ -49,16 +48,16 @@ Autor: Paolo De Keyzer, 13201
                  echo "<tr><td>" . $row['Destination'] . "</td>";
                  $flightID=$row['ID'];
                  $sql="SELECT * FROM mysqli.passengers
-                 WHERE Reservation=$flightID";
-                 $querybis=$db->query($sql);
-                 echo "<td>";
-                 while($passRow = $querybis->fetch_array()){
-                     echo $passRow['Name'] . " - " . $passRow['Age'] . " ans <br>" ;
-                 }
-                 echo "</td><td>" . $row['Assurance'] ."</td><td>";
-                 echo '<a class="btn btn-warning" href="Controller_DB.php?id='.$row['ID'].'&page=edit" >Editer</a></td>';
-                 echo '<td><a class="btn btn-warning" href="Controller_DB.php?id='.$row['ID'].'&page=del" >Supprimer</a></td></tr>';
-                 $i=0;
+                  WHERE Reservation=$flightID";
+                $querybis=$db->query($sql);
+                echo "<td>";
+                while($passRow = $querybis->fetch_array()){
+                    echo $passRow['Name'] . " - " . $passRow['Age'] . " ans <br>" ;
+                }
+                echo "</td><td>" . $row['Assurance'] ."</td><td>";
+                echo '<input type="hidden" name="id" value="<?php echo $row['.$flightID.'];?>">';
+                echo '<button class="btn btn-warning" name="edit" type="submit" value="Editer" >Editer</button></td>';
+                echo '<td><button class="btn btn-warning" name="delete" type="submit" value="Supprimer" >Supprimer</button></td></tr>';
 
             }
 
@@ -76,7 +75,17 @@ Autor: Paolo De Keyzer, 13201
 
 
 </div>
+<script>
+    function edit($i){
 
+        <?php $reservation = new Reservation;
+        $_SESSION["reserv"] = $reservation;
+        $sql="SELECT * FROM 'reservations'
+WHERE ID=".$i;
+        ?>
+    }
+
+</script>
 </body>
 </html>
 
