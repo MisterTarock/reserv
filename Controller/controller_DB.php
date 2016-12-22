@@ -64,6 +64,7 @@ if(isset($_GET['page']))
     }
     if ($page=='del')
     {
+        echo 'Etes vous sur? Si oui Appuyez à nouveau sur le bouton Supprimer';
         $sql="SELECT * FROM mysqli.reservations
               WHERE ID=".$id;
         $qEdit=$db->query($sql);
