@@ -131,9 +131,9 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                     $insu=$reservation->AssuranceCheck();
                     if ($reservation->getReservID()!=NULL)
                     {
-                        $sql = "UPDATE mysqli.reservations SET Destination='" . $db->real_escape_string($dest) .
-                               "',Assurance='" . $db->real_escape_string($insu) .
-                               "'WHERE ID=".$reservation->getReservID();
+                        $sql = "UPDATE mysqli.reservations SET Destination='" .
+                                $db->real_escape_string($dest) . "',Assurance='" .
+                                $db->real_escape_string($insu) . "'WHERE ID=".$reservation->getReservID();
                     }
 
 
@@ -197,6 +197,7 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                 {
                     $sql = "DELETE FROM mysqli.passengers WHERE Reservation=".
                             $db->real_escape_string($id_travel);
+
                     $qEditBis=$db->query($sql);}
                 for ($i = 0; $i < $reservation->getPlace(); $i++)
                 {
@@ -244,8 +245,8 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                         if($reservation->getPassengers()!=NULL
                             && intval($reservation->getPlace())==$reservation->getOldPlace())
                         {
-                            $voyager = "UPDATE mysqli.passengers SET Name='$dude', Age='$dudesAge' 
-                                        WHERE Reservation=". $db->real_escape_string($id_travel);
+                            $voyager = "UPDATE mysqli.passengers SET Name='$dude', Age='$dudesAge' WHERE Reservation=".
+                                        $db->real_escape_string($id_travel);
                         }
                         else
                         {
