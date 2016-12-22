@@ -12,30 +12,28 @@ if ($db->connect_errno) {
     echo 'Echec lors de la connexion à MySQLi : ('.$db->connect_errno.') '.$db->connect_error;
 }
 
-include_once("Model/model.php");
+include('Model/model.php');
 
- //each controller calls the model that are needed
 
 /*This will be the logic file were the data will be calculated*/
 
-if (!isset($SESSION['reserv'])){
+
+if(!isset($_SESSION['reserv'])){
     $reservation=new Reservation();
-    $SESSION['reserv']=$reservation;
+    $_SESSION['reserv']=serialize($reservation);
 
 }
-else   //If the session already exist, we retake it
-{
-    $reservation = $_SESSION["reserv"];
+else{
+    $reservation=unserialize($_SESSION['reserv']);
 }
 
-
-$passengers=array();
 $nameErr=array();
 $ageErr=array();
+$passengers=array();
 
 
 /** gets the step from current form
- *  the step help us to know where we are in the recording process of a reservation
+the step help us to know where we are in the recording process of a reservation
  **/
 $step = isset($_POST['step']) ? $_POST['step'] : NULL;
 if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
@@ -107,12 +105,12 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                         $sql = "UPDATE mysqli.reservations SET Destination='".$dest."',Assurance='".$insu."' 
                                 WHERE ID=".$reservation->getReservID();
                     }
-                    else
-                    {
-                        $sql = "INSERT INTO mysqli.reservations (Destination, Assurance) VALUES ('$dest','$insu') ";
-                    }
-                    if ($db->query($sql) == true)
-                    {
+
+                    else {
+                        $sql = "INSERT INTO mysqli.reservations (Destination, Assurance) VALUES ('$dest','$insu') ";}
+                    if ($db->query($sql) == true) {
+
+
                         $id_insert = $db->insert_id;
                         if ($reservation->getReservID()==NULL)
                         {
@@ -124,6 +122,7 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                         echo 'Error inserting record: '.$db->error;
                     }
                     $_SESSION['reserv']=serialize($reservation);
+                    var_dump($_SESSION['reserv']);
                     include('View/view_detail.php');
                     break;
                 }
@@ -177,6 +176,7 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                         $reservation->setError(true);
                     }
                     else {
+
                         array_push($passengers[$i], $_POST["exampleInputAge" . $i]);
                         array_push($ageErr,"");
                     }
@@ -254,6 +254,8 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                 break;
             }
             else if (isset($_POST['return']) && $_POST['return']=="Retour à la page précedente"){
+
+                $_SESSION['reserv']=serialize($reservation);
                 include('View/view_valid.php');
                 $step=3;
 
