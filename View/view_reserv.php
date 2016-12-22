@@ -84,7 +84,7 @@ Autor: Paolo De Keyzer, 13201
                         <?php
                             //The maxlength parameter protect us against anyone who want
                             // to past a complete book in input in place of the destination
-                            echo '<td><input class="form-control" type="text" maxlength="30" 
+                            echo '<td><input class="form-control" type="text" maxlength="40" 
                                              name="destination" placeholder="Destination" ';
                             if (!empty($reservation->getDestination()))
                             {

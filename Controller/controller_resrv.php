@@ -117,14 +117,20 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                     $insu=$reservation->AssuranceCheck();
                     if ($reservation->getReservID()!=NULL)
                     {
-                        $sql = "UPDATE mysqli.reservations SET Destination='".$dest."',Assurance='".$insu."' 
-                                WHERE ID=".$reservation->getReservID();
+                        $sql = "UPDATE mysqli.reservations SET Destination='" . $db->real_escape_string($dest) .
+                               "',Assurance='" . $db->real_escape_string($insu) .
+                               "'WHERE ID=".$reservation->getReservID();
                     }
 
 
                     else
                     {
-                        $sql = "INSERT INTO mysqli.reservations (Destination, Assurance) VALUES ('$dest','$insu') ";
+
+                        $sql = "INSERT INTO mysqli.reservations (Destination, Assurance) VALUES ('" .
+                                $db->real_escape_string($dest) . "','" .
+                                $db->real_escape_string($insu) . "') ";
+                        //To display the error
+                        //die($sql);
                     }
                     if ($db->query($sql) == true)
                     {
@@ -172,10 +178,11 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
             {
                 $reservation->setError(false);
                 $id_travel = $reservation->getReservID();
-                if ($reservation->getReservID()!=NULL && $reservation->getPlace()!=$reservation->getOldPlace())
+                if ($reservation->getReservID()!=NULL
+                    && $reservation->getPlace()!=$reservation->getOldPlace())
                 {
-                    $sql = "DELETE FROM mysqli.passengers
-                            WHERE Reservation=".$id_travel;
+                    $sql = "DELETE FROM mysqli.passengers WHERE Reservation=".
+                            $db->real_escape_string($id_travel);
                     $qEditBis=$db->query($sql);}
                 for ($i = 0; $i < $reservation->getPlace(); $i++)
                 {
@@ -210,20 +217,29 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
 
                         //We use "mysql_real_escape_string" to conserve the symbol as plain text
                         // and protect our SQL ataBase
-                        if ($reservation->getReservID()!=NULL && $reservation->getPlace()!=$reservation->getOldPlace())
+                        if ($reservation->getReservID()!=NULL
+                            && $reservation->getPlace()!=$reservation->getOldPlace())
                         {
-                            $voyager = "INSERT INTO mysqli.passengers( Name, Age, Reservation) 
-                                        VALUES('$dude', '$dudesAge', '$id_travel')";
+                            $voyager = "INSERT INTO mysqli.passengers( Name, Age, Reservation) VALUES('" .
+                                        $db->real_escape_string($dude) . "','" .
+                                        $db->real_escape_string($dudesAge) . "','" .
+                                        $db->real_escape_string($id_travel) . "')";
+                                        //To display the error
+                                        //die($sql);
                         }
-                        if($reservation->getPassengers()!=NULL  && intval($reservation->getPlace())==$reservation->getOldPlace())
+                        if($reservation->getPassengers()!=NULL
+                            && intval($reservation->getPlace())==$reservation->getOldPlace())
                         {
                             $voyager = "UPDATE mysqli.passengers SET Name='$dude', Age='$dudesAge' 
-                                        WHERE Reservation=".$id_travel;
+                                        WHERE Reservation=". $db->real_escape_string($id_travel);
                         }
                         else
                         {
-                            $voyager = "INSERT INTO mysqli.passengers( Name, Age, Reservation) 
-                                        VALUES('$dude', '$dudesAge', '$id_travel')";
+                            $voyager = "INSERT INTO mysqli.passengers( Name, Age, Reservation) VALUES('" .
+                                        $db->real_escape_string($dude) . "','" .
+                                        $db->real_escape_string($dudesAge) . "','" .
+                                        $db->real_escape_string($id_travel) . "')";
+
                         }
                     }
 
