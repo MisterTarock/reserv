@@ -132,14 +132,22 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                     //if it's the 'edit reservation' case, we update the database fields
                     if ($reservation->getReservID()!=NULL)
                     {
-                        $sql = "UPDATE mysqli.reservations SET Destination='".$dest."',Assurance='".$insu."' 
-                                WHERE ID=".$reservation->getReservID();
+                        //We use "mysql_real_escape_string" to conserve the symbol as plain text
+                        // and protect our SQL dataBase
+                        $sql = "UPDATE mysqli.reservations SET Destination='" . $db->real_escape_string($dest) .
+                               "',Assurance='" . $db->real_escape_string($insu) .
+                               "'WHERE ID=".$reservation->getReservID();
                     }
 
                     //if it's a new reservation, we create a new entry in the DB
                     else
                     {
-                        $sql = "INSERT INTO mysqli.reservations (Destination, Assurance) VALUES ('$dest','$insu') ";
+
+                        $sql = "INSERT INTO mysqli.reservations (Destination, Assurance) VALUES ('" .
+                                $db->real_escape_string($dest) . "','" .
+                                $db->real_escape_string($insu) . "') ";
+                        //To display the error
+                        //die($sql);
                     }
                     if ($db->query($sql) == true)
                     {
@@ -190,15 +198,17 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
             {
                 $reservation->setError(false);
                 $id_travel = $reservation->getReservID();
+
                 //we have to check if there is already a session with persons included (edit case) and if there is,
                 //We have to check if the number of places has chaged
 
-                if ($reservation->getReservID()!=NULL && $reservation->getPlace()!=$reservation->getOldPlace())
+                if ($reservation->getReservID()!=NULL
+                    && $reservation->getPlace()!=$reservation->getOldPlace())
                 {
                     //if the number of places have changed we have to delete all the people for the reservation in order
                     //to insert the new ones
-                    $sql = "DELETE FROM mysqli.passengers
-                            WHERE Reservation=".$id_travel;
+                    $sql = "DELETE FROM mysqli.passengers WHERE Reservation=".
+                            $db->real_escape_string($id_travel);
                     $qEditBis=$db->query($sql);}
                 //for every input we do the next things:
                 for ($i = 0; $i < $reservation->getPlace(); $i++)
@@ -236,23 +246,38 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                         $dude=$passengers[$i][0];
                         $dudesAge=$passengers[$i][1];
 
+
                         //checks if the number of places changed in case of edition
-                        if ($reservation->getReservID()!=NULL && $reservation->getPlace()!=$reservation->getOldPlace())
+
+                        if ($reservation->getReservID()!=NULL
+                            && $reservation->getPlace()!=$reservation->getOldPlace())
                         {
-                            $voyager = "INSERT INTO mysqli.passengers( Name, Age, Reservation) 
-                                        VALUES('$dude', '$dudesAge', '$id_travel')";
+                            //We use "mysql_real_escape_string" to conserve the symbol as plain text
+                            // and protect our SQL dataBase
+                            $voyager = "INSERT INTO mysqli.passengers( Name, Age, Reservation) VALUES('" .
+                                        $db->real_escape_string($dude) . "','" .
+                                        $db->real_escape_string($dudesAge) . "','" .
+                                        $db->real_escape_string($id_travel) . "')";
+                                        //To display the error
+                                        //die($sql);
                         }
-                        if($reservation->getPassengers()!=NULL  && intval($reservation->getPlace())==$reservation->getOldPlace())
+                        if($reservation->getPassengers()!=NULL
+                            && intval($reservation->getPlace())==$reservation->getOldPlace())
                         {
                             //if it's an edition but the number of places hasn't changed
                             $voyager = "UPDATE mysqli.passengers SET Name='$dude', Age='$dudesAge' 
-                                        WHERE Reservation=".$id_travel;
+                                        WHERE Reservation=". $db->real_escape_string($id_travel);
                         }
                         else
                         {
+
                             //if it's a new reservation
-                            $voyager = "INSERT INTO mysqli.passengers( Name, Age, Reservation) 
-                                        VALUES('$dude', '$dudesAge', '$id_travel')";
+
+                            $voyager = "INSERT INTO mysqli.passengers( Name, Age, Reservation) VALUES('" .
+                                        $db->real_escape_string($dude) . "','" .
+                                        $db->real_escape_string($dudesAge) . "','" .
+                                        $db->real_escape_string($id_travel) . "')";
+
                         }
                     }
 
