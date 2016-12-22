@@ -58,7 +58,7 @@ Autor: Paolo De Keyzer, 13201
                  echo "</td><td>" . $row['Assurance'] ."</td><td>";
                  echo '<a class="btn btn-warning" href="Controller_DB.php?id='.$row['ID'].'&page=edit" >Editer</a></td>';
                  echo '<td><a class="btn btn-warning" href="Controller_DB.php?id='.$row['ID'].'&page=del" >Supprimer</a></td></tr>';
-                 $i=0;
+
 
             }
 

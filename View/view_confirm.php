@@ -81,9 +81,7 @@ Autor: Paolo De Keyzer, 13201
 
                 <span class="glyphicon glyphicon-fast-forward"></span>
             </button>
-            <?php
-            session_destroy();
-            ?>
+
 
         </form>
         </div>
@@ -92,17 +90,7 @@ Autor: Paolo De Keyzer, 13201
 
 
 
-<!--Je sais pas pourquoi c'est là et j'ai le sentiments que ca fait bien planté ^^ -->
-<script>
-    function redirect()
-            {
-                <?php $reservation = new Reservation;
-                $_SESSION["reserv"] = $reservation;
-                 ?>
-                window.location.assign("index.php");
-            }
-    }
-</script>
+
 </div>
 </body>
 </html>

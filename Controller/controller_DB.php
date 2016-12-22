@@ -40,7 +40,7 @@ if(isset($_GET['page'])){
     WHERE ID=".$id;
         $qEdit=$db->query($sql);
         $reservation = new Reservation;
-        $_SESSION["reserv"] = $reservation;
+        $_SESSION['reserv'] = $reservation;
         $row=$qEdit->fetch_array(MYSQLI_ASSOC);
         $reservation->setAssurance($row['Assurance']);
         $reservation->setDestination($row['Destination']);
@@ -56,9 +56,9 @@ if(isset($_GET['page'])){
         $reservation->setPlace($i);
         $reservation->SetPersonne($passengers);
         $reservation->setReservID($id);
-
-        header('location:../index.php');
         $_SESSION['reserv']=serialize($reservation);
+        header('location:../index.php');
+
     }
     if ($page=='del'){
         $sql="SELECT * FROM mysqli.reservations
@@ -74,13 +74,8 @@ if(isset($_GET['page'])){
         $qEditBis=$db->query($SQL);
         session_destroy();
 
-        if($i=0){
-            header("Refresh:0");
-            $i=1;
-        }
-
-        header("controller.php");
-        $i=0;
+        header("controller_DB.php");
+        exit();
 
     }
 }

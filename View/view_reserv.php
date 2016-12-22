@@ -116,7 +116,10 @@ Autor: Paolo De Keyzer, 13201
                     </tr>
                     <tr>
                         <td style="text-align:center"><b>Assurance annulation (5 €):</b></td>
-                        <td><input type="checkbox" name="assurance" value="true" /></td>
+
+                        <td><input type="checkbox" name="assurance" value="true" <?php if($reservation->AssuranceCheck()=='Yes'){
+                            echo 'checked';
+                            }?>/></td>
                     </tr>
                 </table>
             </div>

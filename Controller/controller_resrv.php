@@ -30,16 +30,16 @@ else{
     var_dump($reservation);}*/
 if(!isset($_SESSION['reserv'])){
     $reservation=new Reservation();
-    $_SESSION['reserv']=$reservation;
+    $_SESSION['reserv']=serialize($reservation);
+
 }
 else{
-    $reservation=$_SESSION['reserv'];
+    $reservation=unserialize($_SESSION['reserv']);
 }
-
-var_dump($reservation);
 
 $nameErr=array();
 $ageErr=array();
+$passengers=array();
 
 
 
@@ -117,7 +117,7 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                         $sql = "UPDATE mysqli.reservations SET Destination='".$dest."',Assurance='".$insu."' WHERE ID=".$reservation->getReservID();
                     }
                     else {
-                        $sql = "INSERT INTO mysqli.reservations (Destination, Assurance) VALUES (msqli_real_escape_string('$dest','$insu')) ";}
+                        $sql = "INSERT INTO mysqli.reservations (Destination, Assurance) VALUES ('$dest','$insu') ";}
                     if ($db->query($sql) == true) {
 
                         $id_insert = $db->insert_id;
@@ -127,6 +127,7 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                         echo 'Error inserting record: '.$db->error;
                     }
                     $_SESSION['reserv']=serialize($reservation);
+                    var_dump($_SESSION['reserv']);
                     include('View/view_detail.php');
                     break;
                 }
@@ -183,7 +184,7 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                         array_push($ageErr,"Age requis");
                         $reservation->setError(true);
                     } else {
-                        array_push($passengers[$i], htmlspecialchars($_POST["exampleInputAge" . $i]));
+                        array_push($passengers[$i], $_POST["exampleInputAge" . $i]);
                         array_push($ageErr,"");
                     }
                     if ($reservation->getError()==false){
@@ -193,7 +194,7 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
 
                         //We use "mysql_real_escape_string" to conserve the symbol as plain text
                         // and protect our SQL ataBase
-                        $voyager = "INSERT INTO mysqli.passengers( Name, Age, Reservation) VALUES(mysqli_real_escape_string('$dude', '$dudesAge', '$id_travel'))";}
+                        $voyager = "INSERT INTO mysqli.passengers( Name, Age, Reservation) VALUES('$dude', '$dudesAge', '$id_travel')";}
 
                         if ($db->query($voyager) == true) {
                             //echo 'Record updated successfully';
@@ -258,6 +259,8 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                 break;
             }
             else if (isset($_POST['return']) && $_POST['return']=="Retour à la page précedente"){
+
+                $_SESSION['reserv']=serialize($reservation);
                 include('View/view_valid.php');
                 $step=3;
 
