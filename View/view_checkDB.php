@@ -56,6 +56,7 @@ Autor: Paolo De Keyzer, 13201
                 </tr>
 
                 <?php
+                    //builds the page with every value of the database
                     while($row = $query->fetch_array())
                     {
                          echo "<tr><td>" . $row['Destination'] . "</td>";
@@ -70,6 +71,8 @@ Autor: Paolo De Keyzer, 13201
                              echo $passRow['Name'] . " - " . $passRow['Age'] . " ans <br>" ;
                          }
                          echo "</td><td>" . $row['Assurance'] ."</td><td>";
+                         //the button looking link adds a parameter in the url. edit for edition and del for deletion
+                         //it also adds the ID of the reservation we want to edit/cancel
                          echo '<a class="btn btn-warning" href="Controller_DB.php?id='.$row['ID'].'&page=edit" >
                                 Editer
                                </a></td>';

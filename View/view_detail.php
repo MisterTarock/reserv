@@ -51,6 +51,7 @@ Autor: Paolo De Keyzer, 13201
         <div class="row">
             <div class="col-md-12">
                 <?php
+                //the pattern is similar to the view_reserv. for any explanation, check that file
                     $reservation=unserialize($_SESSION['reserv']);
 
                     for ($i=0;$i<$reservation->getPlace();$i++)

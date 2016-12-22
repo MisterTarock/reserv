@@ -43,6 +43,7 @@ Autor: Paolo De Keyzer, 13201
 
             <span class="error">
             <?php
+            //the pattern is similar to the view_reserv. for any explanation, check that file
                 $totalprice=0;
                 for ($i=1;$i<=$reservation->getPlace();$i++)
                 {

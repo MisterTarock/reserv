@@ -86,6 +86,7 @@ Autor: Paolo De Keyzer, 13201
                         <tr>
                             <td>
                                 <?php
+                                //the pattern is similar to the view_reserv. for any explanation, check that file
                                     $people=$reservation->getPassengers();
                                     for ($i=1;$i<=$reservation->getPlace();$i++)
                                     {
