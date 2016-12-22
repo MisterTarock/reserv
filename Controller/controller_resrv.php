@@ -175,7 +175,7 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                 if ($reservation->getReservID()!=NULL && $reservation->getPlace()!=$reservation->getOldPlace())
                 {
                     $sql = "DELETE FROM mysqli.passengers
-                                WHERE Reservation=".$id_travel;
+                            WHERE Reservation=".$id_travel;
                     $qEditBis=$db->query($sql);}
                 for ($i = 0; $i < $reservation->getPlace(); $i++)
                 {
@@ -213,17 +213,17 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                         if ($reservation->getReservID()!=NULL && $reservation->getPlace()!=$reservation->getOldPlace())
                         {
                             $voyager = "INSERT INTO mysqli.passengers( Name, Age, Reservation) 
-                                    VALUES('$dude', '$dudesAge', '$id_travel')";
+                                        VALUES('$dude', '$dudesAge', '$id_travel')";
                         }
                         if($reservation->getPassengers()!=NULL  && intval($reservation->getPlace())==$reservation->getOldPlace())
                         {
                             $voyager = "UPDATE mysqli.passengers SET Name='$dude', Age='$dudesAge' 
-                                    WHERE Reservation=".$id_travel;
+                                        WHERE Reservation=".$id_travel;
                         }
                         else
                         {
                             $voyager = "INSERT INTO mysqli.passengers( Name, Age, Reservation) 
-                                    VALUES('$dude', '$dudesAge', '$id_travel')";
+                                        VALUES('$dude', '$dudesAge', '$id_travel')";
                         }
                     }
 

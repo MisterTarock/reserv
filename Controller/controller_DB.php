@@ -38,7 +38,7 @@ if(isset($_GET['page']))
 
     if ($page=='edit' && isset($_GET['id'])){
         $sql="SELECT * FROM mysqli.reservations
-     WHERE ID=".$id;
+              WHERE ID=".$id;
         $qEdit=$db->query($sql);
         $reservation = new Reservation;
         $_SESSION["reserv"] = $reservation;
@@ -46,7 +46,7 @@ if(isset($_GET['page']))
         $reservation->setAssurance($row['Assurance']);
         $reservation->setDestination($row['Destination']);
         $SQL="SELECT * FROM mysqli.passengers
-         WHERE Reservation=".$id;
+              WHERE Reservation=".$id;
         $qEditBis=$db->query($SQL);
         $i=0;
         while($line = $qEditBis->fetch_array()) {
