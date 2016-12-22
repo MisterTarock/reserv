@@ -12,10 +12,8 @@ if ($db->connect_errno) {
     echo 'Echec lors de la connexion à MySQLi : ('.$db->connect_errno.') '.$db->connect_error;
 }
 
-include_once('Model/model.php');
+include('Model/model.php');
 
-
-if(!isset($_SESSION['reserv'])){session_start(); }
 
 /*This will be the logic file were the data will be calculated*/
 
@@ -30,10 +28,15 @@ else{
     $reservation=new Reservation();
     $_SESSION['reserv']=$reservation;
     var_dump($reservation);}*/
+if(!isset($_SESSION['reserv'])){
+    $reservation=new Reservation();
+    $_SESSION['reserv']=$reservation;
+}
+else{
+    $reservation=$_SESSION['reserv'];
+}
 
-unserialize($_SESSION['reserv']);
-$reservation=$_SESSION['reserv'];
-var_dump($_SESSION['reserv']);
+var_dump($reservation);
 
 $nameErr=array();
 $ageErr=array();

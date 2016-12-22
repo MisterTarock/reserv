@@ -7,7 +7,7 @@
 
 
 
-
+session_start();
 include_once("../Model/model.php");
 
 //each controller calls the model that are needed
@@ -56,9 +56,9 @@ if(isset($_GET['page'])){
         $reservation->setPlace($i);
         $reservation->SetPersonne($passengers);
         $reservation->setReservID($id);
-        $_SESSION['reserv']=serialize($reservation);
 
         header('location:../index.php');
+        $_SESSION['reserv']=serialize($reservation);
     }
     if ($page=='del'){
         $sql="SELECT * FROM mysqli.reservations
