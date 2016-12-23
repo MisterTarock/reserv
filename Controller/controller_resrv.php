@@ -66,8 +66,6 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
             {
                 //various errors management (checks if destination/#of places is empty) and fills the Session if no
                 // error is thrown
-
-
                 if (empty($_POST["destination"]))
                 {
                     // in case of an error , it displays the type above the input
@@ -260,16 +258,17 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                                         $db->real_escape_string($dude) . "','" .
                                         $db->real_escape_string($dudesAge) . "','" .
                                         $db->real_escape_string($id_travel) . "')";
-                                        //To display the error
-                                        //die($sql);
                         }
                         if($reservation->getPassengers()!=NULL
                             && intval($reservation->getPlace())==$reservation->getOldPlace())
                         {
                             //if it's an edition but the number of places hasn't changed
-                            $voyager = "UPDATE mysqli.passengers SET Name='$dude', Age='$dudesAge' WHERE Reservation=".
+                            $voyager = "UPDATE mysqli.passengers SET Name='" .
+                                        $db->real_escape_string($dude) . "',Age='" .
+                                        $db->real_escape_string($dudesAge) . "' WHERE Reservation=".
                                         $db->real_escape_string($id_travel);
-
+                                        //To display the error
+                                        //die($sql);
 
                         }
                         else

@@ -1,7 +1,5 @@
 A faire au prochain cours
 
--proteger le code contre les attaque sql 
--commentaire
 -rapport 
 -diagramme sequence
 
@@ -32,4 +30,4 @@ Un seul fichier PDF contenant :
 \\\\\\\\\\\\\\\\\\\\\\
 Fait
 
-savoir garder les infos dans les cases quand on revient en arriere de la page detail
+savoir garder les infos dans les cases quand on revient en arriere de la page detailgit@github.com:MisterTarock/reserv.git
