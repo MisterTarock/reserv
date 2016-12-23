@@ -280,22 +280,25 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                         {
 
                             //if it's a new reservation
+                            if ($reservation->getError()==false)
+                            {
 
                             $voyager = "INSERT INTO mysqli.passengers( Name, Age, Reservation) VALUES('" .
                                         $db->real_escape_string($dude) . "','" .
                                         $db->real_escape_string($dudesAge) . "','" .
                                         $db->real_escape_string($id_travel) . "')";
+                            }
 
                         }
                     }
 
 
-                    if ($db->query($voyager) == true)
+                    if ($reservation->getError()==false && $db->query($voyager) == true)
                     {
                         //echo 'Record updated successfully';
                         $id_insert = $db->insert_id;
                     }
-                    else
+                    else if ($reservation->getError()==false && $db->query($voyager) != true)
                     {
                         echo 'Error inserting record: '.$db->error;
                     }
