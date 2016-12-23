@@ -84,7 +84,7 @@ Autor: Paolo De Keyzer, 13201
                         <?php
                             //The maxlength parameter protect us against anyone who want
                             // to past a complete book in input in place of the destination
-                            echo '<td><input class="form-control" type="text" maxlength="40" 
+                            echo '<td><input class="form-control" type="text" maxlength="30" 
                                              name="destination" placeholder="Destination" ';
                             //retrieve session values if already set
                             if (!empty($reservation->getDestination()))
@@ -108,8 +108,8 @@ Autor: Paolo De Keyzer, 13201
                         <td style="text-align:center"><b>Nombre de places:</b></td>
                         <?php
                             /*the type number makes the case with the arrow to move the number,
-                             the min value assure us to not receive any negative number
-                             the max value assure us to stay in the right span*/
+                              accept only integer and the min value assure us to not receive any negative number
+                              the max value assure us to stay in the right span*/
                             echo '<td><input class="form-control" type="number" min="1" max="10" 
                                              name="places" placeholder="Nombre de places" ';
                             if (!empty($reservation->getPlace()))
