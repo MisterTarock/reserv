@@ -46,6 +46,7 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
 
 
         case 1:
+            $reservation->setError(false);
             //checks if the checkbox is checked
             if (isset($_SESSION['assurance']))
             {
@@ -122,6 +123,7 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                 {
                     $_SESSION['reserv']=serialize($reservation);
                     include('View/view_reserv.php');
+
                     break;
                 }
                 else
