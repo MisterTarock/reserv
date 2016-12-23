@@ -44,11 +44,11 @@ td, th /* Toutes les cellules des tableaux... */
 {
     border: 1px solid black; /* auront une bordure de 1px */
 }
-/*table
+table
 {
     border-collapse: separate; /* Les bordures du tableau seront collées (plus joli) */
     border: 1px solid black; /* auront une bordure de 1px */
-}*/
+}
 
 .error
 /*the CSS and the PHP can't speak with each other so we have to use the class set in the <span class=" ">
