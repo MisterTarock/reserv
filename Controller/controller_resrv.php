@@ -119,7 +119,7 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                 if($reservation->getError()==true)
                 {
                     $_SESSION['reserv']=serialize($reservation);
-                    include('index.php');
+                    include('View/view_reserv.php');
                     break;
                 }
                 else
