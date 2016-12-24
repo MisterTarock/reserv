@@ -15,9 +15,6 @@ if ($db->connect_errno)
 
 include('Model/model.php');
 
-
-/*This will be the logic file were the data will be calculated*/
-
 //check if there is an existing Session. If so, the programs loads it. If not,  it creates a new one
 if(!isset($_SESSION['reserv']))
 {
@@ -138,18 +135,16 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                         $sql = "UPDATE mysqli.reservations SET Destination='" .
                                 $db->real_escape_string($dest) . "',Assurance='" .
                                 $db->real_escape_string($insu) . "'WHERE ID=".$reservation->getReservID();
-
                     }
 
                     //if it's a new reservation, we create a new entry in the DB
                     else
                     {
-
                         $sql = "INSERT INTO mysqli.reservations (Destination, Assurance) VALUES ('" .
                                 $db->real_escape_string($dest) . "','" .
                                 $db->real_escape_string($insu) . "') ";
-                        //To display the error
-                        //die($sql);
+                                //To display the error
+                                //die($sql);
                     }
                     if ($db->query($sql) == true)
                     {
@@ -195,7 +190,6 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                 $step=1;
 
                 break;
-
             }
             else
             {
@@ -203,8 +197,7 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                 $id_travel = $reservation->getReservID();
 
                 //we have to check if there is already a session with persons included (edit case) and if there is,
-                //We have to check if the number of places has chaged
-
+                //We have to check if the number of places has changed
                 if ($reservation->getReservID()!=NULL
                     && $reservation->getPlace()!=$reservation->getOldPlace())
                 {
@@ -213,7 +206,9 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                     $sql = "DELETE FROM mysqli.passengers WHERE Reservation=".
                             $db->real_escape_string($id_travel);
 
-                    $qEditBis=$db->query($sql);}
+                    $qEditBis=$db->query($sql);
+                }
+
                 //for every input we do the next things:
                 for ($i = 0; $i < $reservation->getPlace(); $i++)
                 {
@@ -231,7 +226,6 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                         // passengers[person[name,Age]]
                         array_push($passengers, array(htmlspecialchars($_POST["exampleInputName" . $i])));
                         array_push($nameErr,"");
-
                     }
                     if (empty($_POST["exampleInputAge" . $i]))
                     //same goes for the age
@@ -241,7 +235,6 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                     }
                     else
                     {
-
                         array_push($passengers[$i], $_POST["exampleInputAge" . $i]);
                         array_push($ageErr,"");
                     }
@@ -250,9 +243,7 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                         $dude=$passengers[$i][0];
                         $dudesAge=$passengers[$i][1];
 
-
                         //checks if the number of places changed in case of edition
-
                         if ($reservation->getReservID()!=NULL
                             && $reservation->getPlace()!=$reservation->getOldPlace())
                         {
@@ -273,21 +264,14 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                                         $db->real_escape_string($id_travel);
                                         //To display the error
                                         //die($sql);
-
                         }
                         else
                         {
-
                             //if it's a new reservation
-                            if ($reservation->getError()==false)
-                            {
-
                             $voyager = "INSERT INTO mysqli.passengers( Name, Age, Reservation) VALUES('" .
                                         $db->real_escape_string($dude) . "','" .
                                         $db->real_escape_string($dudesAge) . "','" .
                                         $db->real_escape_string($id_travel) . "')";
-                            }
-
                         }
                     }
 
@@ -302,9 +286,10 @@ if ($step && $_SERVER["REQUEST_METHOD"] == "POST")
                         echo 'Error inserting record: '.$db->error;
                     }
 
-                }
-                //in the end the arrays of passengers and errors are stored in the Session
 
+                }
+
+                //in the end the arrays of passengers and errors are stored in the Session
                 $reservation->setPersonne($passengers);
                 $reservation->setNameErr($nameErr);
                 $reservation->setAgeErr($ageErr);
